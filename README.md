@@ -18,7 +18,7 @@
 | member1      | jliangliao@sfsu.edu             |  JDLiang100               |
 | member2      | ehuang10@mail.sfsu.edu          |  emhuang3               |
 | member3      | bsever@sfsu.edu              |     melisa48            |
-| member4      |               |                 |
+| member4      | eborres@sfsu.edu               |   eunmdb              |
 | member5      |               |                 |
 | member6      |               |                 |
 
