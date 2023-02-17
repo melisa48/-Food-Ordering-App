@@ -15,7 +15,7 @@
 
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
-| member1      | jliangliao@sfsu.edu             |                 |
+| member1      | jliangliao@sfsu.edu             |  JDLiang100               |
 | member2      |               |                 |
 | member3      |               |                 |
 | member4      |               |                 |
