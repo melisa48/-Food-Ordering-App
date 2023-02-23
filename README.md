@@ -15,7 +15,7 @@
 
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
-| member1      | jliangliao@sfsu.edu             |  JDLiang100               |
+| member1      | jliangliao@sfsu.edu             |  Juan David Liang Liao               |
 | member2      | ehuang10@mail.sfsu.edu          |  emhuang3               |
 | member3      | bsever@sfsu.edu              |     melisa48            |
 | member4      | eborres@sfsu.edu               |   eunmdb              |
