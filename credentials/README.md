@@ -22,3 +22,7 @@
 ## These values need to kept update to date throughout the semester. <br>
 ## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>
 ## You may store the most of the above in this README.md file. DO NOT Store the SSH key or any keys in this README.md file.
+
+To log into Amazon AWS Management Console
+username email: aalmeida1@sfsu.edu
+password: Backside180!
