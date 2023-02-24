@@ -17,7 +17,7 @@
 |    :---:     |     :---:     |     :---:       |
 | member1      | jliangliao@sfsu.edu             |  Juan David Liang Liao               |
 | member2      | ehuang10@mail.sfsu.edu          |  emhuang3               |
-| member3      | bsever@sfsu.edu              |     melisa48            |
+| Melisa Sever      | bsever@sfsu.edu              |     melisa48            |
 | member4      | eborres@sfsu.edu               |   eunmdb              |
 | Andy Almeida | aalmeida1@gmail.com | pie240    |
 | member6      |               |                 |
