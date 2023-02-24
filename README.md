@@ -18,7 +18,7 @@
 | Juan David Liang Liao | jliangliao@sfsu.edu | JDLiang100 |
 | member2      | ehuang10@mail.sfsu.edu          |  emhuang3               |
 | Melisa Sever      | bsever@sfsu.edu              |     melisa48            |
-| member4      | eborres@sfsu.edu               |   eunmdb              |
+| Eunice Borres      | eborres@sfsu.edu               |   eunmdb              |
 | Andy Almeida | aalmeida1@gmail.com | pie240    |
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
