@@ -9,7 +9,7 @@
 
 1. Server URL or IP: 34.219.3.29
 2. Instance id: i-0613d94402e033e94
-3. SSH username
+3. SSH username: ec2-user
 4. SSH password or key.
     <br> If a ssh key is used please upload the key to the credentials folder.
 4. Database URL or IP and port used.
