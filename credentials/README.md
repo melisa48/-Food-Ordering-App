@@ -21,15 +21,12 @@
 9. Amazon AWS Management Console password: Backside180!
 9. Instructions on how to use the above information.
 
-a. Connect to the instance: 
-ssh -i (.pem file location) ec2-user@52.33.83.41
-
-b. cd csc648-03-sp23-team07
-
-c. cd application
-
-d. run the server: 
-npm start
+a. Connect to the instance: <br>
+ssh -i (.pem file location) ec2-user@52.33.83.41 <br>
+b. cd csc648-03-sp23-team07 <br>
+c. cd application <br>
+d. run the server: <br>
+npm start <br>
 
 You can then go to the webpage using: 52.33.83.41:3000
 
