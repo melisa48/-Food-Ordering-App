@@ -16,7 +16,7 @@
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
 | Juan David Liang Liao | jliangliao@sfsu.edu | JDLiang100 |
-| member2      | ehuang10@mail.sfsu.edu          |  emhuang3               |
+| Emily Huang      | ehuang10@mail.sfsu.edu          |  emhuang3               |
 | Melisa Sever      | bsever@sfsu.edu              |     melisa48            |
 | Eunice Borres      | eborres@sfsu.edu               |   eunmdb              |
 | Andy Almeida | aalmeida1@gmail.com | pie240    |
