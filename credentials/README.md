@@ -7,7 +7,7 @@
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. Server URL or IP: 34.219.3.29
+1. Server URL or IP: 52.33.83.41:3000
 2. Instance id: i-0613d94402e033e94
 3. SSH username: ec2-user
 4. SSH password or key.
