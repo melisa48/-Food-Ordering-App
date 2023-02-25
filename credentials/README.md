@@ -20,7 +20,6 @@
 8. Amazon AWS Management Console username: aalmeida1@sfsu.edu
 9. Amazon AWS Management Console password: Backside180!
 9. Instructions on how to use the above information.
-
 a. Connect to the instance: <br>
 ssh -i (.pem file location) ec2-user@52.33.83.41 <br>
 b. cd csc648-03-sp23-team07 <br>
