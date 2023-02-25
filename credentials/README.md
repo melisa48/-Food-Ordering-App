@@ -16,7 +16,7 @@
     52.33.83.41:3306
 5. Database username: team7
 6. Database password: Backside180!
-7. Database name (basically the name that contains all your tables)
+7. Database name: team7
 8. Amazon AWS Management Console username: aalmeida1@sfsu.edu
 9. Amazon AWS Management Console password: Backside180!
 9. Instructions on how to use the above information.
