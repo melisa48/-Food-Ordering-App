@@ -23,13 +23,15 @@
 
 a. Connect to the instance: 
 ssh -i (.pem file location) ec2-user@52.33.83.41
+
 b. cd csc648-03-sp23-team07
+
 c. cd application
+
 d. run the server: 
 npm start
 
 You can then go to the webpage using: 52.33.83.41:3000
-
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
