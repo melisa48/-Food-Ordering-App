@@ -12,14 +12,14 @@
 3. SSH username: ec2-user
 4. SSH password or key.
     <br> If a ssh key is used please upload the key to the credentials folder.
-4. Database URL or IP and port used.
+5. Database URL or IP and port used.
     52.33.83.41:3306
-5. Database username: team7
-6. Database password: Backside180!
-7. Database name: team7
-8. Amazon AWS Management Console username: aalmeida1@sfsu.edu
-9. Amazon AWS Management Console password: Backside180!
-9. Instructions on how to use the above information.
+6. Database username: team7
+7. Database password: Backside180!
+8. Database name: team7
+9. Amazon AWS Management Console username: aalmeida1@sfsu.edu
+10. Amazon AWS Management Console password: Backside180!
+11. Instructions on how to use the above information. <br>
 a. Connect to the instance: <br>
 ssh -i (.pem file location) ec2-user@52.33.83.41 <br>
 b. cd csc648-03-sp23-team07 <br>
