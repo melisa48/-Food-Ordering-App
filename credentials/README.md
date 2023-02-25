@@ -17,13 +17,23 @@
 5. Database username: team7
 6. Database password: Backside180!
 7. Database name (basically the name that contains all your tables)
-8. Instructions on how to use the above information.
+8. Amazon AWS Management Console username: aalmeida1@sfsu.edu
+9. Amazon AWS Management Console password: Backside180!
+9. Instructions on how to use the above information.
+
+a. Connect to the instance: 
+ssh -i (.pem file location) ec2-user@52.33.83.41
+b. cd csc648-03-sp23-team07
+c. cd application
+d. run the server: 
+npm start
+
+You can then go to the webpage using: 52.33.83.41:3000
+
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
 ## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>
 ## You may store the most of the above in this README.md file. DO NOT Store the SSH key or any keys in this README.md file.
 
-To log into Amazon AWS Management Console
-username email: aalmeida1@sfsu.edu
-password: Backside180!
+
