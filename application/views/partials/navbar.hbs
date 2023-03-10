@@ -1,0 +1,55 @@
+  <nav class="navbar">
+  <a id="logo" href="/"><i class="bi bi-symmetry-horizontal"></i>AJEEM</a>
+  <div class="navbar-left">
+    
+    <a class="navbar-links" href="/">Home</a>
+    <a class="navbar-links" href="#">Delivery</a>
+    <a class="navbar-links" href="#">Pickup</a>
+    <a class="navbar-links" href="/about">About</a>
+    {{!-- <a class="navbar-links" href="/">Users</a> 
+    <a class="navbar-links" href="/">Drivers</a>
+    <a class="navbar-links" href="/about">Restaurants</a> --}}
+  </div>
+
+  <div class="navbar-center">
+    <select id="category-select">
+      <option value="all">All</option>
+      <option value="temp2">Temp2</option>
+      <option value="temp3">Temp3</option>
+    </select><input id="search-bar" type="text" placeholder="Search">
+  </div>
+  
+  <div class="navbar-right">
+    {{!-- register dropdown beginning --}}
+    <div class="dropdown navbar-dropdown">
+      <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
+      Register
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+        <li><a class="dropdown-item" href="/sfsuRegistration">Student/Faculty Registration</a></li>
+        <li><a class="dropdown-item" href="/driverRegistration">Driver Registration</a></li>
+        <li><a class="dropdown-item" href="/restaurantLogin">Restaurant Registration</a></li>
+      </ul>
+    </div>
+    {{!-- register dropdown end --}}
+    
+    {{!-- login dropdown beginning --}}
+    <div class="dropdown navbar-dropdown">
+      <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
+      Login
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+        <li><a class="dropdown-item" href="/sfsuLogin">Student/Faculty Login</a></li>
+        <li><a class="dropdown-item" href="/driverLogin">Driver Login</a></li>
+        <li><a class="dropdown-item" href="/restaurantLogin">Restaurant Owner Login</a></li>
+        <li><a class="dropdown-item" href="/adminLogin">Admin Login</a></li>
+      </ul>
+    </div>
+    {{!-- login dropdown end --}}
+    
+    {{!-- shopping cart --}}
+    <a class="navbar-links"><i class="bi bi-cart2"></i></a>
+    
+      
+  </div>
+</nav>

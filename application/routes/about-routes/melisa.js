@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   // res.send('respond with a resource');
-  res.render('eunice');
+  res.render('about-hbs/melisa', {title: 'Melisa'});
 });
 
 module.exports = router;
