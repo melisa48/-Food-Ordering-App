@@ -19,7 +19,7 @@ body{
 #cover-content{
     position: absolute;
     top: 300px;
-    width: 100%;
+    width: auto;
     left: 6%;
 }
 
@@ -111,7 +111,6 @@ body{
 #location-icon{
     color: red;
     font-size:35px;
-    opacity: 0;
 }
 
 
@@ -121,6 +120,55 @@ body{
 
 /* user-driver-restaurant-block css */
 
+#user-driver-restaurant-block{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(255, 243, 255);
+    flex-wrap: wrap;
+}
+
+#user-container, #driver-container, #restaurant-container{
+    margin: 30px 0 30px 0;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#user-container > a, #driver-container > a, #restaurant-container > a{
+    color: black;
+    font-size: 10px;
+
+}
+
+#user-container > a > button, #driver-container > a > button, #restaurant-container > a > button{
+    background-color: rgb(255, 136, 136);
+    border:none;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+
+}
+
+
+#hotpot-photo-container, #car-photo-container, #restaurant-photo-container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 50%;
+    background: linear-gradient(rgb(255, 192, 192), rgb(253, 219, 133));
+    height: 250px;
+    width: 250px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#hotpot-photo, #car-photo, #restaurant-photo{
+    width: 200px;
+}
 
 
 
@@ -140,6 +188,7 @@ body{
 
     #location-icon{
         font-size: 16px;
+        opacity: 0;
     }
 
    .building-dropdown, .room-dropdown{
