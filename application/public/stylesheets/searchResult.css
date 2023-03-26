@@ -1,0 +1,28 @@
+#restaurant-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    width: 100%;
+    justify-content: center;
+
+    /* display: grid;
+    width: 100%;
+    grid-template-rows: repeat(1,200px);
+    grid-template-columns: repeat(4,200px);
+    grid-auto-rows: 200px;
+    grid-auto-columns: 200px;
+    grid-gap: 10px;
+    padding: 10px 10px 10px 10px; */
+}
+
+#restaurant-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: orange; 
+    margin: 10px; 
+    height: 350px;
+    width: 350px;
+    padding: 15px;
+}

@@ -1,9 +1,24 @@
 
+
+var searchButton = document.getElementById('search-button');
+var searchForm = document.getElementById("search-form");
+
+searchButton.addEventListener("click", function(e){
+    e.preventDefault();
+    console.log("test");
+    searchForm.submit();
+    console.log("test");
+    
+});
+
+
 // js code to swap building and room selects to an address input if the
-//user clicks on the "I'm off campus link"
+// user clicks on the "I'm off campus link"
 var locationChange = document.getElementById("on-campus-off-campus");
 var locationInput = document.getElementById("location-bar-wrapper");
 const temp = locationInput.innerHTML;
+
+
 
 locationChange.addEventListener("click", function(){
     console.log('test1:')

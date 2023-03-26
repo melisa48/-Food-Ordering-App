@@ -56,7 +56,7 @@ a{
 
 
 #search-bar{
-  width: 400px;
+  width: 350px;
 }
 
 #search-bar, #category-select{
@@ -160,6 +160,20 @@ li{
   font-size: 15px;
 }
 
+.navbar-center{
+  display: flex;
+}
+
+#search-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+  color:white;
+  height:35px;
+  padding:0;
+  width:40px;
+}
 
 /* redesign navbar for phones and tablets*/
 @media(max-width: 1200px){
@@ -177,14 +191,14 @@ li{
 
   .navbar-center{
     display: table-footer-group;
-    width: 300px;
+    width: 50px;
   }
 
   .navbar-left,.navbar-right{
     justify-content: center;
   }
 
-  #search-bar, #category-select{
+  #search-bar, #category-select, #search-button{
     margin: 10px 0 10px 0;
   }
 
@@ -196,5 +210,11 @@ li{
   #search-bar{
     height: 30px;
     width: 150px;
+  }
+
+  #search-button{
+    height: 30px;
+    width: 30px;
+    display: inline-block;
   }
 }

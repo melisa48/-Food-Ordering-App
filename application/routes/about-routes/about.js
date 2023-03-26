@@ -6,6 +6,8 @@ var hbs = require('hbs');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('about-hbs/about', { title: 'About'});
+
+
 });
 
 module.exports = router;

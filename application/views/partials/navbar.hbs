@@ -1,5 +1,5 @@
   <nav class="navbar">
-  <a id="logo" href="/"><i class="bi bi-symmetry-horizontal"></i>AJEEM</a>
+  <a id="logo" href="/"><i class="bi bi-symmetry-horizontal"></i>GATOREATS</a>
   <div class="navbar-left">
     
     <a class="navbar-links" href="/">Home</a>
@@ -11,13 +11,17 @@
     <a class="navbar-links" href="/about">Restaurants</a> --}}
   </div>
 
-  <div class="navbar-center">
-    <select id="category-select">
+  <form id="search-form" class="navbar-center" action="/searchResult">
+    <select id="category-select" name="category">
       <option value="all">All</option>
-      <option value="temp2">Temp2</option>
-      <option value="temp3">Temp3</option>
-    </select><input id="search-bar" type="text" placeholder="Search">
-  </div>
+      <option value="italian">Italian</option>
+      <option value="taiwanese">Taiwanese</option>
+      <option value="pizza">Pizza</option>
+      <option value="japanese">Japanese</option>
+      <option value="fast food">Fast Food</option>
+    </select><input id="search-bar" name="search" type="text" placeholder="Search"><a id ='search-button'><i class="bi bi-search"></i></a>
+    
+  </form>
   
   <div class="navbar-right">
     {{!-- register dropdown beginning --}}

@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs')
 
+
 const partials = path.join(__dirname, "views/partials");
 hbs.registerPartials(partials);
 
@@ -27,7 +28,8 @@ var sfsuLoginRouter = require("./routes/login-routes/sfsuLogin");
 var driverRegistrationRouter = require("./routes/registration-routes/driverRegistration");
 var restaurantRegistrationRouter = require("./routes/registration-routes/restaurantRegistration");
 var sfsuRegistrationRouter = require("./routes/registration-routes/sfsuRegistration");
-
+//router for page that lists searchResult after search
+var searchResultRouter = require("./routes/searchResult");
 
 var app = express();
 
@@ -42,7 +44,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//home
 app.use('/', indexRouter);
+//about
 app.use('/andy', andyRouter);
 app.use('/juandavid', juandavidRouter);
 app.use('/emily', emilyRouter);
@@ -58,6 +62,9 @@ app.use('/sfsuLogin', sfsuLoginRouter);
 app.use('/driverRegistration', driverRegistrationRouter);
 app.use('/restaurantRegistration', restaurantRegistrationRouter);
 app.use('/sfsuRegistration', sfsuRegistrationRouter);
+//list of searchResult hbs
+app.use('/searchResult', searchResultRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -74,5 +81,25 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+// // db test
+// const db = require('./conf/database');
+// app.get('/', (req, res)=>{
+//   console.log('test');
+//   db.query("SELECT * FROM team7.team WHERE name=?;", ['Emily'], function(err, results, fields){
+//     if(err){
+//       console.log(err);
+//     }
+//     else{
+//       console.log(results);
+//       // console.log("test");
+//       // results.forEach(row => console.log(row));
+//       // console.log("test2");
+//     }
+//   });
+// });
+
+
 
 module.exports = app;
