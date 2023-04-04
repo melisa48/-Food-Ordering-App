@@ -7,7 +7,8 @@ router.get('/', executeSearch, function(req, res, next) {
         results: req.searchResult.length,
         searchTerm: req.searchTerm,
         searchResult: req.searchResult,
-        category: req.category
+        category: req.category,
+        images: req.images
     });
 });
 

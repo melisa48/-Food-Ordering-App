@@ -38,10 +38,10 @@ searchModule.executeSearch = function(req, res, next){
 
     db.query(query, (err, results)=>{
         if(err){
-            req. searchResult = results;
+            req.searchResult = results;
             req.searchTerm = searchTerm;
             req.category = "";
-        next();
+            next();
         }
         console.log(searchTerm);
         console.log(category);
