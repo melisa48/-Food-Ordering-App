@@ -12,31 +12,28 @@
 </head>
 <body>
     <h6 style="text-align: center; margin-top: 10px;"><b>{{results}}</b> results found for <b>{{searchTerm}}</b> in category <b>{{category}}</b></h6>
-    <div id="results">
 
-    <div id="map"></div>
-        <div id="restaurant-wrapper">
-            {{!-- {{searchResult}}  --}}
-            
-            {{#each searchResult}}
+    <div id="restaurant-wrapper">
+        {{!-- {{searchResult}}  --}}
+        
+        {{#each searchResult}}
+            {{results}}
+            {{> card this}}
+        {{/each}}
+
+        <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
+        defer
+        ></script>
+        
+        {{!-- <div style="background: orange; padding: 10px; height: 600px; width: 600px;">
+            <p>
                 {{results}}
-                {{> card this}}
-            {{/each}}
-
-            <script 
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
-            defer
-            ></script>
-            
-            {{!-- <div style="background: orange; padding: 10px; height: 600px; width: 600px;">
-                <p>
-                    {{results}}
-                    {{name}}
-                    {{results}}
-                    </p>
-            </div> --}}
-            
-        </div>
+                {{name}}
+                {{results}}
+                </p>
+        </div> --}}
+        
     </div>
     
 </body>
