@@ -11,28 +11,50 @@
     <link rel="stylesheet" href="/stylesheets/searchResult.css">
 </head>
 <body>
+    
+    <div id="map" style="height: 500px; width: 100%;"></div>
     <h6 style="text-align: center; margin-top: 10px;"><b>{{results}}</b> results found for <b>{{searchTerm}}</b> in category <b>{{category}}</b></h6>
-
     <div id="restaurant-wrapper">
-        {{!-- {{searchResult}}  --}}
         
         {{#each searchResult}}
-            {{results}}
             {{> card this}}
         {{/each}}
+
+
+    <script>
+
+        var latitudeArray = [{{latitude}}];
+        var longitudeArray = [{{longitude}}]
+
+        function initMap() {
+            myLatLng = { lat: 37.7241, lng: -122.4799 };
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 14,
+                center: myLatLng,
+            });
+
+            for(let i = 0; i <{{results}}; i++){
+                new google.maps.Marker({
+                    position: { lat: latitudeArray[i], lng: longitudeArray[i] },
+                    map,
+                    title: "Hello World!",
+                });
+                
+            }
+            
+            
+            
+        }
+
+        window.initMap = initMap;
+    </script>
+
 
         <script 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
         defer
         ></script>
-        
-        {{!-- <div style="background: orange; padding: 10px; height: 600px; width: 600px;">
-            <p>
-                {{results}}
-                {{name}}
-                {{results}}
-                </p>
-        </div> --}}
+    
         
     </div>
     

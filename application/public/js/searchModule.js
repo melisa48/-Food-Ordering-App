@@ -49,6 +49,21 @@ searchModule.executeSearch = function(req, res, next){
         req.searchResult = results;
         req.searchTerm = searchTerm;
         req.category = category;
+        req.latitude = [];
+        req.longitude = [];
+        req.name = [];
+        // req.latitude = results.latitude;
+        for(x in results){
+            // console.log([results[x].latitude]);
+            req.latitude.push(results[x].latitude);
+            req.longitude.push(results[x].longitude);
+            // req.name.push(results[x].name.toString());
+        }
+
+        console.log(req.latitude);
+        console.log(req.longitude);
+        // console.log(req.name)
+        // console.log(results[0].latitude);
         next();
     })
 

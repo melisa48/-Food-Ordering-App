@@ -9,7 +9,12 @@ router.get('/', executeSearch, function(req, res, next) {
         searchResult: req.searchResult,
         category: req.category,
         images: req.images,
+        latitude: req.latitude,
+        longitude: req.longitude,
+        // name: req.name
     });
+    // console.log(name);
+
 });
 
 module.exports = router;
