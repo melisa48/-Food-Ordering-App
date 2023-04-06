@@ -11,7 +11,7 @@ router.get('/', executeSearch, function(req, res, next) {
         images: req.images,
         latitude: req.latitude,
         longitude: req.longitude,
-        // name: req.name
+        restaurant_name: req.restaurant_name
     });
     // console.log(name);
 

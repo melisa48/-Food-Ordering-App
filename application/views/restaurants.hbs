@@ -24,8 +24,15 @@
     <script>
 
         var latitudeArray = [{{latitude}}];
-        var longitudeArray = [{{longitude}}]
-
+        var longitudeArray = [{{longitude}}];
+        //var restaurant_nameArray = [{{restaurant_name}}];
+        var restaurantName = "{{restaurant_name}}";
+        restaurantName.replace('/,/g',',"');
+        //console.log(restaurantName);
+        var nameArray = [];
+        nameArray = restaurantName.split(",");
+        //console.log(nameArray);
+        
         function initMap() {
             myLatLng = { lat: 37.7241, lng: -122.4799 };
             map = new google.maps.Map(document.getElementById("map"), {
@@ -37,6 +44,13 @@
                 new google.maps.Marker({
                     position: { lat: latitudeArray[i], lng: longitudeArray[i] },
                     map,
+                    label: {
+                        text: nameArray[i],
+                        color: "#00000",
+                        fontSize: "15px",
+                        fontWeight: "bold",
+                        className: 'markerPosition',
+                    },
                     title: "Hello World!",
                 });
                 
