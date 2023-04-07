@@ -7,23 +7,31 @@
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. Server URL or IP: 34.219.3.29
+1. Server URL or IP: 52.33.83.41:3000
 2. Instance id: i-0613d94402e033e94
-3. SSH username
+3. SSH username: ec2-user
 4. SSH password or key.
     <br> If a ssh key is used please upload the key to the credentials folder.
-4. Database URL or IP and port used.
-    <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
-5. Database username
-6. Database password
-7. Database name (basically the name that contains all your tables)
-8. Instructions on how to use the above information.
+5. Database URL or IP and port used.
+    52.33.83.41:3306
+6. Database username: team7
+7. Database password: Backside180!
+8. Database name: team7
+9. Amazon AWS Management Console username: aalmeida1@sfsu.edu
+10. Amazon AWS Management Console password: Backside180!
+11. Instructions on how to use the above information. <br>
+a. Connect to the instance: <br>
+ssh -i (.pem file location) ec2-user@52.33.83.41 <br>
+b. cd csc648-03-sp23-team07 <br>
+c. cd application <br>
+d. run the server: <br>
+npm start <br>
+
+You can then go to the webpage using: 52.33.83.41:3000
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
 ## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>
 ## You may store the most of the above in this README.md file. DO NOT Store the SSH key or any keys in this README.md file.
 
-To log into Amazon AWS Management Console
-username email: aalmeida1@sfsu.edu
-password: Backside180!
+
