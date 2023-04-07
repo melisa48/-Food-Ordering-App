@@ -25,3 +25,8 @@
     width: 350px;
     padding: 15px;
 }
+
+.markerPosition {
+    left: 80%;
+    position: relative;
+}

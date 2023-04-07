@@ -8,8 +8,13 @@ router.get('/', executeSearch, function(req, res, next) {
         searchTerm: req.searchTerm,
         searchResult: req.searchResult,
         category: req.category,
-        images: req.images
+        images: req.images,
+        latitude: req.latitude,
+        longitude: req.longitude,
+        restaurant_name: req.restaurant_name
     });
+    // console.log(name);
+
 });
 
 module.exports = router;

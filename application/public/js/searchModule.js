@@ -19,12 +19,12 @@ searchModule.executeSearch = function(req, res, next){
     // returns all restaurants that have the searchTerm either category/name/description
     else if(category == 'all' && searchTerm !=""){
         console.log("1");
-        query = "SELECT * FROM team7.restaurant WHERE name LIKE '%" + searchTerm + "%'\
+        query = "SELECT * FROM team7.restaurant WHERE restaurant_name LIKE '%" + searchTerm + "%'\
         OR  category ='"+  category+"' OR description LIKE'%" + searchTerm + "%' OR category = '" + searchTerm +"';";
     }
     //returns restaurants in the chosen category and have the searchTerm in either name/description
     else if(category != '' && searchTerm !=''){
-        query = "SELECT * FROM team7.restaurant WHERE category ='"+  category+"' AND (name LIKE '%" + searchTerm + "%'\
+        query = "SELECT * FROM team7.restaurant WHERE category ='"+  category+"' AND (restaurant_name LIKE '%" + searchTerm + "%'\
         OR description LIKE'%" + searchTerm + "%');";
         console.log("situation 2");
     }
@@ -49,6 +49,21 @@ searchModule.executeSearch = function(req, res, next){
         req.searchResult = results;
         req.searchTerm = searchTerm;
         req.category = category;
+        req.latitude = [];
+        req.longitude = [];
+        req.restaurant_name = [];
+        for(x in results){
+            // console.log([results[x].latitude]);
+            req.latitude.push(results[x].latitude);
+            req.longitude.push(results[x].longitude);
+            // names.push('"'+results[x].restaurant_name+'"');
+            req.restaurant_name.push(results[x].restaurant_name);
+        }
+
+        console.log(req.latitude);
+        console.log(req.longitude);
+        // console.log(req.name)
+        // console.log(results[0].latitude);
         next();
     })
 
