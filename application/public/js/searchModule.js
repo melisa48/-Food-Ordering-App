@@ -3,8 +3,13 @@ const { search } = require("../../routes/searchResult");
 const searchModule = {};
 
 
+
 // based on server side search by nicholas stepanov
 // https://medium.com/@nicholasstepanov/search-your-server-side-mysql-database-from-node-js-website-400cd68049fa
+// Modification by: Emily and Eunice
+// Modifications include changing if statements to cover descriptions and
+// adding more inforation to be used from the db query such as restaurant
+// name, longitude, and latitude
 searchModule.executeSearch = function(req, res, next){
 
     var searchTerm = req.query.search;
@@ -35,7 +40,7 @@ searchModule.executeSearch = function(req, res, next){
     }
 
 
-
+    // queries db for results matching user searchTerm
     db.query(query, (err, results)=>{
         if(err){
             req.searchResult = results;
@@ -49,6 +54,8 @@ searchModule.executeSearch = function(req, res, next){
         req.searchResult = results;
         req.searchTerm = searchTerm;
         req.category = category;
+        // Because we could not access the results inner elementsin restaurants.hbs
+        //we had to access them here and pass them to resataurant.hbs here
         req.latitude = [];
         req.longitude = [];
         req.restaurant_name = [];

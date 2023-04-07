@@ -10,19 +10,26 @@
     {{!-- css for search results and card --}}
     <link rel="stylesheet" href="/stylesheets/searchResult.css">
 </head>
+
+{{!-- Author(s): Emily and Eunice --}}
 <body>
-    
+    {{!-- the map holding all the markers of the restaurant --}}
     <div id="map" style="height: 500px; width: 100%;"></div>
+    {{!-- tells how many results were found  --}}
     <h6 style="text-align: center; margin-top: 10px;"><b>{{results}}</b> results found for <b>{{searchTerm}}</b> in category <b>{{category}}</b></h6>
+    
+    {{!-- for each restaurant returned by the search, create a card holding the 
+    restaurant information: title, food category, and description--}}
+    {{!-- Author(s): Emily --}}
     <div id="restaurant-wrapper">
-        
         {{#each searchResult}}
             {{> card this}}
         {{/each}}
+    </div>
 
-
+    {{!-- the js that creates the map and markers --}}
+    {{!-- Author(s): Emily and Eunice --}}
     <script>
-
         var latitudeArray = [{{latitude}}];
         var longitudeArray = [{{longitude}}];
         //var restaurant_nameArray = [{{restaurant_name}}];
@@ -34,12 +41,13 @@
         //console.log(nameArray);
         
         function initMap() {
+            //coordinates for SFSU
             myLatLng = { lat: 37.7241, lng: -122.4799 };
             map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 14,
+                zoom: 13,
                 center: myLatLng,
             });
-
+            //creates markers for each restaurant that matches the user searchResults
             for(let i = 0; i <{{results}}; i++){
                 new google.maps.Marker({
                     position: { lat: latitudeArray[i], lng: longitudeArray[i] },
@@ -64,12 +72,12 @@
     </script>
 
 
-        <script 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
-        defer
-        ></script>
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
+    defer
+    ></script>
     
         
-    </div>
+    
     
 </body>
