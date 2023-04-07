@@ -1,129 +1,236 @@
 body{
-    background-color: rgb(243, 252, 243);
+    /* background-image: url("/images/cover-image.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat; */
+    margin: 0;
+    padding: 0;
 }
 
-.about-grid{
-    border: solid 1px rgb(200, 200, 200);  
-    background-color: rgb(243, 242, 242);
-    border-radius: 10px;
-    padding: 15px 15px 15px 15px;
-    justify-content: space-evenly;  
-    justify-items: center;
-    align-content: space-evenly;
-    align-items: center;
-    height:400px;
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(5, 1fr);
-    grid-auto-rows: 1fr;
-    grid-auto-columns: 1fr;
-    gap: 15px;
-    grid-template-areas: 
-    "andy-photo juandavid-photo emily-photo eunice-photo melisa-photo"
-    "andy-name juandavid-name emily-name eunice-name melisa-name"
-    "andy-about juandavid-about emily-about eunice-about melisa-about"
-    "andy-button juandavid-button emily-button eunice-button melisa-button"
+/* cover code: includes the quote, location select/dropdown css */
+
+#cover-photo-container{
+    max-width: 100%;
 }
 
-#andy-photo{
-    grid-area:andy-photo;
+#cover-photo{
+    width: 100%;
 }
 
-#andy-name{
-    grid-area: andy-name;
+#cover-content{
+    position: absolute;
+    top: 300px;
+    width: auto;
+    left: 6%;
 }
 
-#andy-about{
-    grid-area: andy-about;
-}
-
-#andy-photo{
-    grid-area:andy-photo;
-}
-
-#andy-button{
-    grid-area: andy-button;
-}
-
-#juandavid-name{
-    grid-area: juandavid-name;
-}
-
-#juandavid-about{
-    grid-area: juandavid-about;
-}
-
-#juandavid-photo{
-    grid-area: juandavid-photo;
-}
-
-#juandavid-button{
-    grid-area: juandavid-button;
-}
-
-#emily-name{
-    grid-area: emily-name;
-}
-
-#emily-about{
-    grid-area: emily-about;
-}
-
-#emily-photo{
-    grid-area: emily-photo;
-}
-
-#emily-button{
-    grid-area: emily-button;
-}
-
-#eunice-name{
-    grid-area: eunice-name;
-}
-
-#eunice-about{
-    grid-area: eunice-about;
-}
-
-#eunice-photo{
-    grid-area: eunice-photo;
-}
-
-#eunice-button{
-    grid-area: eunice-button;
-}
-
-#melisa-name{
-    grid-area: melisa-name;
-}
-
-#melisa-about{
-    grid-area: melisa-about;
-}
-
-#melisa-photo{
-    grid-area: melisa-photo;
-}
-
-#melisa-button{
-    grid-area: melisa-button;
-}
-
-.about-photos{
-    border-radius: 50%;
-    width:200px;
-    height: 200px;
-}
-
-.member-name{
-    font-size: large;
+#cover-quote{
     font-weight: bold;
+    /* font-size: 50px; */
+    font-size: 3.5vw;
+    color:white;
 }
 
-.about-paragraph{
+/* #cover-container{
+    margin: 225px 0 200px 10%;
+} */
+
+/* location change css beginning */
+#location-container{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* width: 37%; */
+}
+
+.building-dropdown, .room-dropdown, #on-campus-input{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    height: 50px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
     text-align: center;
+    margin-left: 10px;
 }
 
-.about-button{
-    background-color: rgb(255, 255, 255);
+.building-dropdown{
+    min-width:250px;
+}
+
+.room-dropdown{
+    width:150px;
+}
+
+#on-campus-input{
+    text-align: left;
+    width: 405px;
+    border-radius: 10px;
+    border: none;
+}
+
+#location-bar-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+#location-submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 10px;
+    height: 50px;
+    color: white;
+    margin-left: 10px;
+    line-height: 50px;
+    text-align: center;
+    min-width: 100px;
+    
+}
+
+#location-submit:hover{
+    background-color:rgb(255, 197, 51);
+    border-color:rgb(255, 197, 51);
+}
+
+#on-campus-off-campus{
+    color: rgb(255, 255, 255);
+    margin-left: 50px;
+}
+
+#on-campus-off-campus:hover{
+    color: rgb(255, 197, 51);
+}
+
+#location-icon{
+    color: red;
+    font-size:35px;
+}
+
+
+/* location change css end*/
+
+
+
+/* user-driver-restaurant-block css */
+
+#user-driver-restaurant-block{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(255, 243, 255);
+    flex-wrap: wrap;
+}
+
+#user-container, #driver-container, #restaurant-container{
+    margin: 30px 0 30px 0;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#user-container > a, #driver-container > a, #restaurant-container > a{
+    color: black;
+    font-size: 10px;
+
+}
+
+#user-container > a > button, #driver-container > a > button, #restaurant-container > a > button{
+    background-color: rgb(255, 136, 136);
+    border:none;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+
+}
+
+
+#hotpot-photo-container, #car-photo-container, #restaurant-photo-container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 50%;
+    background: linear-gradient(rgb(255, 192, 192), rgb(253, 219, 133));
+    height: 250px;
+    width: 250px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#hotpot-photo, #car-photo, #restaurant-photo{
+    width: 200px;
+}
+
+
+
+@media(max-width:940px){
+    #cover-photo-container{
+        overflow: hidden;
+    }
+
+    #cover-photo{
+        width: 940px;
+        height: 400px;
+        text-align: right;
+    }
+    #cover-content{
+        top: 230px;
+    }
+
+    #location-icon{
+        font-size: 16px;
+        opacity: 0;
+    }
+
+   .building-dropdown, .room-dropdown{
+        height: 30px;
+        font-size: 16px;
+   }
+
+   .building-dropdown{
+    min-width: 150px;
+   }
+   .room-dropdown{
+    min-width: 100px !important;
+    width: 100px;
+   }
+
+   #location-submit{
+    font-size: 16px;
+    height: 30px;
+    align-self: flex-start;
+    margin-top: 10px;
+   }
+
+   #location-container{
+    margin-top: 0px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+   }
+
+    #cover-quote{
+        font-size: x-large;
+        margin: 50px;
+
+    }
+
+    #on-campus-off-campus{
+        margin-left:15px;
+    }
+
+    #on-campus-input{
+        font-size: 16px;
+        height: 30px;
+        width: 300px;
+    }
 }

@@ -1,48 +1,86 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>About</title>
-    <link rel='stylesheet' href='/stylesheets/index.css' />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  </head>
-  <body>
-    <h1>About Team 7</h1>
-    <h4>Software Engineering Class @SFSU 
-      <br>Spring 2023 
-      <br>Section 03 
-      <br>Team 07</h4>
-    <p>The team members, their roles, and their permissions on the project.</p>
 
-    <div class = 'about-grid'>
+<head>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <script defer src="/js/frontend.js"></script>
+</head>
 
-      <image class = about-photos id='andy-photo' src = '/images/andy-photo1.jpg'></image>
-      <header class = member-name id = 'andy-name'>Andy</header>
-      <p class = about-paragraph id = 'andy-about'> The Team Lead. Manages team 07 and responsibiites.</p>
-      <a href = '/andy'><button class = about-button id = 'andy-button'>Read More <i class="bi bi-caret-right-fill"></i></button></a>
-
-      <image class = about-photos id='juandavid-photo' src = '/images/juan-photo.jpg'></image>
-      <header class = member-name id = 'juandavid-name'>Juan David</header>
-      <p class = about-paragraph id = 'juandavid-about'> The Github Master. Has push privileges to main branch.</p>
-      <a href = '/juandavid'><button class = about-button id = 'juandavid-button'>Read More <i class="bi bi-caret-right-fill"></i></button></a>
-
-      <image class = about-photos id='emily-photo' src ='/images/emily-photo.jpg'></image>
-      <header class = member-name id = 'emily-name'>Emily</header>
-      <p class = about-paragraph id = 'emily-about'> The Front-End Lead. Has push privileges to develop branch.</p>
-      <a href = '/emily'><button class = about-button id = 'emily-button'>Read More <i class="bi bi-caret-right-fill"></i></button></a>
-
-      <image class = about-photos id='eunice-photo' src = '/images/eunice-photo.jpg'></image>
-      <header class = member-name id = 'eunice-name'>Eunice</header>
-      <p class = about-paragraph id = 'eunice-about'> The Back-End Lead. Has push privileges to main and develop branch.</p>
-      <a href = '/eunice'><button class = about-button id = 'eunice-button'>Read More <i class="bi bi-caret-right-fill"></i></button></a>
-
-      <image class = about-photos id='melisa-photo' src = '/images/melisa-photo.jpg'></image>
-      <header class = member-name id = 'melisa-name'>Melisa</header>
-      <p class = about-paragraph id = 'melisa-about'> Quality Assurance/Documentation Lead. The all-rounder responsible for multiple
-        tasks.</p>
-      <a href = '/melisa'><button class = about-button id = 'melisa-button'>Read More <i class="bi bi-caret-right-fill"></i></button></a>
+<body> 
 
 
+    {{!-- cover code: includes the quote, location select/dropdown --}}
+    <div id="cover-container">
+        <div id="cover-photo-container">
+            <image id="cover-photo" src="/images/cover-image.jpg"></image>
+        </div>
+
+        <div id="cover-content">
+            {{!-- <h1 id="cover-quote">Nothing will beat, <br> our Gatoreats</h1> --}}
+            <h1 id="cover-quote">CSC 648 <br>Spring 2023 <br> Team 07</h1>
+            <br>
+            <div id="location-container">
+                {{!-- <i class="bi bi-geo-alt" id="location-icon"></i>
+                <div id="location-bar-wrapper">
+                    <select class="building-dropdown" aria-label=".form-select-lg example">
+                        <option disabled selected><i class="bi bi-building-fill"></i>Building</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    
+                    <select class="room-dropdown" aria-label=".form-select-sm example">
+                        <option disabled selected><i class="bi bi-123">Room</i></option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                
+                <a id="location-submit" href="#"> Find Food </a>
+                
+            </div>
+
+            <a id="on-campus-off-campus">I'm off campus</a> --}}
+        </div>
+
+        
     </div>
 
-  </body>
-</html>
+    {{!-- user-driver-restaurant-block css --}}
+    <div id="user-driver-restaurant-block">
+        <div id="user-container">
+            <div id="hotpot-photo-container">
+                <image id="hotpot-photo" src="/images/hotpot.png"></image>
+            </div>
+            <h2>Hungry?</h2>
+            <p>Register and pick out your favorites from a local restaurant and order now!</p>
+            <a href="/sfsuRegistration"><button>Sign up <i class="bi bi-caret-right-fill"></i></button></a>
+            <a href="https://www.flaticon.com/free-icons/food" title="food icons">Food icons created by amonrat rungreangfangsai - Flaticon</a>
+            
+        </div>
+
+        <div id="driver-container">
+            <div id="car-photo-container">
+                <image id="car-photo" src="/images/car.png"></image>
+            </div>
+            <h2>*Vroom Vroom*</h2>
+            <p>Know your way around SFSU? Become a driver and earn money today!</p>
+            <a href="/driverRegistration"><button>Register Now <i class="bi bi-caret-right-fill"></i></button></a>
+            <a href="https://www.flaticon.com/free-icons/car" title="car icons">Car icons created by kosonicon - Flaticon</a>
+        </div>
+
+        <div id="restaurant-container">
+            <div id="restaurant-photo-container">
+                <image id="restaurant-photo" src="/images/restaurant.png"></image>
+            </div>
+            <h2>Owners</h2>
+            <p>Have a restaurant near SFSU? Register your restaurant on GatorEats today!</p>
+            <a href="restaurantRegistration"><button class="">Apply Here <i class="bi bi-caret-right-fill"></i></button></a>
+            <a href="https://www.flaticon.com/free-icons/restaurant" title="restaurant icons">Restaurant icons created by photo3idea_studio - Flaticon</a>
+        </div>
+    </div>
+
+
+    
+
+{{!-- end of html --}}
+</body>

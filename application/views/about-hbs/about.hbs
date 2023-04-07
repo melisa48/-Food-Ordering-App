@@ -1,0 +1,123 @@
+
+<head>
+ <link rel='stylesheet' href='/stylesheets/about.css'/>
+</head>
+
+<body> 
+  
+  {{!-- Bootstrap Image Slider/Carousel --}}
+
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-caption d-none d-md-block about-text">
+      <h4>About Team 7</h4>
+      <h6>Software Engineering Class @SFSU 
+        <br>Spring 2023 
+        <br>Section 03 
+        <br>Team 07
+      </h6>
+      <br>
+      <p id="about-paragraph">Hi we are a team of SFSU students that are working towards making an webapp that allows students 
+        and faculty at SFSU to order and have food from local restaurants delivered to them. We plan to deliver directly
+        to student and faculty either in their classrooms or in safe spot on the campus.
+      </p>
+    </div>
+
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active about-image-div data-bs-interval="2000"">
+        <img src="/images/about-slide-photo1.jpg" class="d-block w-100 about-image" alt="...">
+      </div>
+      <div class="carousel-item about-image-div data-bs-interval="2000"">
+        <img src="/images/about-slide-photo2.jpg" class="d-block w-100 about-image" alt="...">
+      </div>
+      <div class="carousel-item about-image-div data-bs-interval="2000"">
+        <img src="/images/about-slide-photo3.jpg" class="d-block w-100 about-image" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev slide-button" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next slide-button" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  {{!-- Meet the team  --}}
+  <div class="about-text-mobile">
+    <h4>About Team 7</h4>
+    <h6>Software Engineering Class @SFSU 
+      <br>Spring 2023 
+      <br>Section 03 
+      <br>Team 07
+    </h6>
+    <br>
+    <p id="about-paragraph">Hi we are a team of SFSU students that are working towards making an webapp that allows students 
+      and faculty at SFSU to order and have food from local restaurants delivered to them. We plan to deliver directly
+      to student and faculty either in their classrooms or in safe spot on the campus.
+    </p>
+  </div>
+
+  <h1 style="text-align: center; margin:30px 0 30px 0;">Meet the Team</h1>
+
+  <div id="about-div">
+
+    <div class="about-div-item" id="andy-div">
+      <image class = about-photos id='andy-photo' src = '/images/andy-photo1.jpg'></image>
+      <div class="about-description">
+        <header class = member-name id = 'andy-name'>Andy</header>
+        <p class = about-paragraph id = 'andy-about'> The Team Lead.  
+        Manages team 07 and responsibiites.</p>
+        <a href = '/andy'>Read More <i class="bi bi-caret-right-fill"></i></a>
+      </div>
+    </div>
+
+    <div class="about-div-item" id="juandavid-div">
+      <image class = about-photos id='juandavid-photo' src = '/images/juan-photo.jpg'></image>
+        <div class="about-description">
+          <header class = member-name id = 'juandavid-name'>Juan David</header>
+          <p class = about-paragraph id = 'juandavid-about'> The Github Master.  
+          Has push privileges to main branch.</p>
+          <a href = '/juandavid'>Read More <i class="bi bi-caret-right-fill"></i></a>
+        </div>
+    </div>
+
+    <div class="about-div-item" id="emily-div">
+      <image class = about-photos id='emily-photo' src ='/images/emily-photo.jpg'></image>
+      <div class="about-description">
+        <header class = member-name id = 'emily-name'>Emily</header>
+        <p class = about-paragraph id = 'emily-about'> The Front-End Lead. 
+        Has push privileges to develop branch.</p>
+        <a href = '/emily'>Read More <i class="bi bi-caret-right-fill"></i></a>
+      </div> 
+    </div>
+
+    <div class="about-div-item" id="eunice-div">
+      <image class = about-photos id='eunice-photo' src = '/images/eunice-photo.jpg'></image>
+      <div class="about-description">
+        <header class = member-name id = 'eunice-name'>Eunice</header>
+        <p class = about-paragraph id = 'eunice-about'>
+        The Back-End Lead. Has push privileges to main & develop branch.</p>
+        <a href = '/eunice'>Read More <i class="bi bi-caret-right-fill"></i></a>
+      </div>
+    </div>
+
+    <div class="about-div-item" id="melisa-div">
+      <image class = about-photos id='melisa-photo' src = '/images/melisa-photo.jpg'></image>
+      <div class="about-description">
+        <header class = member-name id = 'melisa-name'>Melisa</header>
+        <p class = about-paragraph id = 'melisa-about'> QA/Documentation Lead.
+        Responsible for multiple tasks.</p>
+        <a href = '/melisa'>Read More <i class="bi bi-caret-right-fill"></i></a>
+      </div>
+    </div>
+    {{!-- end of html --}}
+  </div>
+
+</body>
