@@ -84,22 +84,7 @@ app.use(function(err, req, res, next) {
 
 
 
-// // db test
-// const db = require('./conf/database');
-// app.get('/', (req, res)=>{
-//   console.log('test');
-//   db.query("SELECT * FROM team7.team WHERE name=?;", ['Emily'], function(err, results, fields){
-//     if(err){
-//       console.log(err);
-//     }
-//     else{
-//       console.log(results);
-//       // console.log("test");
-//       // results.forEach(row => console.log(row));
-//       // console.log("test2");
-//     }
-//   });
-// });
+
 
 
 
