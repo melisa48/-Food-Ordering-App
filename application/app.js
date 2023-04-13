@@ -9,6 +9,9 @@ var hbs = require('hbs')
 const partials = path.join(__dirname, "views/partials");
 hbs.registerPartials(partials);
 
+hbs.registerHelper('categoryFunction', function(category, setCategory) {
+  return category == setCategory;
+});
 // home
 var indexRouter = require('./routes/index');
 // about-me pages
