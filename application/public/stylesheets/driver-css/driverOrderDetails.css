@@ -1,0 +1,50 @@
+#order-detail-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    width: 100%;
+}
+
+#map{
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    width: calc(100% - 700px);
+    height: 400px;
+}
+
+#order-restaurant-details{
+    width: 500px;
+    text-align: center;
+}
+
+#order-items-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    width: calc(100% - 900px);
+    height: 400px;
+    padding: 20px 0 20px 0;
+    overflow-y: auto;
+}
+
+.order{
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 20px);
+    margin: 5px;
+}
+
+.order-image{
+    width: 100px;
+    height: 100px;
+}
+
+.order-details{
+    padding: 5px;
+}
