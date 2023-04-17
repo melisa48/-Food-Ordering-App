@@ -1,0 +1,53 @@
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body>
+   <h1>Restaurant Application</h1>
+   <form action="" method="post" enctype="multipart/form-data">
+       <label>Restaurant Name:</label>
+       <input type="text" name="restaurantName">
+       <label>Food category:</label>
+       <input type="text" name="foodCategory">
+       <label>Delivery time:</label>
+       <input type="text" name="deliveryTime">
+       <label>Description:</label>
+       <textarea name="description" cols="30" rows="10"></textarea>
+       <label>Upload Image:</label>
+       <input type="file" name="image">
+       <label>Menu:</label>
+       <div>
+           <input type="file" name="menu[0][image]">
+           <label>Food name:</label>
+           <input type="text" name="menu[0][name]">
+           <label>Description:</label>
+           <textarea name="menu[0][description]" cols="30" rows="10"></textarea>
+           <button type="button" name="delete">Delete</button>
+       </div>
+       <button type="button" name="add">Add</button>
+       <button type="submit">Submit</button>
+   </form>
+</body>
+<script>
+   let menuItems = 1;
+   document.querySelector('[name="add"]').addEventListener('click', () => {
+       let div = document.createElement('div');
+       div.innerHTML = `
+           <input type="file" name="menu[${menuItems}][image]">
+           <label>Food name:</label>
+           <input type="text" name="menu[${menuItems}][name]">
+           <label>Description:</label>
+           <textarea name="menu[${menuItems}][description]" cols="30" rows="10"></textarea>
+           <button type="button" name="delete">Delete</button>
+       `;
+       document.querySelector('form').appendChild(div);
+       menuItems++;
+   });
+   document.querySelector('form').addEventListener('click', (e) => {
+       if (e.target.name === 'delete') {
+           e.target.parentElement.remove();
+       }
+   });
+</script>

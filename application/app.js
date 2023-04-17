@@ -36,8 +36,9 @@ var searchResultRouter = require("./routes/searchResult");
 var driverOrderListRouter = require("./routes/driver-routes/driverOrderList");
 var driverOrderDetailsRouter = require("./routes/driver-routes/driverOrderDetails");
 var driverDeliveryMapRouter = require("./routes/driver-routes/driverDeliveryMap");
-// Resturant Routes
-var restaurantsRouter = require('./routes/restaurants');
+// Resturant Page Routes
+var myRestaurantsRouter = require('./routes/myRestaurants');
+var restaurantApplicationRouter = require('./routes/restaurantApplication');
 
 var app = express();
 
@@ -75,8 +76,9 @@ app.use('/searchResult', searchResultRouter);
 app.use('/driverOrderList', driverOrderListRouter);
 app.use('/driverOrderDetails', driverOrderDetailsRouter);
 app.use('/driverDeliveryMap', driverDeliveryMapRouter);
-//resturant
-app.use('/restaurants', restaurantsRouter);
+//resturant pages hbs
+app.use('/myrestaurants', myRestaurantsRouter);
+app.use('/restaurantApplication', restaurantApplicationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
