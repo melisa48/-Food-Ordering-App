@@ -3,7 +3,7 @@ var router = express.Router();
 var executeSearch = require("../public/js/searchModule.js").executeSearch;
 
 router.get('/', executeSearch, function(req, res, next) {
-    res.render('restaurants', {
+    res.render('restaurant-pages/restaurants', {
         results: req.searchResult.length,
         searchTerm: req.searchTerm,
         searchResult: req.searchResult,
