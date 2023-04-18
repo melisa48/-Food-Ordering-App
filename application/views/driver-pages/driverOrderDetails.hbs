@@ -4,58 +4,34 @@
 
 <div id="order-detail-wrapper">
     <h1>Order Details</h1>
+    <br>
     <div id="map">
         Map to Restaurant
        
     </div>
+    <br>
     <hr style="width: 800px;">
     <div id="order-restaurant-details">
-         
-        Restaurant: <br>
-        Delivery Location:<br>
-        Delivery Time:<br>
-        Total Earned:<br>
+        <b><i class="bi bi-houses"> </i>Restaurant: </b>[Insert Retaurant Name Here]<br>
+        <b><i class="bi bi-geo-alt"> </i>Delivery Location: </b>[Insert Delivery Location Here]<br>
+        <b><i class="bi bi-alarm"> </i>Delivery Time: </b>[Insert Delivery Time Here]<br>
+        <b><i class="bi bi-piggy-bank"> </i>Total Earned:</b>[Insert Total Money Earned Here]<br>
+        <br>
     </div>
+
     <div id="order-items-list">
         <h3>Order Items</h3>
         <hr style="width: 400px;">
-        <div class="order">
-            <image class="order-image" src="/images/uploads/dominos.jpg"></image>
-            <div class="order-details">
-                Name:  <br>
-                Quantity: <br>
-            </div>
+        <div id="scrollbar-wrapper">
+            {{> driverorderdetails}}
+            {{> driverorderdetails}}
+            {{> driverorderdetails}}
+            {{> driverorderdetails}}
+            {{> driverorderdetails}}
         </div>
-        <div class="order">
-            <image class="order-image" src="/images/uploads/dominos.jpg"></image>
-            <div class="order-details">
-                Name:  <br>
-                Quantity: <br>
-            </div>
-        </div>
-        <div class="order">
-            <image class="order-image" src="/images/uploads/dominos.jpg"></image>
-            <div class="order-details">
-                Name:  <br>
-                Quantity: <br>
-            </div>
-        </div>
-        <div class="order">
-            <image class="order-image" src="/images/uploads/dominos.jpg"></image>
-            <div class="order-details">
-                Name:  <br>
-                Quantity: <br>
-            </div>
-        </div>
-        <div class="order">
-            <image class="order-image" src="/images/uploads/dominos.jpg"></image>
-            <div class="order-details">
-                Name:  <br>
-                Quantity: <br>
-            </div>
-        </div>
-
+        
     </div>
+    <a id="take-order-button" href="/driverDeliveryMap">Take Order</a>
 
 
 </div>

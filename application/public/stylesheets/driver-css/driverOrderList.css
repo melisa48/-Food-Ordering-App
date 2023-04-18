@@ -72,8 +72,10 @@ body{
 .take-order-button:hover{
     border: solid;
     border-width: 1px;
-    border-color: rgb(153, 153, 153);
-    background-color: rgb(153, 153, 153);
+    /* border-color: rgb(153, 153, 153);
+    background-color: rgb(153, 153, 153); */
+    border-color: rgb(33, 164, 52);
+    background-color: rgb(33, 164, 52);
     color: rgb(255, 255, 255);
     /* box-shadow: 20px 20px 50px orange inset; */
 }
@@ -104,19 +106,52 @@ body{
     flex-direction: row;
 }
 
-/* ::-webkit-scrollbar {
-    width: 20px;
-  }
+@media(max-width:760px){
+    #order-wrapper{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 500px;
+        justify-content: center;
+        align-items: center;
 
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: rgb(197, 197, 197);
-  }
+        margin: 100px 0 100px 0;
+    }
+    
+    #driver-order-wrapper{
+        height: auto;
+        width: 380px;
+        background-color: rgb(245, 245, 245);
+        border-radius: 5%; 
+        padding: 20px;
+    
+    }
+    
+    #scrollbar-wrapper{
+        height: 500px;
+        width: 340px;
+        overflow: auto;
+    
+    }
+    
+    .order{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        /* border-style: solid;
+        border-width: 1px;
+        border-color: rgb(255, 255, 255); */
+        margin: 10px 0 10px 0;
+        background-color: white;
+        box-shadow: 5px 5px  15px rgba(0, 0, 0, .2);
+        border-radius: 10px;
+    }
 
-::-webkit-scrollbar-track {
-    margin: 20px;
-    background-color: white;
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
-} */
+    .driver-order-image{
+        height: 100px;
+        width: 100px;
+        margin: 0px 10px 10px 10px;
+    }
+}
 
