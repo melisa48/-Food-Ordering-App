@@ -25,6 +25,12 @@ body {
     margin-bottom: 20px;
 }
 
+.restaurant-container {
+    max-height: 300px; /* Set the maximum height for the container */
+    overflow: auto; /* Enable scrolling when necessary */
+}
+
+
 .status {
     font-weight: bold;
 }

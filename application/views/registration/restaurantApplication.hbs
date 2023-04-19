@@ -8,25 +8,34 @@
    <h1>Restaurant Application</h1>
    <form action="" method="post" enctype="multipart/form-data">
        <label>Restaurant Name:</label>
-       <input type="text" name="restaurantName">
+       <input type="text" name="restaurantName"><br />
        <label>Food category:</label>
-       <input type="text" name="foodCategory">
+       <input type="text" name="foodCategory"><br />
        <label>Delivery time:</label>
-       <input type="text" name="deliveryTime">
-       <label>Description:</label>
-       <textarea name="description" cols="30" rows="10"></textarea>
-       <label>Upload Image:</label>
-       <input type="file" name="image">
-       <label>Menu:</label>
+       <input type="time" name="deliveryTime"><br />
+       <label>Description:</label><br />
+       <textarea name="description" cols="30" rows="10"></textarea><br />
+       <label>Upload Image:</label><br />
+       <input type="file" name="image"><br />
+       <label>Menu:</label><br />
        <div>
-           <input type="file" name="menu[0][image]">
-           <label>Food name:</label>
-           <input type="text" name="menu[0][name]">
-           <label>Description:</label>
-           <textarea name="menu[0][description]" cols="30" rows="10"></textarea>
-           <button type="button" name="delete">Delete</button>
+			<table>
+			  <tr>
+				<td>
+					<input type="file" name="menu[0][image]"><br />
+					<label>Food name:</label><br>
+					<input type="text" name="menu[0][name]"><br />
+					<label>Description:</label><br />
+					<textarea name="menu[0][description]" cols="30" rows="10"></textarea>
+				</td>
+				<td>
+					<button type="button" name="delete">Delete</button>
+				</td>
+			  </tr>
+			</table>
+           
        </div>
-       <button type="button" name="add">Add</button>
+       <button type="button" name="add">Add</button><br>
        <button type="submit">Submit</button>
    </form>
 </body>

@@ -36,7 +36,7 @@ var searchResultRouter = require("./routes/searchResult");
 var driverOrderListRouter = require("./routes/driver-routes/driverOrderList");
 var driverOrderDetailsRouter = require("./routes/driver-routes/driverOrderDetails");
 var driverDeliveryMapRouter = require("./routes/driver-routes/driverDeliveryMap");
-// Resturant Page Routes
+// Restaurant Page Routes
 var myRestaurantsRouter = require('./routes/myRestaurants');
 var restaurantApplicationRouter = require('./routes/restaurantApplication');
 
