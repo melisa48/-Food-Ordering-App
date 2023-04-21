@@ -28,7 +28,7 @@ var restaurantLoginRouter = require("./routes/login-routes/restaurantLogin");
 var sfsuLoginRouter = require("./routes/login-routes/sfsuLogin");
 //registration routes
 var driverRegistrationRouter = require("./routes/registration-routes/driverRegistration");
-var restaurantRegistrationRouter = require("./routes/registration-routes/restaurantRegistration");
+var restaurantOwnerRegistrationRouter = require("./routes/registration-routes/restaurantOwnerRegistration");
 var sfsuRegistrationRouter = require("./routes/registration-routes/sfsuRegistration");
 //router for page that lists searchResult after search
 var searchResultRouter = require("./routes/searchResult");
@@ -38,7 +38,7 @@ var driverOrderDetailsRouter = require("./routes/driver-routes/driverOrderDetail
 var driverDeliveryMapRouter = require("./routes/driver-routes/driverDeliveryMap");
 // Restaurant Page Routes
 var myRestaurantsRouter = require('./routes/myRestaurants');
-var restaurantApplicationRouter = require('./routes/restaurantApplication');
+var restaurantApplicationRouter = require('./routes/registration-routes/restaurantApplication');
 
 var app = express();
 
@@ -68,7 +68,7 @@ app.use('/restaurantLogin', restaurantLoginRouter);
 app.use('/sfsuLogin', sfsuLoginRouter);
 //registration
 app.use('/driverRegistration', driverRegistrationRouter);
-app.use('/restaurantRegistration', restaurantRegistrationRouter);
+app.use('/restaurantOwnerRegistration', restaurantOwnerRegistrationRouter);
 app.use('/sfsuRegistration', sfsuRegistrationRouter);
 //list of searchResult hbs
 app.use('/searchResult', searchResultRouter);
