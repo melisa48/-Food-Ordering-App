@@ -3,8 +3,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <link rel="stylesheet" href="/stylesheets/login.css">
 </head>
 <body>
-    sfsu student/faculty registration
+    <div class="wrapper">
+        <form class="form-signin">
+            <h2 class="form-title">SFSU User<br>Registration</h2>
+            <h6>First Name</h3>
+            <input type="text" class="form-control" name="FirstN"  required="" autofocus="" />
+            <h6>Last Name</h3>
+            <input type="text" class="form-control" name="LastN"  required="" autofocus="" />
+            <h6>Email</h3>
+            <input type="text" class="form-control" name="email"  required="" autofocus="" />
+            <h6>Password</h3>
+            <input type="password" class="form-control" name="password" required=""/>
+            <h6>Confirm Password</h3>
+            <input type="password" class="form-control" name="password2" required=""/>      
+
+            <input type="checkbox" required="">
+            <label for="vehicle1"> Pay with GatorCard</label><br><br>
+            <input type="checkbox" required="">
+            <label for="vehicle2">By Checking this you agree to the Terms and Condition</label><br><br>
+            <button class="submit-button" type="submit">Submit</button>   
+        </form>
+        <a href ="/sfsuRegistration" class="relocation-link">Dont have an accout? Register here &rarr;</a>
+    </div>
+    
 </body>

@@ -39,6 +39,8 @@ var driverDeliveryMapRouter = require("./routes/driver-routes/driverDeliveryMap"
 // Restaurant Page Routes
 var myRestaurantsRouter = require('./routes/myRestaurants');
 var restaurantApplicationRouter = require('./routes/registration-routes/restaurantApplication');
+var restaurantCardRouter = require('./routes/restaurant-routes/restaurantCard');
+var checkOutRouter = require('./routes/restaurant-routes/checkOut');
 
 var app = express();
 
@@ -79,6 +81,8 @@ app.use('/driverDeliveryMap', driverDeliveryMapRouter);
 //resturant pages hbs
 app.use('/myrestaurants', myRestaurantsRouter);
 app.use('/restaurantApplication', restaurantApplicationRouter);
+app.use('/restaurantCard' , restaurantCardRouter);
+app.use('/checkOut' , checkOutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
