@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 router.get('/', function(req, res, next) {
- res.render('restaurant-pages/restaurantApplication', {title: 'Restaurant Application'});
+ res.render('registration/restaurantApplication', {title: 'Restaurant Application'});
 });
 router.post('/', function(req, res, next) {
  let restaurantName = req.body.restaurantName;
@@ -10,7 +10,7 @@ router.post('/', function(req, res, next) {
  let deliveryTime = req.body.deliveryTime;
  let description = req.body.description;
  let menu = req.body.menu;
- res.render('restaurant-pages/restaurantApplication', {
+ res.render('registration/restaurantApplication', {
    title: 'Restaurant Application',
    restaurantName,
    foodCategory,
