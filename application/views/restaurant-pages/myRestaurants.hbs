@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/restaurant.css">
+    <link rel="stylesheet" href="/stylesheets/myRestaurants.css">
     <title>My Restaurants</title>
 </head>
  <style>
@@ -15,11 +15,16 @@
     </style>
 <body>
     <div class="container">
-        <p class="message">Your restaurant will be registered within 24 hours of applying.</p>
-        <div class="restaurant">
-            <h2>Olive Garden</h2>
-            <p>Description: We are a fast food restaurant.</p>
-            <p>Status: <span class="status">Pending</span></p>
+        <h1>My Restaurants</h1>
+        <br>
+        <h6 class="message">Your restaurant will be registered within 24 hours of applying.</h6>
+        <div id="restaurant-container">
+
+            {{> restaurantcard}}
+            {{> restaurantcard}}
+            {{> restaurantcard}}
+            
+            
         </div>
         <button class="register-btn" onclick="location.href='/restaurantApplication'">Register Another Restaurant</button> 
 
