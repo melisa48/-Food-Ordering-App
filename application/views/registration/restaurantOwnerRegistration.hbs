@@ -3,11 +3,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/restaurantApplication.css">
+    <link rel="stylesheet" href="/stylesheets/registration.css">
    
 </head>
 <body>
 
-test
+    <div class="wrapper">
+        <form class="form-register">
+            <h2 class="form-title">Restaurant Owner Registration</h2>
+            <h6>First Name</h3>
+            <input type="text" class="form-control" name="firstname"  required="" autofocus="" />
+            <h6>Last Name</h3>
+            <input type="text" class="form-control" name="lastname"  required="" autofocus="" />
+            <h6>Email</h3>
+            <input type="text" class="form-control" name="email"  required="" autofocus="" />
+            <h6>Password</h3>
+            <input type="password" class="form-control" name="password" required=""/>      
+            <h6>Confirm Password</h3>
+            <input type="password" class="form-control" name="password" required=""/> 
+
+
+            
+
+            
+            <label  style="display: flex; align-items: center;">
+                <input type="checkbox" name="terms-checkbox" required=""/>
+                &ensp;By checking this you agree to the&nbsp;<a href="1232arandomlink.com">Terms and Conditions</a>
+            </label><br>
+
+            <button class="submit-button" type="submit">Submit</button>   
+        </form>
+        <a href ="/restaurantLogin" class="relocation-link">Have an account? Log in here &rarr;</a>
+    </div>
 
 </body>
