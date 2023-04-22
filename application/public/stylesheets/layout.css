@@ -176,7 +176,7 @@ li{
 }
 
 /* redesign navbar for phones and tablets*/
-@media(max-width: 1200px){
+@media(max-width: 1270px){
 
   .navbar{
     display: table;

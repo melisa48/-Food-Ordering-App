@@ -29,20 +29,20 @@
                 <label>Delivery time</label><br>
                 <input type="text" name="deliveryTime"><br><br />
                 <label>Description</label><br />
-                <textarea name="description" cols="50" rows="5"></textarea><br><br />
+                <textarea name="description" class="restaurant-description"></textarea><br><br />
                 <label>Menu</label><br />
                 <div id="restaurant-menu">
                     <div id="scrollbar-wrapper">
                         <div id="menu-item">
                             <input id="menu-item-image[0]" class="menu-item-images" accept="image/*" type="file" name="menu[0][image]" onchange="uploadImage(event)">
-                            <label for="menu-item-image[0]" id="menu-item-image-alter" class="menu-item-alter-images" name="menu[0][image-alter]">Add Image</label><br>
+                            <label for="menu-item-image[0]" id="menu-item-image-alter" class="menu-item-alter-images" name="menu[0][image-alter]">Add Image</label>
                             <div id="menu-item-details">
                                 <label>Food name</label><br>
                                 <input type="text" name="menu[0][name]"><br />
                                 <label>Price</label><br>
                                 <input type="text" name="menu[0][price]"><br />
                                 <label>Description</label><br />
-                                <textarea name="menu[0][description]" cols="35" rows="3"></textarea>
+                                <textarea name="menu[0][description]" class="menu-item-description"></textarea>
                             </div>
                             <button id="delete-menu-item" type="button" name="delete">Delete</button>
                         </div>
@@ -69,14 +69,14 @@
        div.innerHTML = `
            <div id="menu-item">
                 <input id="menu-item-image[${menuItems}]" class="menu-item-images" accept="image/*" type="file" name="menu[${menuItems}][image]" onchange="uploadImage(event)">
-                <label for="menu-item-image[${menuItems}]" id="menu-item-image-alter" class="menu-item-alter-images" name="menu[${menuItems}][image-alter]">Add Image</label><br>
+                <label for="menu-item-image[${menuItems}]" id="menu-item-image-alter" class="menu-item-alter-images" name="menu[${menuItems}][image-alter]">Add Image</label>
                 <div id="menu-item-details">
                     <label>Food name</label><br>
                     <input type="text" name="menu[${menuItems}][name]""><br />
                     <label>Price</label><br>
                     <input type="text" name="menu[${menuItems}][price]"><br />
                     <label>Description:</label><br />
-                    <textarea name="menu[${menuItems}][description]" cols="35" rows="3"></textarea>
+                    <textarea name="menu[${menuItems}][description]" class="menu-item-description"></textarea>
                 </div>
                 <button id="delete-menu-item" type="button" name="delete">Delete</button>
             </div>

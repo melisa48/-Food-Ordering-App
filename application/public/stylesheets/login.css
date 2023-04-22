@@ -37,3 +37,22 @@
 
 }
 
+@media(max-width: 950px){
+	.form-signin {
+		width: 90%;
+		max-width: 500px;
+		padding: 15px 40px 45px;
+		margin: 0 auto;
+		background-color: #fff;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+	}
+	.relocation-link{
+		transform: translate(18%,0);
+	
+	}
+
+	.submit-button {
+		margin-left: 70px;
+
+	}
+}

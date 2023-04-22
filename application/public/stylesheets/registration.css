@@ -37,3 +37,12 @@
 
 }
 
+@media(max-width: 940px){
+	.form-register{
+		max-width: 90%;
+	}
+
+	.relocation-link{
+		transform: translate(35%,0);
+	}
+}

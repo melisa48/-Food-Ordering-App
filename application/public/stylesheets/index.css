@@ -186,30 +186,6 @@ body{
         top: 230px;
     }
 
-    #location-icon{
-        font-size: 16px;
-        opacity: 0;
-    }
-
-   .building-dropdown, .room-dropdown{
-        height: 30px;
-        font-size: 16px;
-   }
-
-   .building-dropdown{
-    min-width: 150px;
-   }
-   .room-dropdown{
-    min-width: 100px !important;
-    width: 100px;
-   }
-
-   #location-submit{
-    font-size: 16px;
-    height: 30px;
-    align-self: flex-start;
-    margin-top: 10px;
-   }
 
    #location-container{
     margin-top: 0px;
@@ -224,13 +200,5 @@ body{
 
     }
 
-    #on-campus-off-campus{
-        margin-left:15px;
-    }
 
-    #on-campus-input{
-        font-size: 16px;
-        height: 30px;
-        width: 300px;
-    }
 }
