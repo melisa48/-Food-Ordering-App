@@ -72,8 +72,6 @@ body{
 .take-order-button:hover{
     border: solid;
     border-width: 1px;
-    /* border-color: rgb(153, 153, 153);
-    background-color: rgb(153, 153, 153); */
     border-color: rgb(33, 164, 52);
     background-color: rgb(33, 164, 52);
     color: rgb(255, 255, 255);

@@ -15,7 +15,7 @@ body{
     border-style: solid;
     border-width: 1px;
     border-color: black;
-    width: calc(100% - 700px);
+    width: 70%;
     height: 400px;
     border-radius: 15px;
 }
@@ -32,7 +32,7 @@ body{
     align-items: center;
     background-color: rgb(245, 245, 245);
     border-radius: 15px;
-    width: calc(100% - 900px);
+    width: 600px;
     height: 400px;
     padding: 20px 0 20px 0;
     /* overflow-y: hidden; */
@@ -74,4 +74,24 @@ body{
 
 #take-order-button:hover{
     background-color: rgb(33, 164, 52);
+}
+
+@media(max-width:640px){
+    #map{
+        width: 90%;
+    }
+
+    #order-restaurant-details{
+        width: 80%;
+        text-align: left;
+        font-size: 20px;
+    }
+
+    #order-items-list{
+
+        width: 80%;
+        height: 400px;
+
+    }
+
 }

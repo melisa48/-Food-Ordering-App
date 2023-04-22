@@ -72,3 +72,48 @@
     background-color: #2980b9;
 }
 
+@media(max-width:730px){
+
+    
+    .message{
+        background-color: orange;
+        color: #ffffff;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        width: 90%;
+        text-align: center;
+        margin: 0;
+        height: 70px;
+        word-wrap: wrap;
+        line-height: 20px;
+        padding:10px;
+    
+    }
+    
+    #restaurant-container{
+        background-color: white;
+        width: 90%;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        overflow: auto;
+        padding: 10px 0 10px 0;
+        margin-bottom: 20px;
+    }
+    
+    .restaurant{
+        display: flex;
+        flex-direction: row;
+        margin: 10px 0 10px 0;
+        width: 90%;
+    }
+    
+    .restaurant-image{
+        width: 150px;
+        height: 150px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+}

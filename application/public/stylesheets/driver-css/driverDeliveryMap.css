@@ -23,16 +23,23 @@ body{
     border-radius: 10px;
     text-align: center;
     font-size: 20px;
+    margin: 0 50px 0 50px;
 }
 
 #cancel-delivery-button{
     background-color: red;
     color:white;
-    margin-left: 50px;
+    /* margin-left: 50px; */
 }
 
 #completed-delivery-button{
     background-color: green;
     color: white;
-    margin-right: 50px;
+    /* margin-right: 50px; */
+}
+
+@media(max-width:530px){
+    .delivery-button{
+        margin: 0;
+    }
 }
