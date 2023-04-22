@@ -8,7 +8,8 @@
 <body>
 
     <div class="wrapper">
-        <form class="form-register">
+        <form class="form-register" method="POST" action="/sfsuRegistration/sfsuLogin"
+        enctype="application/x-www-form-urlencoded">
             <h2 class="form-title">SFSU User Registration</h2>
             <h6>First Name</h3>
             <input type="text" class="form-control" name="firstname"  required="" autofocus="" />
@@ -19,7 +20,7 @@
             <h6>Password</h3>
             <input type="password" class="form-control" name="password" required=""/>      
             <h6>Confirm Password</h3>
-            <input type="password" class="form-control" name="password" required=""/> 
+            <input type="password" class="form-control" name="confirmpassword" required=""/> 
 
 
             
