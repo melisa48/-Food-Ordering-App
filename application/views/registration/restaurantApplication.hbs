@@ -14,9 +14,9 @@
                 <form action="" method="post" enctype="multipart/form-data">
                 <input id="restaurant-image" type="file" accept="image/*" name="restaurant-image" onchange="uploadImage(event)">
                 <label for="restaurant-image" id="restaurant-image-alter" name="restaurant-image-alter"> Add Restaurant Image</label> <br><br>
-                <label>Restaurant Name</label><br>
+                <label>Restaurant Name <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
                 <input type="text" name="restaurantName"><br><br />
-                <label>Food Category</label><br>
+                <label>Food Category <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
                 <select  name="category">
                     <option value="all" {{#if (categoryFunction category "all")}} selected {{/if }}>All</option>
                     <option value="italian" {{#if (categoryFunction category "italian")}} selected {{/if }}>Italian</option>
@@ -26,22 +26,22 @@
                     <option value="fast food" {{#if (categoryFunction category "fast food")}} selected {{/if }}>Fast Food</option>
                 </select>
                 <br><br>
-                <label>Delivery time</label><br>
+                <label>Delivery time <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
                 <input type="text" name="deliveryTime"><br><br />
-                <label>Description</label><br />
+                <label>Description <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
                 <textarea name="description" class="restaurant-description"></textarea><br><br />
-                <label>Menu</label><br />
+                <label>Menu <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
                 <div id="restaurant-menu">
                     <div id="scrollbar-wrapper">
                         <div id="menu-item">
                             <input id="menu-item-image[0]" class="menu-item-images" accept="image/*" type="file" name="menu[0][image]" onchange="uploadImage(event)">
                             <label for="menu-item-image[0]" id="menu-item-image-alter" class="menu-item-alter-images" name="menu[0][image-alter]">Add Image</label>
                             <div id="menu-item-details">
-                                <label>Food name</label><br>
+                                <label>Food name <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
                                 <input type="text" name="menu[0][name]"><br />
-                                <label>Price</label><br>
+                                <label>Price <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
                                 <input type="text" name="menu[0][price]"><br />
-                                <label>Description</label><br />
+                                <label>Description <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
                                 <textarea name="menu[0][description]" class="menu-item-description"></textarea>
                             </div>
                             <button id="delete-menu-item" type="button" name="delete">Delete</button>

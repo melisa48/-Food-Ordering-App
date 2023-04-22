@@ -113,6 +113,18 @@ label{
     height: 90px;
 }
 
+.required-asterisk, .required-message{
+	color: red;
+}
+
+.required-message{
+	display: none;
+}
+
+.required-asterisk:hover + .required-message{
+	display:inline-block;
+}
+
 @media(max-width: 500px){
     #restaurant-application-wrapper{
         width: 90%;
