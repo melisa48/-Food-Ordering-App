@@ -2,11 +2,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{!-- <link rel="stylesheet" href="/stylesheets/login.css"> --}}
+    <link rel="stylesheet" href="/stylesheets/restaurant-css/restaurant-menu.css">
 </head>
 <body>
-    <div class="wrapper">
+    <div class="rest-name">
         <h1>Restaurant Name</h1>
     </div>
+    <div class="cart"> 
+        <h3>Cart</h3>
+        <hr>
+        <div class ="cart-container">
+            <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
+            <h6>Hot Pot</h6>
+        </div>
+        <br>
+        <div class ="cart-container">
+            <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
+            <h6>Hot Pot</h6>
+            <h6>Qtn:<input type="number" id="quantity" name="quantity" min="1" max="5"></h6>
+            <h6>$$$</h6>
+        </div>
+        <hr>
+        <h4>Total: $$$</h4>
+        <button class="button">Check Out</button>
+    </div>
     
+    <div class="box">
+        <di class="wrapper">
+            <div class = "menu-box">
+                <image src="/images/hotpot.png" width="300" height="300"></image>
+                <h3>Hot Pot</h3>
+                <hr>
+                <button class="button">add to cart</button>
+            </div>
+            <div class = "menu-box">
+                <image src="/images/hotpot.png" width="300" height="300"></image>
+                <h3>Hot Pot</h3>
+                <hr>
+                <button class="button">add to cart</button>
+            </div>
+            <div class = "menu-box">
+                <image src="/images/hotpot.png" width="300" height="300"></image>
+                <h3>Hot Pot</h3>
+                <hr>
+                <button class="button">add to cart</button>
+            </div>
+        </div>
+    </div>
+     
 </body>

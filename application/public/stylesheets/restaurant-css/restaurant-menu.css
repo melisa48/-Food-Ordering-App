@@ -1,7 +1,61 @@
-.wrapper {
+.rest-name {
 	margin:30px 0 30px 0;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	position:relative;
+	left: 200px;
+	top: 30px;
 }
+
+.box {
+	width: 700px;
+	position:relative;
+	left: 200px;
+}
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 25px;
+  }
+.menu-box{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+H3 { 
+	top:10px;
+	text-align: center;
+}
+.button{
+	width: 80%;
+	height: 40px;
+	border: none;
+	background:  #4b6c97;
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 16px;
+	color: #202020;
+	left: 30px;
+	position:relative;
+   }
+.cart{
+	width: 300px;
+	max-width: 300px; 
+	padding: 15px 40px 45px;
+	margin: 0 auto; 
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	position:fixed;
+	left: 950px;
+}
+.cart-container {
+	display: flex;
+	align-items: center;
+	width: 220px;
+	max-width: 220px; 
+	margin: 0 auto; 
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+.vl {
+	height: 50px;
+	border-left: 6px solid rgb(0, 0, 0);
+  }
