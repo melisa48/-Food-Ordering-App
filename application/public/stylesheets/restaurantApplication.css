@@ -9,7 +9,7 @@
 
 #restaurant-application-wrapper{
     background-color: white;
-    width: 50%;
+    width: 750px;
     padding: 30px;
 }
 
@@ -31,7 +31,8 @@
     flex-direction: row;
     height: 250px;
     background-color: white;
-    width: 100%;}
+    width: 100%;
+}
 
 #menu-item-details{
     height: 250px;
@@ -102,3 +103,134 @@ label{
     font-weight: 500;
 }
 
+.restaurant-description{
+    width: 350px;
+    height: 150px;
+}
+
+.menu-item-description{
+    width: 300px;
+    height: 90px;
+}
+
+.required-asterisk, .required-message{
+	color: red;
+}
+
+.required-message{
+	display: none;
+}
+
+.required-asterisk:hover + .required-message{
+	display:inline-block;
+}
+
+@media(max-width: 500px){
+    #restaurant-application-wrapper{
+        width: 90%;
+    }
+
+    .restaurant-description{
+        width: 300px;
+        height: 150px;
+    }
+
+    #menu-item{
+        display: table;
+
+    }
+
+    .menu-item-alter-images{
+        width: 100%;
+        height: 250px;
+        background-color: rgb(245, 245, 245);
+        text-align: center;
+        line-height: 250px;
+    }
+
+    .menu-item-description{
+        width: 210px;
+        height: 90px;
+    }
+
+    #menu-item-details{
+        height: 250px;
+        /* padding: 10px 20px 10px 20px; */
+    }
+
+    
+    #delete-menu-item{
+        width: 100%;
+        height: 50px;
+        font-size: 20px;
+        background-color: red;
+        border:none;
+        color: white;
+    }
+}
+
+@media screen and (min-width: 501px) and (max-width: 761px){
+    #restaurant-application-wrapper{
+        width: 90%;
+    }
+
+    .restaurant-description{
+        width: 300px;
+        height: 150px;
+    }
+
+    #menu-item{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        height: 300px;
+
+    }
+
+    .menu-item-alter-images{
+        width: 100%;
+        height: 250px;
+        background-color: rgb(245, 245, 245);
+        text-align: center;
+        line-height: 250px;
+        grid-column-start: 1;
+        grid-column-end:2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        
+    }
+
+    .menu-item-description{
+        width: 210px;
+        height: 90px;
+
+        
+        /* display: table-row-group; */
+    }
+
+    #menu-item-details{
+        height: 100%;
+        grid-column-start: 2;
+        grid-column-end:3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        width: 100%;
+
+        /* padding: 10px 20px 10px 20px; */
+    }
+
+    
+    #delete-menu-item{
+        width: 100%;
+        height: 50px;
+        font-size: 20px;
+        background-color: red;
+        border:none;
+        color: white;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+
+    }
+}

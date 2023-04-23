@@ -9,27 +9,28 @@
     <div class="wrapper">
         <form class="form-register">
             <h2 class="form-title">Driver Registration</h2>
-            <h6>First Name</h3>
+            <h6>First Name <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
             <input type="text" class="form-control" name="firstname"  required="" autofocus="" />
-            <h6>Last Name</h3>
+            <h6>Last Name <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
             <input type="text" class="form-control" name="lastname"  required="" autofocus="" />
-            <h6>Email</h3>
+            <h6>Email <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
             <input type="text" class="form-control" name="email"  required="" autofocus="" />
-            <h6>Password</h3>
+            <h6>Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
             <input type="password" class="form-control" name="password" required=""/>      
-            <h6>Confirm Password</h3>
+            <h6>Confirm Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
             <input type="password" class="form-control" name="password" required=""/> 
 
 
             
             <label style="display: flex; align-items: center;">
                 <input type="checkbox" name="payment-checkbox" required=""/>
-                &ensp;Get Paid with Gatorcard
+                &ensp;Get Paid with Gatorcard &nbsp;
             </label> <br>
             
             <label  style="display: flex; align-items: center;">
                 <input type="checkbox" name="terms-checkbox" required=""/>
-                &ensp;By checking this you agree to the&nbsp;<a href="1232arandomlink.com">Terms and Conditions</a>
+                &ensp;By checking this you agree to the Terms and Conditions
+                {{!-- &ensp;By checking this you agree to the&nbsp;<a href="1232arandomlink.com">Terms and Conditions</a> --}}
             </label><br>
 
             <button class="submit-button" type="submit">Submit</button>   
