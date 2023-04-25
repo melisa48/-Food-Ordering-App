@@ -1,10 +1,10 @@
 .center {
-	margin: auto;
-	text-align: center;
-	width: 60%;
+	display: flex;
+	flex-direction: column;	
+	align-items: center;
   }
 .build-info{
-	width: 40%;
+	width: 350px;
 	margin: auto;
 	display: grid;
 	grid-template-columns: 60% 40%;
@@ -15,45 +15,79 @@
 	justify-content:center; 
 	gap:5px;
 }
-.cart{
+#order{
 	border-radius: 25px;
-	width: 50%;
+	width: 700px;
 	padding: 15px;
 	margin: 0 auto;
 	background-color: #fff;
 	border: 1px solid rgba(0, 0, 0, 0.1);
+	height: 500px;
 }
-.items-in-cart{
-	padding: 10px;
-	text-align: left;
+
+.scrollbar-wrapper{
+	height: 100%;
+	overflow-y: auto;
+}
+
+.ticket{
+	height: 150px;
+	display: flex;
+	border: solid 1px rgba(0, 0, 0, 0.1);
+	margin: 15px;
+	/* text-align: left;
 	width: 90%;
 	margin: 0 auto;
 	background-color: #fff;
 	border: 1px solid rgba(0, 0, 0, 0.1);
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	display: flex; */
+
 }
-.img{
-	/* display:block;
-	margin: auto; */
+
+.ticket-details{
+	width: 100%;
+	padding: 15px;
 }
-.vl {
-	border-left: 2px solid  rgba(0, 0, 0, 0.1);
-	height: 100px;
-  }
-  .button{
-	/* width: 80%;
-	height: 40px;
+
+.trash-ticket{
+	border:none;
+	color: white;
+	background-color: red;
+	width: 150px;
+}
+
+.ticket-image{
+	width: 150px;
+	height: 100%;
+}
+
+.order-button{
+	width: 150px;
+	height: 60px;
+	border-radius: 10px;
+	color: white;
+	background-color: orange;
 	border: none;
-	background:  #4b6c97;
-	border-radius: 20px;
-	cursor: pointer;
-	font-size: 16px;
-	color: #202020;
-	left: 30px;
-	position:relative; */
-	width: 10%;
-	height: 70%;
-	border-radius: 5px;
-   }
+	font-size: 20px;
+	margin: 10px;
+
+}
+
+#quantity{
+	width:60px;
+}
+
+@media(max-width: 730px){
+	#order{
+		width: 90%;;
+	}
+
+	.build-info{
+		width: 40%;
+		margin: auto;
+		display: grid;
+		grid-template-columns: 60% 40%;
+		gap: 10px;
+	}
+}
+

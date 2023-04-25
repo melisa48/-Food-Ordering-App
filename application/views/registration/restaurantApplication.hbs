@@ -28,6 +28,8 @@
                 <br><br>
                 <label>Delivery time <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
                 <input type="text" name="deliveryTime"><br><br />
+                <label>Address <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
+                <input type="text" name="address"><br><br />
                 <label>Description <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
                 <textarea name="description" class="restaurant-description"></textarea><br><br />
                 <label>Menu <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
@@ -71,11 +73,11 @@
                 <input id="menu-item-image[${menuItems}]" class="menu-item-images" accept="image/*" type="file" name="menu[${menuItems}][image]" onchange="uploadImage(event)">
                 <label for="menu-item-image[${menuItems}]" id="menu-item-image-alter" class="menu-item-alter-images" name="menu[${menuItems}][image-alter]">Add Image</label>
                 <div id="menu-item-details">
-                    <label>Food name</label><br>
+                    <label>Food name <label class="required-asterisk">*</label><label class="required-message">required</label></label></label><br>
                     <input type="text" name="menu[${menuItems}][name]""><br />
-                    <label>Price</label><br>
+                    <label>Price <label class="required-asterisk">*</label><label class="required-message">required</label></label></label><br>
                     <input type="text" name="menu[${menuItems}][price]"><br />
-                    <label>Description:</label><br />
+                    <label>Description <label class="required-asterisk">*</label><label class="required-message">required</label></label></label><br />
                     <textarea name="menu[${menuItems}][description]" class="menu-item-description"></textarea>
                 </div>
                 <button id="delete-menu-item" type="button" name="delete">Delete</button>
