@@ -1,13 +1,12 @@
-
+{{!-- HTML for the home page --}}
+{{!-- Author(s): Emily and Eunice --}}
 <head>
     <link rel="stylesheet" href="/stylesheets/index.css">
-    <script defer src="/js/frontend.js"></script>
 </head>
 
 <body> 
 
 
-    {{!-- cover code: includes the quote, location select/dropdown --}}
     <div id="cover-container">
         <div id="cover-photo-container">
             <image id="cover-photo" src="/images/cover-image.jpg"></image>
@@ -57,6 +56,8 @@
             <a href="https://www.flaticon.com/free-icons/restaurant" title="restaurant icons">Restaurant icons created by photo3idea_studio - Flaticon</a>
         </div>
     </div>
+
+    <h2 style="margin-top: 60px;">Map of SFSU</h2>
     {{!-- SFSU map --}}
     <div id="map"></div>
     {{!-- Initializing the map to be centered at SFSU --}}
@@ -65,7 +66,7 @@
                 //coordinates for SFSU
                 myLatLng = { lat: 37.7241, lng: -122.4799 };
                 map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 13,
+                    zoom: 17,
                     center: myLatLng,
                 });
                         

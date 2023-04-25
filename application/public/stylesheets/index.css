@@ -1,9 +1,14 @@
+/* CSS for the home page */
+/* Author(s): Emily */
 body{
     /* background-image: url("/images/cover-image.jpg");
     background-size: 100% auto;
     background-repeat: no-repeat; */
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* cover code: includes the quote, location select/dropdown css */
@@ -205,9 +210,10 @@ body{
 
 /*Map styling*/
 #map{
-    width: 100%;
+    width: 80%;
     height: 500px;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(0, 0, 0);
+    margin: 0 60px 60px 60px;
 }

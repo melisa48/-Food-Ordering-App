@@ -1,3 +1,6 @@
+{{!-- HTML for page that shows drivers the details of an order --}}
+{{!-- Author(s): Emily and Eunice --}}
+
 <head>
     <link rel="stylesheet" href="/stylesheets/driver-pages-css/driverOrderDetails.css">
 </head>
@@ -9,8 +12,29 @@
         Map to Restaurant
        
     </div>
+    {{!-- Initializing the map to be centered at SFSU --}}
+    <script>
+        function initMap() {
+                //coordinates for SFSU
+                myLatLng = { lat: 37.7241, lng: -122.4799 };
+                map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 13,
+                    center: myLatLng,
+                });
+                        
+                
+                
+            }
+    </script>
+    {{!-- API Key needed to show the map --}}
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
+        defer
+        ></script>
+
     <br>
     <hr style="width: 800px;">
+    {{!-- restaurant details  --}}
     <div id="order-restaurant-details">
         <b><i class="bi bi-houses"> </i>Restaurant: </b>[Insert Retaurant Name Here]<br>
         <b><i class="bi bi-geo-alt"> </i>Delivery Location: </b>[Insert Delivery Location Here]<br>
@@ -19,15 +43,17 @@
         <br>
     </div>
 
+    {{!-- div with a user's order tickets --}}
     <div id="order-items-list">
         <h3>Order Items</h3>
         <hr style="width: 400px;">
         <div id="scrollbar-wrapper">
-            {{> driverorderdetails}}
-            {{> driverorderdetails}}
-            {{> driverorderdetails}}
-            {{> driverorderdetails}}
-            {{> driverorderdetails}}
+            {{!-- partials for each ticket in the order --}}
+            {{> driverorderticket}}
+            {{> driverorderticket}}
+            {{> driverorderticket}}
+            {{> driverorderticket}}
+            {{> driverorderticket}}
         </div>
         
     </div>

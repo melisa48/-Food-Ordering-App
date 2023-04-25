@@ -1,3 +1,5 @@
+// establish database connection
+// Author(s): Emily
 const mysql = require('mysql2');
 
 const db = mysql.createPool({

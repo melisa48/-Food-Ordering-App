@@ -1,3 +1,6 @@
+/* CSS that displays restaurants tat match user search term*/
+/* Author(s): Emily */
+
 #restaurant-wrapper{
     display: flex;
     flex-direction: row;
@@ -5,14 +8,6 @@
     width: 100%;
     justify-content: center;
 
-    /* display: grid;
-    width: 100%;
-    grid-template-rows: repeat(1,200px);
-    grid-template-columns: repeat(4,200px);
-    grid-auto-rows: 200px;
-    grid-auto-columns: 200px;
-    grid-gap: 10px;
-    padding: 10px 10px 10px 10px; */
 }
 
 #restaurant-card{

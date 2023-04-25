@@ -39,8 +39,10 @@ var driverDeliveryMapRouter = require("./routes/driver-routes/driverDeliveryMap"
 // Restaurant Page Routes
 var myRestaurantsRouter = require('./routes/restaurant-routes/myRestaurants');
 var restaurantApplicationRouter = require('./routes/registration-routes/restaurantApplication');
+//User Page Routes
 var restaurantMenuCartRouter = require('./routes/sfsu-user-routes/restaurantMenuCart');
 var checkOutRouter = require('./routes/sfsu-user-routes/checkOut');
+
 
 var app = express();
 
@@ -81,6 +83,7 @@ app.use('/driverDeliveryMap', driverDeliveryMapRouter);
 //resturant pages hbs
 app.use('/myrestaurants', myRestaurantsRouter);
 app.use('/restaurantApplication', restaurantApplicationRouter);
+//user pages hbs
 app.use('/restaurantMenuCart' , restaurantMenuCartRouter);
 app.use('/checkOut' , checkOutRouter);
 

@@ -1,3 +1,5 @@
+{{!-- HTML for restuarant application --}}
+{{!-- Author(s): Melisa and Emily --}}
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,12 +20,12 @@
                 <input type="text" name="restaurantName"><br><br />
                 <label>Food Category <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
                 <select  name="category">
-                    <option value="all" {{#if (categoryFunction category "all")}} selected {{/if }}>All</option>
-                    <option value="italian" {{#if (categoryFunction category "italian")}} selected {{/if }}>Italian</option>
-                    <option value="taiwanese" {{#if (categoryFunction category "taiwanese")}} selected {{/if }}>Taiwanese</option>
-                    <option value="pizza" {{#if (categoryFunction category "pizza")}} selected {{/if }}>Pizza</option>
-                    <option value="japanese" {{#if (categoryFunction category "japanese")}} selected {{/if }}>Japanese</option>
-                    <option value="fast food" {{#if (categoryFunction category "fast food")}} selected {{/if }}>Fast Food</option>
+                    <option value="all" selected >All</option>
+                    <option value="italian">Italian</option>
+                    <option value="taiwanese">Taiwanese</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="japanese">Japanese</option>
+                    <option value="fast food">Fast Food</option>
                 </select>
                 <br><br>
                 <label>Delivery time <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
@@ -63,7 +65,7 @@
    
 </body>
 <script>
-    //add new item to restaurant menu
+    //add new menu item to restaurant menu
     //Author(s): Melisa and Emily
    let menuItems = 1;
    document.querySelector('[name="add"]').addEventListener('click', () => {

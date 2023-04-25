@@ -1,3 +1,6 @@
+/*CSS for SFSU user checkout. Asks user to confirm location and allows them 
+to see all items in their cart before ordering --}}
+Author(s): David and Emily*/
 .center {
 	display: flex;
 	flex-direction: column;	
@@ -23,11 +26,15 @@
 	background-color: #fff;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	height: 500px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .scrollbar-wrapper{
-	height: 100%;
+	height: 85%;
 	overflow-y: auto;
+	width: 100%;
 }
 
 .ticket{

@@ -1,3 +1,5 @@
+/* CSS for Driver Order Details. Displays the details of an order a driver can choose */
+/* Author(s): Emily */
 body{
     background-color: white;
 }
@@ -15,7 +17,7 @@ body{
     border-style: solid;
     border-width: 1px;
     border-color: black;
-    width: 70%;
+    width: 60%;
     height: 400px;
     border-radius: 15px;
 }
@@ -43,7 +45,7 @@ body{
     overflow-y: auto;
 }
 
-.order{
+.ticket{
     display: flex;
     flex-direction: row;
     width: calc(100% - 20px);
@@ -51,12 +53,12 @@ body{
     background-color: white;
 }
 
-.order-image{
+.ticket-image{
     width: 100px;
     height: 100px;
 }
 
-.order-details{
+.ticket-details{
     padding: 5px;
 }
 

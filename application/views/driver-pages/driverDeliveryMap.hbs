@@ -1,3 +1,5 @@
+{{!-- HTML code for driver Delivery Map page --}}
+{{!-- Author(s): Emily and Eunice --}}
 <head>
     <link rel="stylesheet" href="/stylesheets/driver-pages-css/driverDeliveryMap.css">
 </head>
@@ -22,6 +24,8 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
     defer
     ></script>
+
+    {{!-- cancel or completed delivery buttons --}}
 <div id="delivery-buttons-wrapper">
     <a id="cancel-delivery-button" class="delivery-button" href="/driverOrderList">Cancel Delivery</a>
     <a id="completed-delivery-button" class="delivery-button">Delivery Complete</a>
