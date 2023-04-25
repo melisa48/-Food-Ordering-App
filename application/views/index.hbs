@@ -57,7 +57,27 @@
             <a href="https://www.flaticon.com/free-icons/restaurant" title="restaurant icons">Restaurant icons created by photo3idea_studio - Flaticon</a>
         </div>
     </div>
-
+    {{!-- SFSU map --}}
+    <div id="map"></div>
+    {{!-- Initializing the map to be centered at SFSU --}}
+    <script>
+        function initMap() {
+                //coordinates for SFSU
+                myLatLng = { lat: 37.7241, lng: -122.4799 };
+                map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 13,
+                    center: myLatLng,
+                });
+                        
+                
+                
+            }
+    </script>
+    {{!-- API Key needed to show the map --}}
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
+        defer
+        ></script>
 
     
 
