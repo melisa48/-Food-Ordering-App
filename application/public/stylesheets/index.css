@@ -82,7 +82,7 @@ body{
 }
 
 
-#location-submit{
+#find-food-button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,27 +96,17 @@ body{
     line-height: 50px;
     text-align: center;
     min-width: 100px;
+    background-color: transparent;
     
 }
 
-#location-submit:hover{
+#find-food-button:hover{
     background-color:rgb(255, 197, 51);
     border-color:rgb(255, 197, 51);
+    border: none;
 }
 
-#on-campus-off-campus{
-    color: rgb(255, 255, 255);
-    margin-left: 50px;
-}
 
-#on-campus-off-campus:hover{
-    color: rgb(255, 197, 51);
-}
-
-#location-icon{
-    color: red;
-    font-size:35px;
-}
 
 
 /* location change css end*/
@@ -202,6 +192,11 @@ body{
     #cover-quote{
         font-size: x-large;
         margin: 50px;
+
+    }
+
+    #find-food-button{
+        margin-left: 50px;
 
     }
 
