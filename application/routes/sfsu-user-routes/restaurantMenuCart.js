@@ -4,6 +4,6 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   // res.send('respond with a resource');
-  res.render('restaurant-pages/checkOut', {title: 'checkOut'});
+  res.render('sfsu-user-pages/restaurantMenuCart', {title: 'restaurantCard'});
 });
 module.exports = router;

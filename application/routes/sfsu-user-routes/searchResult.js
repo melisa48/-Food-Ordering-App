@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var executeSearch = require("../public/js/searchModule.js").executeSearch;
+var executeSearch = require("../../public/js/searchModule.js").executeSearch;
 
+//
+//Authors(s): Eunice and Emily
 router.get('/', executeSearch, function(req, res, next) {
-    res.render('restaurant-pages/restaurants', {
+    res.render('sfsu-user-pages/searchResult', {
         results: req.searchResult.length,
         searchTerm: req.searchTerm,
         searchResult: req.searchResult,

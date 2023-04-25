@@ -31,16 +31,16 @@ var driverRegistrationRouter = require("./routes/registration-routes/driverRegis
 var restaurantOwnerRegistrationRouter = require("./routes/registration-routes/restaurantOwnerRegistration");
 var sfsuRegistrationRouter = require("./routes/registration-routes/sfsuRegistration");
 //router for page that lists searchResult after search
-var searchResultRouter = require("./routes/searchResult");
+var searchResultRouter = require("./routes/sfsu-user-routes/searchResult");
 // Driver Page Routes
 var driverOrderListRouter = require("./routes/driver-routes/driverOrderList");
 var driverOrderDetailsRouter = require("./routes/driver-routes/driverOrderDetails");
 var driverDeliveryMapRouter = require("./routes/driver-routes/driverDeliveryMap");
 // Restaurant Page Routes
-var myRestaurantsRouter = require('./routes/myRestaurants');
+var myRestaurantsRouter = require('./routes/restaurant-routes/myRestaurants');
 var restaurantApplicationRouter = require('./routes/registration-routes/restaurantApplication');
-var restaurantCardRouter = require('./routes/restaurant-routes/restaurantCard');
-var checkOutRouter = require('./routes/restaurant-routes/checkOut');
+var restaurantMenuCartRouter = require('./routes/sfsu-user-routes/restaurantMenuCart');
+var checkOutRouter = require('./routes/sfsu-user-routes/checkOut');
 
 var app = express();
 
@@ -81,7 +81,7 @@ app.use('/driverDeliveryMap', driverDeliveryMapRouter);
 //resturant pages hbs
 app.use('/myrestaurants', myRestaurantsRouter);
 app.use('/restaurantApplication', restaurantApplicationRouter);
-app.use('/restaurantCard' , restaurantCardRouter);
+app.use('/restaurantMenuCart' , restaurantMenuCartRouter);
 app.use('/checkOut' , checkOutRouter);
 
 // catch 404 and forward to error handler
