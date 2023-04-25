@@ -2,13 +2,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/login.css">
+    <link rel="stylesheet" href="/stylesheets/restaurant-css/checkOut.css">
 </head>
 <body>
-    <div class="wrapper">
-        <h1>CheckOut</h1>
+    <div class="center">
+        <h1>CheckOut</h1><br>
         <hr>
-        <h3>1. Confirmation Location</h3>
+        <h2>1. Confirmation Location</h2>
+        <div class = "build-info">
+            <input type="text" id="Building" name="Building" placeholder="Building">
+            <input type="text" id="Room" name="Room" placeholder="Room">
+        </div>
+        <br>
+        <form class="options">
+            <input type="radio" value="Direct-Delivery" name="delivery">
+            <label for="Direct-Delivery" name="delivery-Option"> Direct Delivery</label><br>
+            <input type="radio" value="PickUp" name="delivery">
+            <label for="Pick Up"name="delivery-Option">Pick Up</label><br>
+        </form>
+        <hr><br>
+        <h2>2. Payment</h2>
+        <div class="cart">
+            <div class="items-in-cart">
+                <image class="img" src="/images/hotpot.png" width="20%" height="20%"></image>
+                <div class="vl"></div>
+                <div>
+                    <p>Name: Hot Pot</p>
+                    <p>Price:$$$</p>
+                </div>
+                <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
+                <div class="vl"></div>
+                <button>Trash</button>
+            </div><br>
+           <div class="items-in-cart">
+                <image class="img" src="/images/hotpot.png" width="20%" height="20%"></image>
+                <div class="vl"></div>
+                <div>
+                    <p>Name: Hot Pot</p>
+                    <p>Price:$$$</p>
+                </div>
+                <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
+                <div class="vl"></div>
+                <button>Trash</button>
+            </div><br>
+             <div class="items-in-cart">
+                <image class="img" src="/images/hotpot.png" width="20%" height="20%"></image>
+                <div class="vl"></div>
+                <div>
+                    <p>Name: Hot Pot</p>
+                    <p>Price:$$$</p>
+                </div>
+                <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
+                <div class="vl"></div>
+                <button>Trash</button>
+            </div><br>
+            <hr>
+            <h3>Total: $$$</h3>
+        </div>
+        <br>
+        <button class="button">Order</button>
     </div>
+    <br>
     
 </body>
