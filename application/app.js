@@ -9,6 +9,9 @@ var hbs = require('hbs')
 const partials = path.join(__dirname, "views/partials");
 hbs.registerPartials(partials);
 
+hbs.registerHelper('categoryFunction', function(category, setCategory) {
+  return category == setCategory;
+});
 // home
 var indexRouter = require('./routes/index');
 // about-me pages
@@ -20,16 +23,26 @@ var melisaRouter = require('./routes/about-routes/melisa');
 // about team
 var aboutRouter = require('./routes/about-routes/about');
 //  login routes
-var adminLoginRouter = require("./routes/login-routes/adminLogin");
 var driverLoginRouter = require("./routes/login-routes/driverLogin");
 var restaurantLoginRouter = require("./routes/login-routes/restaurantLogin");
 var sfsuLoginRouter = require("./routes/login-routes/sfsuLogin");
 //registration routes
 var driverRegistrationRouter = require("./routes/registration-routes/driverRegistration");
-var restaurantRegistrationRouter = require("./routes/registration-routes/restaurantRegistration");
+var restaurantOwnerRegistrationRouter = require("./routes/registration-routes/restaurantOwnerRegistration");
 var sfsuRegistrationRouter = require("./routes/registration-routes/sfsuRegistration");
 //router for page that lists searchResult after search
-var searchResultRouter = require("./routes/searchResult");
+var searchResultRouter = require("./routes/sfsu-user-routes/searchResult");
+// Driver Page Routes
+var driverOrderListRouter = require("./routes/driver-routes/driverOrderList");
+var driverOrderDetailsRouter = require("./routes/driver-routes/driverOrderDetails");
+var driverDeliveryMapRouter = require("./routes/driver-routes/driverDeliveryMap");
+// Restaurant Page Routes
+var myRestaurantsRouter = require('./routes/restaurant-routes/myRestaurants');
+var restaurantApplicationRouter = require('./routes/registration-routes/restaurantApplication');
+//User Page Routes
+var restaurantMenuCartRouter = require('./routes/sfsu-user-routes/restaurantMenuCart');
+var checkOutRouter = require('./routes/sfsu-user-routes/checkOut');
+
 
 var app = express();
 
@@ -54,17 +67,25 @@ app.use('/eunice', euniceRouter);
 app.use('/melisa', melisaRouter);
 app.use('/about', aboutRouter);
 // login 
-app.use('/adminLogin', adminLoginRouter);
 app.use('/driverLogin', driverLoginRouter);
 app.use('/restaurantLogin', restaurantLoginRouter);
 app.use('/sfsuLogin', sfsuLoginRouter);
 //registration
 app.use('/driverRegistration', driverRegistrationRouter);
-app.use('/restaurantRegistration', restaurantRegistrationRouter);
+app.use('/restaurantOwnerRegistration', restaurantOwnerRegistrationRouter);
 app.use('/sfsuRegistration', sfsuRegistrationRouter);
 //list of searchResult hbs
 app.use('/searchResult', searchResultRouter);
-
+// driver page hbs
+app.use('/driverOrderList', driverOrderListRouter);
+app.use('/driverOrderDetails', driverOrderDetailsRouter);
+app.use('/driverDeliveryMap', driverDeliveryMapRouter);
+//resturant pages hbs
+app.use('/myrestaurants', myRestaurantsRouter);
+app.use('/restaurantApplication', restaurantApplicationRouter);
+//user pages hbs
+app.use('/restaurantMenuCart' , restaurantMenuCartRouter);
+app.use('/checkOut' , checkOutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,3 +1,6 @@
+  {{!-- Partial for the navbar --}}
+  {{!-- Author(s): Emily and Eunice --}}
+  
   <nav class="navbar">
   <a id="logo" href="/"><i class="bi bi-symmetry-horizontal"></i>GATOREATS</a>
   <div class="navbar-left">
@@ -7,22 +10,21 @@
     <a class="navbar-links" href="#">Pickup</a> --}}
     {{!-- <a class="navbar-links" href="/">Users</a>  --}}
     <a class="navbar-links" href="/driverRegistration">Drivers</a>
-    <a class="navbar-links" href="/restaurantRegistration">Restaurant<br>&ensp;Owners</a>
+    <a class="navbar-links" href="/restaurantApplication">Restaurant<br>&ensp;Owners</a>
     <a class="navbar-links" href="/about">About Us</a>
   </div>
 
   <form id="search-form" class="navbar-center" action="/searchResult">
     <select id="category-select" name="category">
-      <option value="all">All</option>
-      <option value="italian">Italian</option>
-      <option value="taiwanese">Taiwanese</option>
-      <option value="pizza">Pizza</option>
-      <option value="japanese">Japanese</option>
-      <option value="fast food">Fast Food</option>
-    </select><input id="search-bar" name="search" type="text" placeholder="Search"><a id ='search-button'><i class="bi bi-search"></i></a>
+      <option value="all" {{#if (categoryFunction category "all")}} selected {{/if }}>All</option>
+      <option value="italian" {{#if (categoryFunction category "italian")}} selected {{/if }}>Italian</option>
+      <option value="taiwanese" {{#if (categoryFunction category "taiwanese")}} selected {{/if }}>Taiwanese</option>
+      <option value="pizza" {{#if (categoryFunction category "pizza")}} selected {{/if }}>Pizza</option>
+      <option value="japanese" {{#if (categoryFunction category "japanese")}} selected {{/if }}>Japanese</option>
+      <option value="fast food" {{#if (categoryFunction category "fast food")}} selected {{/if }}>Fast Food</option>
+    </select><input id="search-bar" name="search" type="text" placeholder="Search" value="{{ searchTerm }}"><a id ='search-button'><i class="bi bi-search"></i></a>
     
   </form>
-  
   <div class="navbar-right">
     {{!-- register dropdown beginning --}}
     <div class="dropdown navbar-dropdown">
@@ -32,7 +34,8 @@
       <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
         <li><a class="dropdown-item" href="/sfsuRegistration">Student/Faculty Registration</a></li>
         <li><a class="dropdown-item" href="/driverRegistration">Driver Registration</a></li>
-        <li><a class="dropdown-item" href="/restaurantRegistration">Restaurant Registration</a></li>
+        <li><a class="dropdown-item" href="/restaurantOwnerRegistration">Restaurant Owner Registration</a></li>
+        <li><a class="dropdown-item" href="/restaurantApplication">Restaurant Application</a></li>
       </ul>
     </div>
     {{!-- register dropdown end --}}

@@ -1,0 +1,48 @@
+{{!-- Html for SFSU user checkout. Asks user to confirm location and allows them 
+to see all items in their cart before ordering --}}
+{{!-- Author(s): David and Emily --}}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/sfsu-user-pages-css/checkOut.css">
+</head>
+<body>
+    <div class="center">
+        <br>
+        <h1>CheckOut</h1><br>
+        <hr style="width: 50%;">
+        <br>
+        <h2>1. Confirmation Location</h2>
+        <div class = "build-info">
+            <input type="text" id="Building" name="Building" placeholder="Building">
+            <input type="text" id="Room" name="Room" placeholder="Room">
+        </div>
+        <br>
+        <form class="options">
+            <input type="radio" value="Direct-Delivery" name="delivery">
+            <label for="Direct-Delivery" name="delivery-Option"> Direct Delivery</label><br>
+            <input type="radio" value="PickUp" name="delivery">
+            <label for="Pick Up"name="delivery-Option">Pick Up</label><br>
+        </form>
+        <br>
+        <hr style="width: 50%;"><br>
+        <h2>2. Payment</h2>
+        <br>
+        <div id="order">
+            <div class="scrollbar-wrapper">
+                {{> sfsuuserticket}}
+                {{> sfsuuserticket}}
+                {{> sfsuuserticket}}
+                {{> sfsuuserticket}}
+            </div>
+
+            <hr style="width:80%;">
+            <h3>Total: $$$</h3>
+        </div>
+        <br>
+        <button class="order-button">Order</button>
+    </div>
+    <br>
+    
+</body>

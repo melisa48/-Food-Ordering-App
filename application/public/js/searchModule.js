@@ -1,5 +1,5 @@
 var db = require("../../conf/database");
-const { search } = require("../../routes/searchResult");
+// const { search } = require("../../routes/searchResult");
 const searchModule = {};
 
 

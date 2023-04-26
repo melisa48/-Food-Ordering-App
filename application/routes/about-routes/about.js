@@ -3,7 +3,7 @@ var router = express.Router();
 var hbs = require('hbs');
 
 
-/* GET home page. */
+/* GET about page */
 router.get('/', function(req, res, next) {
   res.render('about-hbs/about', { title: 'About'});
 

@@ -1,9 +1,14 @@
+/* CSS for the home page */
+/* Author(s): Emily */
 body{
     /* background-image: url("/images/cover-image.jpg");
     background-size: 100% auto;
     background-repeat: no-repeat; */
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* cover code: includes the quote, location select/dropdown css */
@@ -77,7 +82,7 @@ body{
 }
 
 
-#location-submit{
+#find-food-button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,27 +96,17 @@ body{
     line-height: 50px;
     text-align: center;
     min-width: 100px;
+    background-color: transparent;
     
 }
 
-#location-submit:hover{
+#find-food-button:hover{
     background-color:rgb(255, 197, 51);
     border-color:rgb(255, 197, 51);
+    border: none;
 }
 
-#on-campus-off-campus{
-    color: rgb(255, 255, 255);
-    margin-left: 50px;
-}
 
-#on-campus-off-campus:hover{
-    color: rgb(255, 197, 51);
-}
-
-#location-icon{
-    color: red;
-    font-size:35px;
-}
 
 
 /* location change css end*/
@@ -186,30 +181,6 @@ body{
         top: 230px;
     }
 
-    #location-icon{
-        font-size: 16px;
-        opacity: 0;
-    }
-
-   .building-dropdown, .room-dropdown{
-        height: 30px;
-        font-size: 16px;
-   }
-
-   .building-dropdown{
-    min-width: 150px;
-   }
-   .room-dropdown{
-    min-width: 100px !important;
-    width: 100px;
-   }
-
-   #location-submit{
-    font-size: 16px;
-    height: 30px;
-    align-self: flex-start;
-    margin-top: 10px;
-   }
 
    #location-container{
     margin-top: 0px;
@@ -224,13 +195,20 @@ body{
 
     }
 
-    #on-campus-off-campus{
-        margin-left:15px;
+    #find-food-button{
+        margin-left: 50px;
+
     }
 
-    #on-campus-input{
-        font-size: 16px;
-        height: 30px;
-        width: 300px;
-    }
+
+}
+
+/*Map styling*/
+#map{
+    width: 80%;
+    height: 500px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(0, 0, 0);
+    margin: 0 60px 60px 60px;
 }

@@ -1,13 +1,12 @@
-
+{{!-- HTML for the home page --}}
+{{!-- Author(s): Emily and Eunice --}}
 <head>
     <link rel="stylesheet" href="/stylesheets/index.css">
-    <script defer src="/js/frontend.js"></script>
 </head>
 
 <body> 
 
 
-    {{!-- cover code: includes the quote, location select/dropdown --}}
     <div id="cover-container">
         <div id="cover-photo-container">
             <image id="cover-photo" src="/images/cover-image.jpg"></image>
@@ -15,31 +14,10 @@
 
         <div id="cover-content">
             {{!-- <h1 id="cover-quote">Nothing will beat, <br> our Gatoreats</h1> --}}
-            <h1 id="cover-quote">CSC 648 <br>Spring 2023 <br> Team 07</h1>
+            <h1 id="cover-quote">GatorEats - Bringing<br> Food to SFSU</h1>
             <br>
-            <div id="location-container">
-                {{!-- <i class="bi bi-geo-alt" id="location-icon"></i>
-                <div id="location-bar-wrapper">
-                    <select class="building-dropdown" aria-label=".form-select-lg example">
-                        <option disabled selected><i class="bi bi-building-fill"></i>Building</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    
-                    <select class="room-dropdown" aria-label=".form-select-sm example">
-                        <option disabled selected><i class="bi bi-123">Room</i></option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                
-                <a id="location-submit" href="#"> Find Food </a>
-                
-            </div>
+            <button id="find-food-button">Find Food</button>
 
-            <a id="on-campus-off-campus">I'm off campus</a> --}}
         </div>
 
         
@@ -74,11 +52,33 @@
             </div>
             <h2>Restaurant Owners</h2>
             <p>Have a restaurant near SFSU? Register your restaurant on GatorEats today!</p>
-            <a href="restaurantRegistration"><button class="">Apply Here <i class="bi bi-caret-right-fill"></i></button></a>
+            <a href="/restaurantApplication"><button class="">Apply Here <i class="bi bi-caret-right-fill"></i></button></a>
             <a href="https://www.flaticon.com/free-icons/restaurant" title="restaurant icons">Restaurant icons created by photo3idea_studio - Flaticon</a>
         </div>
     </div>
 
+    <h2 style="margin-top: 60px;">Map of SFSU</h2>
+    {{!-- SFSU map --}}
+    <div id="map"></div>
+    {{!-- Initializing the map to be centered at SFSU --}}
+    <script>
+        function initMap() {
+                //coordinates for SFSU
+                myLatLng = { lat: 37.7241, lng: -122.4799 };
+                map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 17,
+                    center: myLatLng,
+                });
+                        
+                
+                
+            }
+    </script>
+    {{!-- API Key needed to show the map --}}
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
+        defer
+        ></script>
 
     
 
