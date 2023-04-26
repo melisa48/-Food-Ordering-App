@@ -66,7 +66,11 @@ H3 {
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	/* position:fixed; */
 	left: 60%;
-	max-height: 50%;
+	max-height: 45%;
+	
+}
+.cart-scroll{
+	max-height: 60%;
 	overflow-y: auto;
 }
 .cart-container {
@@ -85,6 +89,9 @@ H3 {
 	border-left: 6px solid rgb(0, 0, 0);
   }
   @media(max-width: 730px){
+	.cart{
+		max-height: 55%;
+	}
 	.wrapper2 {
 		grid-template-columns: repeat(1, 1fr);
 	  }
