@@ -3,7 +3,7 @@
 .center {
 	margin: auto;
 	text-align: center;
-	width: 60%;
+	width: 50%;
   }
 .rest-name {
 	margin:30px 0 30px 0;
@@ -13,13 +13,17 @@
 	/* left: 200px;
 	top: 30px; */
 }
-
 .box {
 	width: 50%;
-	position:relative;
-	left: 50px;
+	position: relative;
+	/* left: 50px; */
 }
 .wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 25px;
+  }
+.wrapper2 {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 25px;
@@ -41,7 +45,7 @@ H3 {
 	font-size: 16px;
 	color: #202020;
 	position:relative;
-   }
+}
 .checkOut-button{
 	display: inline-block;
 	padding: 5px;
@@ -56,13 +60,14 @@ H3 {
 	border-radius: 15px;
 }
 .cart{
-	width: 300px;
-	max-width: 300px; 
+	width: 350px;
 	padding: 15px 40px 45px;
 	margin: 0 auto; 
 	border: 1px solid rgba(0, 0, 0, 0.1);
-	position:fixed;
+	/* position:fixed; */
 	left: 60%;
+	max-height: 50%;
+	overflow-y: auto;
 }
 .cart-container {
 	display: flex;
@@ -78,4 +83,12 @@ H3 {
 .vl {
 	height: 50px;
 	border-left: 6px solid rgb(0, 0, 0);
+  }
+  @media(max-width: 730px){
+	.wrapper2 {
+		grid-template-columns: repeat(1, 1fr);
+	  }
+	.wrapper {
+		grid-template-columns: repeat(1, 1fr);
+	}
   }
