@@ -6,11 +6,31 @@
   <div class="navbar-left">
     
     <a class="navbar-links" href="/">Home</a>
-    {{!-- <a class="navbar-links" href="#">Delivery</a>
-    <a class="navbar-links" href="#">Pickup</a> --}}
-    {{!-- <a class="navbar-links" href="/">Users</a>  --}}
-    <a class="navbar-links" href="/driverRegistration">Drivers</a>
-    <a class="navbar-links" href="/restaurantApplication">Restaurant<br>&ensp;Owners</a>
+    {{!-- driver dropdown --}}
+    <div class="dropdown navbar-dropdown">
+      <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
+      Drivers
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+        <li><a class="dropdown-item" href="/driverLogin">Driver Login</a></li>
+        <li><a class="dropdown-item" href="/driverRegistration">Driver Registration</a></li>
+      </ul>
+    </div>
+    {{!-- driver dropdown end --}}
+
+    {{!-- restaurants dropdown --}}
+    <div class="dropdown navbar-dropdown">
+        <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
+        Restaurants
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+          <li><a class="dropdown-item" href="/restaurantLogin">Restaurant Owner Login</a></li>
+          <li><a class="dropdown-item" href="/restaurantOwnerRegistration">Restaurant Owner Registration</a></li>
+          <li><a class="dropdown-item" href="/restaurantApplication">Restaurant Application</a></li>
+        </ul>
+      </div>
+    {{!-- restaurants dropdown end --}}
+
     <a class="navbar-links" href="/about">About Us</a>
   </div>
 
@@ -27,8 +47,8 @@
   </form>
   {{#if logged}}
   <div  class="navbar-right" styles="display:flex">
-      <p class="dropdown-item"style="color:White;">Welcome: {{email}}</p>
-      <form method="post" action="/sfsuLogin/logout" class="inline">
+      <p class="dropdown-item"style="color:White; margin: 0 10px 0 0;">Welcome: {{email}}</p>
+      <form method="post" action="/sfsuLogin/logout" id="logout-form">
         <input type="hidden" name="extra_submit_param" value="extra_submit_value">
         <button type="submit" name="submit_param" value="submit_value" class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
             Logout
@@ -37,31 +57,9 @@
   </div>
   {{else}}
     <div class="navbar-right">
-      {{!-- register dropdown beginning --}}
-      <div class="dropdown navbar-dropdown">
-        <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
-        Register
-        </a>
-        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-          <li><a class="dropdown-item" href="/sfsuRegistration">Student/Faculty Registration</a></li>
-          <li><a class="dropdown-item" href="/driverRegistration">Driver Registration</a></li>
-          <li><a class="dropdown-item" href="/restaurantOwnerRegistration">Restaurant Owner Registration</a></li>
-          <li><a class="dropdown-item" href="/restaurantApplication">Restaurant Application</a></li>
-        </ul>
-      </div>
-      {{!-- register dropdown end --}}
+      <a class="nav-link navbar-links" href="/sfsuRegistration">Register</a>
+      <a class="nav-link navbar-links" href="/sfsuLogin">Login</a>
       
-      {{!-- login dropdown beginning --}}
-      <div class="dropdown navbar-dropdown">
-        <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
-        Login
-        </a>
-        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-          <li><a class="dropdown-item" href="/sfsuLogin">Student/Faculty Login</a></li>
-          <li><a class="dropdown-item" href="/driverLogin">Driver Login</a></li>
-          <li><a class="dropdown-item" href="/restaurantLogin">Restaurant Owner Login</a></li>
-        </ul>
-      </div>
     {{/if}}
 
     {{!-- login dropdown end --}}
