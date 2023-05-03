@@ -3,8 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var hbs = require('hbs')
-
+var hbs = require('hbs');
+var session = require('express-session');
 
 const partials = path.join(__dirname, "views/partials");
 hbs.registerPartials(partials);
@@ -12,6 +12,7 @@ hbs.registerPartials(partials);
 hbs.registerHelper('categoryFunction', function(category, setCategory) {
   return category == setCategory;
 });
+
 // home
 var indexRouter = require('./routes/index');
 // about-me pages
@@ -46,6 +47,21 @@ var checkOutRouter = require('./routes/sfsu-user-routes/checkOut');
 
 var app = express();
 
+app.use(session({
+  secret : 'secretkey',
+  resave : false,
+  saveUninitialized : true
+}));
+
+app.use((req, res, next)=>{
+  if(req.session.email){
+    // console.log(req.session.email);
+    res.locals.logged = true;
+    res.locals.user = req.session.email;
+    console.log("locals: %s",res.locals.user);
+  }
+  next();
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -25,32 +25,45 @@
     </select><input id="search-bar" name="search" type="text" placeholder="Search" value="{{ searchTerm }}"><a id ='search-button'><i class="bi bi-search"></i></a>
     
   </form>
-  <div class="navbar-right">
-    {{!-- register dropdown beginning --}}
-    <div class="dropdown navbar-dropdown">
-      <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
-      Register
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-        <li><a class="dropdown-item" href="/sfsuRegistration">Student/Faculty Registration</a></li>
-        <li><a class="dropdown-item" href="/driverRegistration">Driver Registration</a></li>
-        <li><a class="dropdown-item" href="/restaurantOwnerRegistration">Restaurant Owner Registration</a></li>
-        <li><a class="dropdown-item" href="/restaurantApplication">Restaurant Application</a></li>
-      </ul>
-    </div>
-    {{!-- register dropdown end --}}
-    
-    {{!-- login dropdown beginning --}}
-    <div class="dropdown navbar-dropdown">
-      <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
-      Login
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-        <li><a class="dropdown-item" href="/sfsuLogin">Student/Faculty Login</a></li>
-        <li><a class="dropdown-item" href="/driverLogin">Driver Login</a></li>
-        <li><a class="dropdown-item" href="/restaurantLogin">Restaurant Owner Login</a></li>
-      </ul>
-    </div>
+  {{#if logged}}
+  <div  class="navbar-right" styles="display:flex">
+      <p class="dropdown-item"style="color:White;">Welcome: {{email}}</p>
+      <form method="post" action="/sfsuLogin/logout" class="inline">
+        <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+        <button type="submit" name="submit_param" value="submit_value" class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
+            Logout
+        </button>
+      </form>
+  </div>
+  {{else}}
+    <div class="navbar-right">
+      {{!-- register dropdown beginning --}}
+      <div class="dropdown navbar-dropdown">
+        <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
+        Register
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+          <li><a class="dropdown-item" href="/sfsuRegistration">Student/Faculty Registration</a></li>
+          <li><a class="dropdown-item" href="/driverRegistration">Driver Registration</a></li>
+          <li><a class="dropdown-item" href="/restaurantOwnerRegistration">Restaurant Owner Registration</a></li>
+          <li><a class="dropdown-item" href="/restaurantApplication">Restaurant Application</a></li>
+        </ul>
+      </div>
+      {{!-- register dropdown end --}}
+      
+      {{!-- login dropdown beginning --}}
+      <div class="dropdown navbar-dropdown">
+        <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
+        Login
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+          <li><a class="dropdown-item" href="/sfsuLogin">Student/Faculty Login</a></li>
+          <li><a class="dropdown-item" href="/driverLogin">Driver Login</a></li>
+          <li><a class="dropdown-item" href="/restaurantLogin">Restaurant Owner Login</a></li>
+        </ul>
+      </div>
+    {{/if}}
+
     {{!-- login dropdown end --}}
     
     {{!-- shopping cart --}}
