@@ -64,6 +64,9 @@ app.use((req, res, next)=>{
     res.locals.logged = true;
     // console.log("locals: email: %s, id: %d, firstname: %s, lastname: %s",res.locals.email, res.locals.userId, res.locals.firstname, res.locals.lastname);
   }
+  if(req.session.driver){
+    res.locals.driver = true;
+  }
   next();
 })
 

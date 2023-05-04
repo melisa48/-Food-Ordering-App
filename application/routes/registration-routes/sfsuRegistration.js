@@ -35,7 +35,7 @@ router.post('/sfsuRegister',(req, res, next) => {
             let baseSQL = "INSERT INTO registeredUsers(firstname, lastname, password, verifiedEmail) VALUES (?,?,?,?)";
             db.query(baseSQL, [firstname, lastname, hashedpassword, email], function(err, result, fields){
               if(err) throw err;
-              console.log("Supposed to be redirecting to login\n");
+              // console.log("Supposed to be redirecting to login\n");
               res.redirect('/sfsuLogin');
             })
           }
