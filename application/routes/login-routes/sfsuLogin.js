@@ -11,20 +11,29 @@ router.get('/', function(req, res, next) {
 router.post('/sfsulogin',(req, res, next) => {
   let email = req.body.email;
   let password = req.body.password;
-  var sql = "SELECT * FROM registeredUsers where verifiedEmail = ?;";
+  var sql = "SELECT userID,firstName,lastName,verifiedEmail,password FROM registeredUsers where verifiedEmail = ?;";
+  let userid;
+  let firstname;
+  let lastname;
   db.query(sql,[email], function(err,result, fields){
     if(err) throw err;
 
     // if(result.length && (password == encryption.decryptData(result[0].password))){
-    if(result.length && bcrypt.compareSync(password, result[0].password)){
-      res.locals.logged = true;
-      res.locals.email = email;
-      req.session.email = email;
-      console.log("logged in as %s", email);
-      res.render('index', { email : req.session.email });
-    }else{
-      res.redirect('/');
-    }
+    if(result.length == 1 && bcrypt.compareSync(password, result[0].password)){
+        userid = result[0].userID;
+        firstname = result[0].firstname;
+        lastname = result[0].lastname;
+        //login user
+        res.locals.logged = true;
+        req.session.userid = userid;  
+        req.session.email = result[0].email;   
+        req.session.firstName = firstname;
+        req.session.lastName = lastname;
+        // console.log("userid: %d",  req.session.userid);
+        res.render('index');
+      }else{
+        res.render('sfsuLogin', { message: "Invalid login" });
+      }
   });
 });
 

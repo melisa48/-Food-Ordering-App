@@ -48,17 +48,14 @@ var checkOutRouter = require('./routes/sfsu-user-routes/checkOut');
 var app = express();
 
 app.use(session({
-  secret : 'secretkey',
+  secret : 'team7',
   resave : false,
   saveUninitialized : true
 }));
 
 app.use((req, res, next)=>{
   if(req.session.email){
-    // console.log(req.session.email);
     res.locals.logged = true;
-    res.locals.user = req.session.email;
-    console.log("locals: %s",res.locals.user);
   }
   next();
 })
