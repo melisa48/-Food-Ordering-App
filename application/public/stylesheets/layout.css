@@ -29,7 +29,9 @@ a{
   /* overflow: hidden; */
 }
 
-
+#logout-form{
+  height: 100%;
+}
 
 .navbar-links{
   height: 100%;
@@ -38,11 +40,14 @@ a{
   align-items: center;
   justify-content: center;
   word-wrap: break-word;
+  color:white;
+  background-color: black;
+  border: none;
 }
 
 .navbar-links:hover{
-
   background-color: rgb(228, 162, 55);
+  color: white;
 }
 
 
@@ -53,7 +58,9 @@ a{
   height: 100%;
 }
 
-
+.navbar-right{
+  justify-content: space-between;
+}
 
 #search-bar{
   width: 350px;
