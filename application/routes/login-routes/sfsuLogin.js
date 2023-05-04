@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 router.post('/sfsulogin',(req, res, next) => {
   let email = req.body.email;
   let password = req.body.password;
-  var sql = "SELECT userID,firstName,lastName,verifiedEmail,password FROM registeredUsers where verifiedEmail = ?;";
+  var sql = "SELECT userID,firstname,lastname,verifiedEmail,password FROM registeredUsers where verifiedEmail = ?;";
   let userid;
   let firstname;
   let lastname;
@@ -24,13 +24,13 @@ router.post('/sfsulogin',(req, res, next) => {
         firstname = result[0].firstname;
         lastname = result[0].lastname;
         //login user
-        res.locals.logged = true;
         req.session.userid = userid;  
-        req.session.email = result[0].email;   
+        req.session.email = email;   
         req.session.firstName = firstname;
         req.session.lastName = lastname;
-        // console.log("userid: %d",  req.session.userid);
-        res.render('index');
+        res.locals.logged = true;
+        // console.log("fn: %s",  req.session.firstName);
+        res.render('index', {email : req.session.email});
       }else{
         res.render('sfsuLogin', { message: "Invalid login" });
       }

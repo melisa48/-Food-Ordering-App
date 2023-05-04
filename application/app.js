@@ -55,7 +55,14 @@ app.use(session({
 
 app.use((req, res, next)=>{
   if(req.session.email){
+    // res.locals.loggedinUser = req.session;
+    // console.log(res.locals.loggedinUser);
+    res.locals.email = req.session.email;
+    res.locals.userId = req.session.userid
+    res.locals.firstname = req.session.firstName;
+    res.locals.lastname = req.session.lastName;
     res.locals.logged = true;
+    // console.log("locals: email: %s, id: %d, firstname: %s, lastname: %s",res.locals.email, res.locals.userId, res.locals.firstname, res.locals.lastname);
   }
   next();
 })
