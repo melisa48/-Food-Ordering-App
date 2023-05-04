@@ -32,7 +32,7 @@ router.post('/sfsulogin',(req, res, next) => {
         // console.log("fn: %s",  req.session.firstName);
         res.render('index', {email : req.session.email});
       }else{
-        res.render('sfsuLogin', { message: "Invalid login" });
+        res.render('login/sfsuLogin', { message: "Invalid login" });
       }
   });
 });
