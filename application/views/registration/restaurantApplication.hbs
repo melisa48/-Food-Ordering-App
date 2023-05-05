@@ -12,6 +12,7 @@
         <h1>Restaurant Application</h1>
         <br>
         <div id="restaurant-application-wrapper">
+            <h2>General Restaurant Information</h2>
             <div id="restaurant-information">
                 <form action="" method="post" enctype="multipart/form-data">
                 <input id="restaurant-image" type="file" accept="image/*" name="restaurant-image" onchange="uploadImage(event)">
@@ -36,6 +37,8 @@
                 <textarea name="description" class="restaurant-description"></textarea><br><br />
                 <label>Menu <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
                 <div id="restaurant-menu">
+                    <h2>Enter Individual Restaurant Items</h2>
+                    <form action="" method="post" enctype="multipart/form-data">
                     <div id="scrollbar-wrapper">
                         <div id="menu-item">
                             <input id="menu-item-image[0]" class="menu-item-images" accept="image/*" type="file" name="menu[0][image]" onchange="uploadImage(event)">
