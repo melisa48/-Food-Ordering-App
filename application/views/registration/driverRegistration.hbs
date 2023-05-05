@@ -21,9 +21,19 @@
             <input type="password" class="form-control" name="password" required=""/>      
             <h6>Confirm Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
             <input type="password" class="form-control" name="password" required=""/> 
+              
+              <h6>Driver's License</h6>
+            <label style="display: flex; align-items: center;">
+                <input type="checkbox" name="driver-license-checkbox" required=""/>
+                &ensp;Confirm you have a valid driver's license <label class="required-asterisk">*</label>
+            </label> <br>
 
+              <label  style="display: flex; align-items: center;">
+                <input type="checkbox" name="terms-checkbox" required=""/>
+                &ensp;By checking this you agree to the Terms and Conditions <label class="required-asterisk">*</label>
+            </label><br>
+             
 
-            
             <label style="display: flex; align-items: center;">
                 <input type="checkbox" name="payment-checkbox" required=""/>
                 &ensp;Get Paid with Gatorcard &nbsp;
@@ -38,5 +48,17 @@
             <button class="submit-button" type="submit">Submit</button>   
         </form>
         <a href ="/driverLogin" class="relocation-link">Have an account? Log in here &rarr;</a>
+           </div>
+          <script>
+          // disable submit button until checkboxes are checked
+        const checkboxes = document.querySelectorAll('input[type=checkbox]');
+        const submitButton = document.querySelector('button[type=submit]');
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                submitButton.disabled = !checkboxes[0].checked || !checkboxes[1].checked;
+            });
+        });
     </div>
+ </script>
 </body>
