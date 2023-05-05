@@ -9,6 +9,13 @@
 </head>
 <body>
     <div class="wrapper">
+        {{#if error}}
+            <div class="error-message">
+                <h5 class="message">
+                    {{message}}
+                </h5>
+            </div>
+        {{/if}}
         <form class="form-register" method="POST" action="/driverRegistration/driver"
         enctype="application/x-www-form-urlencoded">
             <h2 class="form-title">Driver Registration</h2>

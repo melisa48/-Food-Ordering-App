@@ -42,13 +42,13 @@ router.post('/sfsuRegister',(req, res, next) => {
           
       })
     }else{
-      console.log("Not a valid email address.\n");
-      res.redirect('/sfsuRegistration');
+      // console.log("Not a valid email address.\n");
+      res.render('registration/sfsuRegistration', { message: "Not a valid email address", error: true});
     }
     
   }else{
     console.log("Passwords do not match\n");
-    res.redirect('/sfsuRegistration');
+    res.render('registration/sfsuRegistration', { message: "Passwords does not match", error: true});
   }
 
 });

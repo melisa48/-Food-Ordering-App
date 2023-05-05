@@ -42,12 +42,12 @@ router.post('/driver',(req, res, next) => {
       })
     }else{
       console.log("Not a valid email address.\n");
-      res.redirect('/driverRegistration');
+      res.render('registration/driverRegistration',  { message: "Not a valid email address", error: true});
     }
     
   }else{
     console.log("Passwords do not match\n");
-    res.redirect('/driverRegistration');
+    res.render('registration/driverRegistration', { message: "Passwords does not match", error: true});
   }
 
 });

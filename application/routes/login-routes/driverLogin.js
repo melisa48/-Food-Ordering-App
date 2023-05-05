@@ -34,7 +34,7 @@ router.post('/driverlogin',(req, res, next) => {
         // console.log("fn: %s",  req.session.firstName);
         res.render('index', {email : req.session.email});
       }else{
-        res.render('login/driverLogin', { message: "Invalid login" });
+        res.render('login/driverLogin', { message: "Invalid login", error:true });
       }
   });
 });
