@@ -18,11 +18,18 @@
             {{> restaurantcard}}
             {{> restaurantcard}}
             {{> restaurantcard}}
-            
-            
+              <div class="restaurantcard">
+                <h2>Restaurant Name</h2>
+                <p>Address: 123 Main Street</p>
+                <p>Phone: 555-555-5555</p>
+                <button class="menu-btn" onclick="location.href='/menu/{{restaurantId}}'">Enter Menu</button>
+                <button class="update-btn" onclick="location.href='/updateMenu/{{restaurantId}}'">Update Menu</button>
+            </div>
         </div>
         <button class="register-btn" onclick="location.href='/restaurantApplication'">Register Another Restaurant</button> 
 
     </div>
 </body>
+            
+        
 </html>
