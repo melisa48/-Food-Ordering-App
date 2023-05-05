@@ -67,6 +67,9 @@ app.use((req, res, next)=>{
   if(req.session.driver){
     res.locals.driver = true;
   }
+  if(req.session.restaurantOwner){
+    res.locals.restaurantOwner = true;
+  }
   next();
 })
 

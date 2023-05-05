@@ -11,7 +11,12 @@
         <div class="navbar-right">
           <a class="nav-link navbar-links" href="/driverOrderList">Order List</a>
           <a class="nav-link navbar-links" href="/driverDeliveryMap">Delivery Map</a>
-        </div>
+        </div>    
+      {{/if}}
+      {{#if restaurantOwner}}
+      <div class="navbar-right">
+          <a class="nav-link navbar-links" href="/myRestaurants" style="text-align:center">My Restaurants</a>
+      </div>
       {{/if}}
     {{else}}
     {{!-- driver dropdown --}}
