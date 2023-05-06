@@ -13,11 +13,11 @@
         <br>
         <div id="restaurant-application-wrapper">
             <div id="restaurant-information">
-                <form action="" method="post" enctype="multipart/form-data" id="application">
-                <input id="restaurant-image" type="file" accept="image/*" name="restaurant-image" onchange="uploadImage(event)">
+                <form action="/restaurantApplication/application" method="post" enctype="multipart/form-data" id="application">
+                <input id="restaurant-image" type="file" accept="image/*" name="restaurant-image" onchange="uploadImage(event)" />
                 <label for="restaurant-image" id="restaurant-image-alter" name="restaurant-image-alter"> Add Restaurant Image</label> <br><br>
                 <label>Restaurant Name <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
-                <input type="text" name="restaurantName"><br><br />
+                <input type="text" name="restaurantName" /><br><br />
                 <label>Food Category <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
                 <select  name="category">
                     <option value="all" selected >All</option>

@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
 var session = require('express-session');
+var bodyParser = require('body-parser');
+var multer = require('multer');
 
 const partials = path.join(__dirname, "views/partials");
 hbs.registerPartials(partials);
@@ -75,6 +77,10 @@ app.use((req, res, next)=>{
   }
   next();
 })
+
+
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

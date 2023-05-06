@@ -2,22 +2,39 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../../conf/database");
+const bodyParser = require('body-parser');
+const multer = require('multer'); 
+// var sharp = require('sharp');
+var crypto = require('crypto');
 
-router.get('/', function(req, res, next) {
- res.render('registration/restaurantApplication', {title: 'Restaurant Application'});
+var storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, "public/images/uploads");
+  },
+  filename: function(req, file, cb){
+    let fileExt = file.mimetype.split('/')[1];
+    let randomName = crypto.randomBytes(22).toString("hex");
+    cb(null, `${randomName}.${fileExt}`);
+  }
+})
+
+var uploader = multer({storage: storage});
+
+
+router.get('/',function(req, res, next) {
+  res.render('registration/restaurantApplication', {title: 'Restaurant Application'});
 });
-router.post('/', function(req, res, next) {
-  //TODO change the req.body
+router.post('/application', uploader.single("restaurant-image"),function(req, res, next) {
+  console.log(req);
   let restaurantName = req.body.restaurantName;
-  let foodCategory = req.body.foodCategory;
+  let foodCategory = req.body.category;
   let deliveryTime = req.body.deliveryTime;
   let description = req.body.description;
   let address = req.body.address;
   let menu = req.body.menu;
-  //TODO not working :
   let currentOwner = res.locals.userId;
   var sql = "INSERT restaurant_name, category, description, address, restaurantOwner FROM restaurant VALUES(?,?,?,?,?);";
-  console.log(currentOwner);
+  // console.log(req.body);
   // db.query(sql, [restaurantName, foodCategory, description, address, currentOwner], function(err, result, fields){
     // let restaurantID = result[0].restaurant_id;
     // var menuQuery = "INSERT name, description, price, restaurant FROM menu VALUES (?,?,?,?);";
