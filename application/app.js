@@ -58,11 +58,14 @@ app.use((req, res, next)=>{
     // res.locals.loggedinUser = req.session;
     // console.log(res.locals.loggedinUser);
     res.locals.email = req.session.email;
-    res.locals.userId = req.session.userid
+    res.locals.userId = req.session.userid;
     res.locals.firstname = req.session.firstName;
     res.locals.lastname = req.session.lastName;
     res.locals.logged = true;
     // console.log("locals: email: %s, id: %d, firstname: %s, lastname: %s",res.locals.email, res.locals.userId, res.locals.firstname, res.locals.lastname);
+  }
+  if(!req.session.userid){
+    res.locals.userId = -1;
   }
   if(req.session.driver){
     res.locals.driver = true;

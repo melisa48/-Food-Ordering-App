@@ -19,7 +19,7 @@ router.post('/restaurantlogin',(req, res, next) => {
     if(err) throw err;
 
     if(result.length == 1 && bcrypt.compareSync(password, result[0].password)){
-        userid = result[0].userID;
+        userid = result[0].restaurantID;
         firstname = result[0].firstname;
         lastname = result[0].lastname;
         //login user
@@ -30,7 +30,7 @@ router.post('/restaurantlogin',(req, res, next) => {
         res.locals.logged = true;
         res.locals.restaurantOwner = true;
         req.session.restaurantOwner = "restaurant Owner logged in";
-        // console.log("fn: %s",  req.session.firstName);
+        // console.log("user id: %s",  req.session.userid);
         res.render('index', {email : req.session.email});
       }else{
         res.render('login/restaurantLogin', { message: "Invalid login", error:true });

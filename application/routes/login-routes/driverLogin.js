@@ -20,7 +20,7 @@ router.post('/driverlogin',(req, res, next) => {
     if(err) throw err;
 
     if(result.length == 1 && bcrypt.compareSync(password, result[0].password)){
-        userid = result[0].userID;
+        userid = result[0].driverID;
         firstname = result[0].firstname;
         lastname = result[0].lastname;
         //login user
