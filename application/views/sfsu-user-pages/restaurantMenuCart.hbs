@@ -8,23 +8,24 @@
 </head>
 <body>
     <div class = "center">
-        <h1 class="rest-name">{{restaurant_name}}</h1>
+        <h1 class="rest-name">{{title}}</h1>
         <div class="box">
             <div class="wrapper">
                 <div class = "wrapper2">
+                    {{#each menu}}
                     <div class = "menu-box">
                         <image src="/images/uploads/tastypot.jpg" width="300" height="300"></image>
                         <hr>
-                        <h3>Hot Pot</h3>
+                        <h3>{{name}}</h3>
                         <hr>
-                        <p>Description: Hot pot is a flavorful broth traditionally served inside
-                        a large metal pot. The broth is brought to a boil and left simmering for the duration of the meal.</p>
+                        <p>{{description}}</p>
                         <hr>
-                        <h5>$25</h5>
+                        <h5>{{price}}</h5>
                         <button class="button">add to cart</button>
                     </div>
+                    {{/each}}
                     
-                    <div class = "menu-box">
+                    {{!-- <div class = "menu-box">
                         <image src="/images/hotpot.png" width="300" height="300"></image>
                         <hr>
                         <h3>Hot Pot</h3>
@@ -56,7 +57,7 @@
                         <hr>
                         <h5>$25</h5>
                         <button class="button">add to cart</button>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="cart"> 
                     <h3>Cart</h3>
