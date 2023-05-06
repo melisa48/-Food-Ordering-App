@@ -25,7 +25,6 @@ router.get('/',function(req, res, next) {
   res.render('registration/restaurantApplication', {title: 'Restaurant Application'});
 });
 router.post('/application', uploader.single("restaurant-image"),function(req, res, next) {
-  console.log(req);
   let restaurantName = req.body.restaurantName;
   let foodCategory = req.body.category;
   let deliveryTime = req.body.deliveryTime;
@@ -33,13 +32,24 @@ router.post('/application', uploader.single("restaurant-image"),function(req, re
   let address = req.body.address;
   let menu = req.body.menu;
   let currentOwner = res.locals.userId;
-  var sql = "INSERT restaurant_name, category, description, address, restaurantOwner FROM restaurant VALUES(?,?,?,?,?);";
-  // console.log(req.body);
-  // db.query(sql, [restaurantName, foodCategory, description, address, currentOwner], function(err, result, fields){
-    // let restaurantID = result[0].restaurant_id;
-    // var menuQuery = "INSERT name, description, price, restaurant FROM menu VALUES (?,?,?,?);";
-    // db.query(menuQuery, [])
-  // })
+  var restaurantcategoryID;
+  var restaurantImagePath = "/images/uploads/" + req.file.filename;
+  // console.log(req.file.path);
+  //TODO: throw an error if there is duplicate name
+  //Joining the tables
+  var categoryIDQuery = "SELECT categories.categoryID FROM restaurant JOIN categories ON restaurant.category = categories.categoryName WHERE restaurant.category = ?;";
+  //First outer query call is for getting the category id foreign key
+  db.query(categoryIDQuery,[foodCategory], function(err, result, fields){
+    if(err) throw err;
+    restaurantcategoryID = result[0].categoryID;
+    //Second query call is for inserting the restaurant application into the restaurant table
+    var sql = "INSERT INTO restaurant(restaurant_name, category, description, images, categoryID, address, restaurantOwner) VALUES(?,?,?,?,?,?,?);";
+    db.query(sql, [restaurantName, foodCategory, description, restaurantImagePath, restaurantcategoryID, address, currentOwner], function(err, secondresult, fields){
+      if(err) throw err;
+      let restaurantID = secondresult.insertId;
+    });
+  });
+
   res.render('restaurant-pages/myRestaurants', {
   //   title: 'Restaurant Application',
   //   restaurantName,
