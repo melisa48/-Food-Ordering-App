@@ -38,21 +38,12 @@
                 <input type="checkbox" name="payment-checkbox" required=""/>
                 &ensp;Get Paid with Gatorcard &nbsp;
             </label> <br>
-
             
             <label  style="display: flex; align-items: center;">
                 <input type="checkbox" name="terms-checkbox" required=""/>
                 &ensp;By checking this you agree to the Terms and Conditions
                 {{!-- &ensp;By checking this you agree to the&nbsp;<a href="1232arandomlink.com">Terms and Conditions</a> --}}
             </label><br>
-
-            <div>
-              <select id="registration-dropdown">
-                <option value="driver_registration">Driver Registration</option>
-                <option value="driver_login">Driver Login</option>
-                <option value="driver_pickup_jobs">Driver Pick-Up Jobs</option>
-              </select>
-            </div>
 
             <button class="submit-button" type="submit">Submit</button>   
         </form>
@@ -68,8 +59,6 @@
                 submitButton.disabled = !checkboxes[0].checked || !checkboxes[1].checked;
             });
         });
-         // redirect based on dropdown selection
-        const dropdown = document.querySelector('#registration-dropdown');
     </div>
  </script>
 </body>
