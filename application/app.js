@@ -15,6 +15,11 @@ hbs.registerHelper('categoryFunction', function(category, setCategory) {
   return category == setCategory;
 });
 
+//helper function used to determine if a restaurant is pending
+// hbs.registerHelper('pendingRestaurant', function(item, options){
+//   if(typeof item == )
+// });
+
 // home
 var indexRouter = require('./routes/index');
 // about-me pages
