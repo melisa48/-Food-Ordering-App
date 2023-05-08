@@ -9,19 +9,11 @@ router.get('/', function(req, res, next) {
   }else{
     //Getting all the restaurants from this owner
     let currentOwner = res.locals.userId;
-    // var sql = "SELECT restaurant_name, description, images, approved FROM restaurant WHERE restaurantOwner = ?;";
-    // db.query(sql, [currentOwner], function(err, result, fields){
-    //   if(err) throw err;
-    //   // console.log(restaurant_name);
-    //   restaurantResults = result;
-      
-    //   res.render('restaurant-pages/myRestaurants', {restaurantName : restaurantResults});
-    // });
     var statusSQL = "SELECT restaurant_name, description, images, restaurantStatus.status FROM restaurant JOIN restaurantStatus ON restaurant.approved = restaurantStatus.approvedID WHERE restaurant.restaurantOwner = ?;";
     db.query(statusSQL, [currentOwner], function(err, result, fields){
       if(err) throw err;
       restaurantResults = result;
-      console.log(result);
+      // console.log(result);
       res.render('restaurant-pages/myRestaurants', {restaurantName : restaurantResults});
    });
   }
