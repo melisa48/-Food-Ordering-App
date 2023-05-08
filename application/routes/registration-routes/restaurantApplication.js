@@ -57,21 +57,18 @@ router.post('/application', uploader.single("restaurant-image"), function(req, r
         // let restaurantID = secondresult.insertId;
         //insert into menu table
 
-        //redirecting to the pending pages
+        //redirecting to the pending pages including the submitted restaurant
+        var statusSQL = "SELECT * FROM restaurant JOIN restaurantStatus ON restaurant.approved = restaurantStatus.approvedID WHERE restaurant.restaurantOwner = ?;";
+        db.query(statusSQL, [currentOwner], function(err, result, fields){
+          if(err) throw err;
+          restaurantResults = result;
+          // console.log(result);  
+          res.render('restaurant-pages/myRestaurants', {restaurantName : restaurantResults});
+        });
       });
-    // console.log(result);
     });
   });
 
-  //Not working, I think its because the async call for the geocoding causes it to be stored after
-  // Getting all the restaurants from this owner
-  var statusSQL = "SELECT * FROM restaurant JOIN restaurantStatus ON restaurant.approved = restaurantStatus.approvedID WHERE restaurant.restaurantOwner = ?;";
-  db.query(statusSQL, [currentOwner], function(err, result, fields){
-    if(err) throw err;
-    restaurantResults = result;
-    console.log(result);  
-    res.render('restaurant-pages/myRestaurants', {restaurantName : restaurantResults});
-  });
 });
 
 //From: https://stackoverflow.com/questions/49634012/return-result-of-https-get-in-js 
