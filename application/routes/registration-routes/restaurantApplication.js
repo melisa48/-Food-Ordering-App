@@ -29,17 +29,68 @@ router.get('/',function(req, res, next) {
     res.render('registration/restaurantApplication', {title: 'Restaurant Application'});
   }
 });
-router.post('/application', uploader.single("restaurant-image"), function(req, res, next) {
+
+
+router.post('/application', uploader.any(),function(req, res, next) {
   let restaurantName = req.body.restaurantName;
   let foodCategory = req.body.category;
   let deliveryTime = req.body.deliveryTime;
   let description = req.body.description;
-  let address = req.body.address;
-  let geocoding = "https://geocode.maps.co/search?q="+address;
-  
+  var address = req.body.address;
+  console.log(address);
+  var geocodeAddress = address.replace(/ |,/g, "+");
+  geocodeAddress = geocodeAddress + "+US";
+  // console.log(geocodeAddress);
+  let geocoding = "https://geocode.maps.co/search?q="+geocodeAddress;
+  let numMenu = Object.keys(req.body.menu).length;
+  // console.log(numMenu);
   let currentOwner = res.locals.userId;
   var restaurantcategoryID;
-  var restaurantImagePath = "/images/uploads/" + req.file.filename;
+
+  //Getting the image path if the user uploaded a restaurant image
+  var restaurantImageName;
+  for(var i = 0; i < req.files.length; i++){
+    if(req.files[i].fieldname == "restaurant-image"){
+      restaurantImageName = req.files[i].filename;
+      // console.log(req.files[i].originalname);
+      break;
+    }
+  }
+  var restaurantImagePath;
+  if(restaurantImageName){
+    restaurantImagePath = "/images/uploads/" + restaurantImageName;
+  }else{
+    restaurantImagePath = "";
+  }
+  // console.log("Restaurant Image: %s", restaurantImagePath);
+
+  var menu =  req.body.menu;
+  var menuImageExist = false;
+  var menuImages = [];
+  var uploadedImages = req.files.length;
+  for (var i = 0; i < numMenu; i++) {
+    // console.log("Menu image at %d:", (i));
+    var imageName = "menu["+i+"][image]";
+    for(var j = 0; j < uploadedImages; j++){
+      if(req.files[j].fieldname == imageName){
+        menuImages.push("/images/uploads/"+req.files[j].filename);
+        menuImageExist = true;
+        break;
+      }
+    }
+    if(menuImageExist == false){
+      menuImages.push("");
+    }
+    menuImageExist = false;
+  }
+  // console.log(menuImages);
+
+  //Pushing the menu items into an array
+  var menuArray = [];
+
+ 
+  // console.log(menuArray);
+
   // TODO: throw an error if there is duplicate name
   // Joining the tables
   var categoryIDQuery = "SELECT categories.categoryID FROM restaurant JOIN categories ON restaurant.category = categories.categoryName WHERE restaurant.category = ?;";
@@ -54,9 +105,22 @@ router.post('/application', uploader.single("restaurant-image"), function(req, r
       
       db.query(sql, [restaurantName, foodCategory, description,restaurantImagePath, result[0].lat, result[0].lon, restaurantcategoryID, address, currentOwner], function(err, secondresult, fields){
         if(err) throw err;
-        // let restaurantID = secondresult.insertId;
+        let restaurantID = secondresult.insertId;
+        for(var i = 0; i < numMenu; i++){
+          var menuItems = [];
+          menuItems.push(req.body.menu[i].name);
+          menuItems.push(req.body.menu[i].description);
+          menuItems.push(menuImages[i]);
+          menuItems.push(req.body.menu[i].price);
+          menuItems.push(restaurantID);
+          menuArray.push(menuItems);
+        }
         //insert into menu table
-
+        var insertMenuItems = "INSERT INTO menu(name, description, images, price, restaurant) VALUES ?;";
+        db.query(insertMenuItems, [menuArray], function(err, result, fields){
+          if(err) throw err;
+        })
+       
         //redirecting to the pending pages including the submitted restaurant
         var statusSQL = "SELECT * FROM restaurant JOIN restaurantStatus ON restaurant.approved = restaurantStatus.approvedID WHERE restaurant.restaurantOwner = ?;";
         db.query(statusSQL, [currentOwner], function(err, result, fields){
@@ -68,7 +132,8 @@ router.post('/application', uploader.single("restaurant-image"), function(req, r
       });
     });
   });
-
+  //Temp
+  // res.redirect('/');
 });
 
 //From: https://stackoverflow.com/questions/49634012/return-result-of-https-get-in-js 
