@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../../conf/database");
-var bcrypt = require('bcrypt');
+var encryption = require("../encryption");
+var bcrypt = require('bcryptjs');
 
 router.get('/', function(req, res, next) {
   res.render('registration/sfsuRegistration', {title: 'SFSU Registration'});
@@ -28,11 +29,12 @@ router.post('/sfsuRegister',(req, res, next) => {
             console.log("Email is already registered.");
           }else{
             //Hashing the password before storing into the database
-            var hashpassword = bcrypt.hashSync(password,10);
-            console.log(hashpassword);
+            // const hashedpassword = encryption.encryptData(password);
+            var hashedpassword = bcrypt.hashSync(password, 8);
+
             //Inserting the values from the form into the database
             let baseSQL = "INSERT INTO registeredUsers(firstname, lastname, password, verifiedEmail) VALUES (?,?,?,?)";
-            db.query(baseSQL, [firstname, lastname, hashpassword, email], function(err, result, fields){
+            db.query(baseSQL, [firstname, lastname, hashedpassword, email], function(err, result, fields){
               if(err) throw err;
               console.log("Supposed to be redirecting to login\n");
               res.redirect('/sfsuLogin');

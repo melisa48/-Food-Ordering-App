@@ -15,7 +15,7 @@ searchModule.executeSearch = function(req, res, next){
     var searchTerm = req.query.search;
     var category = req.query.category;
 
-    let query = "SELECT * FROM team7.restaurant";
+    let query = "SELECT * FROM team7.restaurant WHERE approved = (1)";
 
     // show all restaurants
     if(category =='all' && searchTerm ==''){
@@ -24,18 +24,18 @@ searchModule.executeSearch = function(req, res, next){
     // returns all restaurants that have the searchTerm either category/name/description
     else if(category == 'all' && searchTerm !=""){
         console.log("1");
-        query = "SELECT * FROM team7.restaurant WHERE restaurant_name LIKE '%" + searchTerm + "%'\
+        query = "SELECT * FROM team7.restaurant WHERE approved = (1) AND restaurant_name LIKE '%" + searchTerm + "%'\
         OR  category ='"+  category+"' OR description LIKE'%" + searchTerm + "%' OR category = '" + searchTerm +"';";
     }
     //returns restaurants in the chosen category and have the searchTerm in either name/description
     else if(category != '' && searchTerm !=''){
         query = "SELECT * FROM team7.restaurant WHERE category ='"+  category+"' AND (restaurant_name LIKE '%" + searchTerm + "%'\
-        OR description LIKE'%" + searchTerm + "%');";
+        OR description LIKE'%" + searchTerm + "%') AND approved = (1);";
         console.log("situation 2");
     }
     // returns all restaurants in the chosen category
     else if(category != '' && searchTerm == '' ){
-        query = "SELECT * FROM team7.restaurant WHERE category ='" + category + "';";
+        query = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = (1);";
         console.log("situation 3");
     }
 
