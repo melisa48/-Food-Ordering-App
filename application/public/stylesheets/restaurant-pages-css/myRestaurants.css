@@ -43,8 +43,8 @@ or waiting for approval */
 }
 
 .restaurant-image{
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
@@ -52,7 +52,7 @@ or waiting for approval */
 .restaurant-status{
     background-color: #ecf0f1;
     width: 400px;
-    min-height: 150px;
+    height: 200px;
     padding: 10px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -73,6 +73,13 @@ or waiting for approval */
 
 .register-btn:hover {
     background-color: #2980b9;
+}
+
+.update-btn{
+    width: 100%;
+    border: none;
+    background-color: orange;
+    color: white;
 }
 
 @media(max-width:730px){
