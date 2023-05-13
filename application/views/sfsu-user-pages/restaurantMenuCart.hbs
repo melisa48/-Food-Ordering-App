@@ -61,7 +61,7 @@
                 <div class="cart"> 
                     <h3>Cart</h3>
                     <hr>
-                    <div class = "cart-scroll">
+                    <div class = "cart-scroll" id = "cart-scroll">
                         <div class ="cart-container">
                             <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
                             <h6>Hot Pot</h6>
@@ -113,3 +113,22 @@
         </div>
     </div> 
 </body>
+
+<script>
+    document.querySelectorAll('[name="add"]').forEach(addButton => {
+        addButton.addEventListener('click', () => {
+            let div = document.createElement('div');
+            div.innerHTML = `
+                <div class ="cart-container">
+                        <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
+                        <h6>Hot Pot</h6>
+                        <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
+                        <h6>$25</h6>
+                    </div>
+                    <br>
+            `;
+            document.getElementById('cart-scroll').appendChild(div);
+        });
+    });
+
+</script>
