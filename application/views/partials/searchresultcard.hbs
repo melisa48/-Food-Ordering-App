@@ -1,7 +1,11 @@
 {{!-- Partial that will display each restaurant that matches the user's searchResults --}}
 {{!-- Author: Emily --}}
-<a id = "restaurant-card" href="/restaurantMenuCart">
+{{!-- <a id = "restaurant-card" href="/restaurantMenuCart" name="{{restaurant_name}}" class="{{restaurant_id}}"> --}}
+<form action="/restaurantMenuCart" id="restaurant-card">
     {{!-- <image style="height: 200px; width: 200px" src="/images/uploads/olivegarden.jpg"></image> --}}
+    {{!-- <input type="submit" name="{{id}}"> --}}
+    <button name="restaurant" value="{{restaurant_name}}">
+
     <image class="restaurant-image" src={{images}}></image>
     <br>
     <h4>{{restaurant_name}}</h4>
@@ -11,8 +15,6 @@
         <h6>Delivery Time: </h6>
         <h6>Description: {{description}}</h6>
     </div>
-
-</a>
-
-
-
+    </button>
+</form>
+{{!-- </a> --}}

@@ -8,7 +8,15 @@
 </head>
 <body>
     <div class="wrapper">
-        <form class="form-signin">
+        {{#if error}}
+            <div class="error-message">
+                <h5 class="message">
+                    {{message}}
+                </h5>
+            </div>
+        {{/if}}
+        <form class="form-signin" method="POST" action="/driverLogin/driverlogin"
+        enctype="application/x-www-form-urlencoded">
             <h2 class="form-title">Driver Login</h2>
             <h6>Email</h3>
             <input type="text" class="form-control" name="email"  required="" autofocus="" />
@@ -16,7 +24,7 @@
             <input type="password" class="form-control" name="password" required=""/>      
             <button class="submit-button" type="submit">Submit</button>   
         </form>
-        <a href ="/driverRegistration" class="relocation-link">Dont have an accout? Register here &rarr;</a>
-    </div>
+        <a href ="/driverRegistration" class="relocation-link">Dont have an account? Register here &rarr;</a>
     
+    </div>
 </body>

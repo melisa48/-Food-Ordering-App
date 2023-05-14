@@ -6,6 +6,20 @@
   <div class="navbar-left">
     
     <a class="navbar-links" href="/">Home</a>
+    {{#if logged}} 
+      {{#if driver}}
+        <div class="navbar-right">
+          <a class="nav-link navbar-links" href="/driverOrderList">Order List</a>
+          <a class="nav-link navbar-links" href="/driverDeliveryMap">Delivery Map</a>
+        </div>    
+      {{/if}}
+      {{#if restaurantOwner}}
+      <div class="navbar-right">
+          <a class="nav-link navbar-links" href="/restaurantApplication" style="text-align:center">Restaurant Application</a>
+          <a class="nav-link navbar-links" href="/myRestaurants" style="text-align:center">My Restaurants</a>
+      </div>
+      {{/if}}
+    {{else}}
     {{!-- driver dropdown --}}
     <div class="dropdown navbar-dropdown">
       <a class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
@@ -30,7 +44,7 @@
         </ul>
       </div>
     {{!-- restaurants dropdown end --}}
-
+    {{/if}}
     <a class="navbar-links" href="/about">About Us</a>
   </div>
 
@@ -46,7 +60,7 @@
     
   </form>
   {{#if logged}}
-  <div  class="navbar-right" styles="display:flex">
+  <div class="navbar-right" styles="display:flex">
       <p class="dropdown-item"style="color:White; margin: 0 10px 0 0;">Welcome: {{email}}</p>
       <form method="post" action="/sfsuLogin/logout" id="logout-form">
         <input type="hidden" name="extra_submit_param" value="extra_submit_value">
@@ -59,14 +73,13 @@
     <div class="navbar-right">
       <a class="nav-link navbar-links" href="/sfsuRegistration">Register</a>
       <a class="nav-link navbar-links" href="/sfsuLogin">Login</a>
-      
-    {{/if}}
+    </div>
 
+  {{/if}}
     {{!-- login dropdown end --}}
     
     {{!-- shopping cart --}}
     {{!-- <a class="navbar-links"><i class="bi bi-cart2"></i></a> --}}
     
       
-  </div>
 </nav>

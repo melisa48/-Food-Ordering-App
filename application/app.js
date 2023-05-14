@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
 var session = require('express-session');
+var bodyParser = require('body-parser');
+var multer = require('multer');
 
 const partials = path.join(__dirname, "views/partials");
 hbs.registerPartials(partials);
@@ -12,6 +14,7 @@ hbs.registerPartials(partials);
 hbs.registerHelper('categoryFunction', function(category, setCategory) {
   return category == setCategory;
 });
+
 
 // home
 var indexRouter = require('./routes/index');
@@ -48,20 +51,37 @@ var checkOutRouter = require('./routes/sfsu-user-routes/checkOut');
 var app = express();
 
 app.use(session({
-  secret : 'secretkey',
+  secret : 'team7',
   resave : false,
   saveUninitialized : true
 }));
 
 app.use((req, res, next)=>{
   if(req.session.email){
-    // console.log(req.session.email);
+    // res.locals.loggedinUser = req.session;
+    // console.log(res.locals.loggedinUser);
+    res.locals.email = req.session.email;
+    res.locals.userId = req.session.userid;
+    res.locals.firstname = req.session.firstName;
+    res.locals.lastname = req.session.lastName;
     res.locals.logged = true;
-    res.locals.user = req.session.email;
-    console.log("locals: %s",res.locals.user);
+    // console.log("locals: email: %s, id: %d, firstname: %s, lastname: %s",res.locals.email, res.locals.userId, res.locals.firstname, res.locals.lastname);
+  }
+  if(!req.session.userid){
+    res.locals.userId = -1;
+  }
+  if(req.session.driver){
+    res.locals.driver = true;
+  }
+  if(req.session.restaurantOwner){
+    res.locals.restaurantOwner = true;
   }
   next();
 })
+
+
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -63,3 +63,16 @@ hr {
 
 	}
 }
+
+.error-message{
+	background-color: #f0c7c7;
+	width:500px;
+	padding: 15px 40px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	border: 1px solid red;
+}
+.message{
+	color: red;
+	text-align: center;
+}

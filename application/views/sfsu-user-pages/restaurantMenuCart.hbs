@@ -8,105 +8,32 @@
 </head>
 <body>
     <div class = "center">
-        <h1 class="rest-name">Hot Pot Palace</h1>
+        <h1 class="rest-name">{{title}}</h1>
         <div class="box">
             <div class="wrapper">
                 <div class = "wrapper2">
+                    {{#each menu}}
                     <div class = "menu-box">
-                        <image src="/images/uploads/tastypot.jpg" width="300" height="300"></image>
+                        <image src={{images}} width="300" height="300"></image>
                         <hr>
-                        <h3>Hot Pot</h3>
+                        <h3>{{name}}</h3>
                         <hr>
-                        <p>Description: Hot pot is a flavorful broth traditionally served inside
-                        a large metal pot. The broth is brought to a boil and left simmering for the duration of the meal.</p>
+                        <p>{{description}}</p>
                         <hr>
-                        <h5>$25</h5>
-                        <button class="button" name = "add">add to cart</button>
+                        <h5>{{price}}</h5>
+                        <button class="button" name="add" id={{menuID}}>add to cart</button>
                     </div>
-                    
-                    <div class = "menu-box">
-                        <image src="/images/hotpot.png" width="300" height="300"></image>
-                        <hr>
-                        <h3>Hot Pot</h3>
-                        <hr>
-                        <p>Description: Hot pot is a flavorful broth traditionally served inside
-                        a large metal pot. The broth is brought to a boil and left simmering for the duration of the meal.</p>
-                        <hr>
-                        <h5>$25</h5>
-                        <button class="button" name = "add">add to cart</button>
-                    </div>
-                    <div class = "menu-box">
-                        <image src="/images/hotpot.png" width="300" height="300"></image>
-                        <hr>
-                        <h3>Hot Pot</h3>
-                        <hr>
-                        <p>Description: Hot pot is a flavorful broth traditionally served inside
-                        a large metal pot. The broth is brought to a boil and left simmering for the duration of the meal.</p>
-                        <hr>
-                        <h5>$25</h5>
-                        <button class="button" name = "add">add to cart</button>
-                    </div>
-                    <div class = "menu-box">
-                        <image src="/images/hotpot.png" width="300" height="300"></image>
-                        <hr>
-                        <h3>Hot Pot</h3>
-                        <hr>
-                        <p>Description: Hot pot is a flavorful broth traditionally served inside
-                        a large metal pot. The broth is brought to a boil and left simmering for the duration of the meal.</p>
-                        <hr>
-                        <h5>$25</h5>
-                        <button class="button" name = "add">add to cart</button>
-                    </div>
+                    {{/each}}
                 </div>
                 <div class="cart"> 
                     <h3>Cart</h3>
                     <hr>
                     <div class = "cart-scroll" id = "cart-scroll">
-                        <div class ="cart-container">
-                            <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
-                            <h6>Hot Pot</h6>
-                            <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
-                            <h6>$25</h6>
-                        </div>
-                        <br>
-                        <div class ="cart-container">
-                            <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
-                            <h6>Hot Pot</h6>
-                            <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
-                            <h6>$25</h6>
-                        </div>
-                        <br>
-                        <div class ="cart-container">
-                            <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
-                            <h6>Hot Pot</h6>
-                            <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
-                            <h6>$25</h6>
-                        </div>
-                        <br>
-                        <div class ="cart-container">
-                            <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
-                            <h6>Hot Pot</h6>
-                            <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
-                            <h6>$25</h6>
-                        </div>
-                        <br>
-                        <div class ="cart-container">
-                            <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
-                            <h6>Hot Pot</h6>
-                            <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
-                            <h6>$25</h6>
-                        </div>
-                        <br>
-                        <div class ="cart-container">
-                            <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
-                            <h6>Hot Pot</h6>
-                            <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
-                            <h6>$25</h6>
-                        </div>
-                        <br>
+                        
                     </div>
                     <hr>
-                    <h4>Total: $50</h4>
+                    <h4 style="display:inline">Total: </h4><h4 style="display:inline" id="totalPrice">0.00</h4>
+                    <br>
                     <a  href ="/checkOut" class="checkOut-button">Check Out</a>
                 </div>
             </div>
@@ -115,20 +42,37 @@
 </body>
 
 <script>
+    var test = [];
+    var total = 0;
     document.querySelectorAll('[name="add"]').forEach(addButton => {
         addButton.addEventListener('click', () => {
+            var buttonID = event.srcElement.parentNode.firstElementChild;
+            var image = buttonID.src;
+            test.push(image);
+            var nameElement = buttonID.nextElementSibling.nextElementSibling;
+            var name = nameElement.innerText;
+            test.push(name);
+            var price = nameElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText;
+            test.push(price);
+            total += parseFloat(price);
             let div = document.createElement('div');
             div.innerHTML = `
                 <div class ="cart-container">
-                        <image class="cart-photo" src="/images/hotpot.png" width="50" height="50"></image>
-                        <h6>Hot Pot</h6>
+                        <image class="cart-photo" src="`+ image + `" width="50" height="50"></image>
+                        <h6>` + name + `</h6>
                         <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
-                        <h6>$25</h6>
-                    </div>
-                    <br>
+                        <h6 class="itemPrice">$` + price +`</h6>
+                </div>
+                <br>
             `;
             document.getElementById('cart-scroll').appendChild(div);
+            document.getElementById('totalPrice').innerText = formatter.format(total);
         });
     });
 
+    //Source used: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
+   const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
 </script>

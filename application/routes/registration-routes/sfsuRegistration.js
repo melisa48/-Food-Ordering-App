@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../../conf/database");
-var encryption = require("../encryption");
 var bcrypt = require('bcryptjs');
 
 router.get('/', function(req, res, next) {
@@ -36,20 +35,20 @@ router.post('/sfsuRegister',(req, res, next) => {
             let baseSQL = "INSERT INTO registeredUsers(firstname, lastname, password, verifiedEmail) VALUES (?,?,?,?)";
             db.query(baseSQL, [firstname, lastname, hashedpassword, email], function(err, result, fields){
               if(err) throw err;
-              console.log("Supposed to be redirecting to login\n");
+              // console.log("Supposed to be redirecting to login\n");
               res.redirect('/sfsuLogin');
             })
           }
           
       })
     }else{
-      console.log("Not a valid email address.\n");
-      res.redirect('/sfsuRegistration');
+      // console.log("Not a valid email address.\n");
+      res.render('registration/sfsuRegistration', { message: "Not a valid email address", error: true});
     }
     
   }else{
     console.log("Passwords do not match\n");
-    res.redirect('/sfsuRegistration');
+    res.render('registration/sfsuRegistration', { message: "Passwords does not match", error: true});
   }
 
 });

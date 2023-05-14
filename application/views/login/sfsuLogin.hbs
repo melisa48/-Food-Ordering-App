@@ -8,6 +8,13 @@
 </head>
 <body>
     <div class="wrapper">
+        {{#if error}}
+            <div class="error-message">
+                <h5 class="message">
+                    {{message}}
+                </h5>
+            </div>
+        {{/if}}
         <form class="form-signin" method="POST" action="/sfsuLogin/sfsulogin"
         enctype="application/x-www-form-urlencoded">
             <h2 class="form-title">SFSU User Login</h2>
@@ -18,7 +25,7 @@
 
             <button class="submit-button" type="submit">Submit</button>   
         </form>
-        <a href ="/sfsuRegistration" class="relocation-link">Dont have an accout? Register here &rarr;</a>
+        <a href ="/sfsuRegistration" class="relocation-link">Dont have an account? Register here &rarr;</a>
     </div>
     
 </body>

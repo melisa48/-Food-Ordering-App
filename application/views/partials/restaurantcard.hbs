@@ -1,14 +1,10 @@
 {{!-- Partial that display a restuarant a restaurant owner has applied for --}}
 {{!-- Author(s): Melisa and Emily --}}
 <div class="restaurant">
-    <image class="restaurant-image" src="/images/uploads/dominos.jpg"></image>
+    <image class="restaurant-image" src="{{images}}"></image>
     <div class="restaurant-status">
-        <h3>Olive Garden</h3>
-        Description: We are a fast food restaurant<br>
-        Address: 123 Main Street<br>
-        Phone: 555-555-5555<br>
-        <p style="font-size:20px;">Status: Pending</p>
-        <button class="update-btn" onclick="location.href='/updateMenu/{{restaurantId}}'">Update Menu</button>
-        
+        <h3>{{restaurant_name}}</h3>
+        Description:{{description}}<br>
+        <p style="font-size:20px;">Status: {{status}}</p>
     </div>
 </div>

@@ -8,9 +8,17 @@
    
 </head>
 <body>
-
+  <div class="wrapper">
+        {{#if error}}
+            <div class="error-message">
+                <h5 class="message">
+                    {{message}}
+                </h5>
+            </div>
+        {{/if}}
     <div class="wrapper">
-        <form class="form-register">
+        <form class="form-register" method="POST" action="/restaurantOwnerRegistration/restaurantOwnerRegister"
+        enctype="application/x-www-form-urlencoded">
             <h2 class="form-title">Restaurant Owner Registration</h2>
             <h6>First Name <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
             <input type="text" class="form-control" name="firstname"  required="" autofocus="" />
@@ -21,7 +29,7 @@
             <h6>Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
             <input type="password" class="form-control" name="password" required=""/>      
             <h6>Confirm Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
-            <input type="password" class="form-control" name="password" required=""/> 
+            <input type="password" class="form-control" name="confirmpassword" required=""/> 
 
 
             
