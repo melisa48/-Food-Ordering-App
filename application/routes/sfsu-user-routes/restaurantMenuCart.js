@@ -11,12 +11,11 @@ router.get('/', function(req, res, next) {
   // res.send('respond with a resource');
   let restaurantIdentifier = req.query.restaurant;
   // console.log("Restaurant name: %s", restaurantName);
-  var sql = "SELECT * FROM restaurant WHERE restaurant_name = ?;";
+  var sql = "SELECT * FROM restaurant WHERE restaurant_id = ?;";
   db.query(sql, [restaurantIdentifier], function(err, result, fields){
-    let restaurantID = result[0].restaurant_id;
     let restaurantName = result[0].restaurant_name;
     var menuQuery = "SELECT * FROM menu WHERE restaurant = ?";
-    db.query(menuQuery, [restaurantID], function(err, result, fields){
+    db.query(menuQuery, [restaurantIdentifier], function(err, result, fields){
       let menuResults = result;
       res.render('sfsu-user-pages/restaurantMenuCart', {title: restaurantName, menu: menuResults});
     })
