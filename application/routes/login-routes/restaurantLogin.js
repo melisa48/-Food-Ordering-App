@@ -29,6 +29,7 @@ router.post('/restaurantlogin',(req, res, next) => {
         req.session.lastName = lastname;
         res.locals.logged = true;
         res.locals.restaurantOwner = true;
+        res.locals.driver = false;
         req.session.restaurantOwner = "restaurant Owner logged in";
         // console.log("user id: %s",  req.session.userid);
         res.render('index', {email : req.session.email});

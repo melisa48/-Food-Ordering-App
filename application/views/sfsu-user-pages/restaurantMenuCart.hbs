@@ -20,53 +20,58 @@
                         <hr>
                         <p>{{description}}</p>
                         <hr>
-                        <h5>{{price}}</h5>
+                        <h5 style="display:inline">$</h5><h5 style="display:inline">{{price}}</h5>
+                        <br>
                         <button class="button" name="add" id={{menuID}}>add to cart</button>
                     </div>
                     {{/each}}
                 </div>
-                <div class="cart"> 
-                    <h3>Cart</h3>
-                    <hr>
-                    <div class = "cart-scroll" id = "cart-scroll">
-                        
+                <form action="restaurantMenuCart/addToCart" method="POST">
+
+                    <div class="cart"> 
+                        <h3>Cart</h3>
+                        <hr>
+                        <div class = "cart-scroll" id = "cart-scroll">
+                            
+                        </div>
+                        <hr>
+                        <h4 style="display:inline">Total: </h4><h4 style="display:inline" id="totalPrice">0.00</h4>
+                        <br>
+                        <button type="submit" name="checkout" class="checkOut-button">Check Out</button>
                     </div>
-                    <hr>
-                    <h4 style="display:inline">Total: </h4><h4 style="display:inline" id="totalPrice">0.00</h4>
-                    <br>
-                    <a  href ="/checkOut" class="checkOut-button">Check Out</a>
-                </div>
+                </form>
             </div>
         </div>
     </div> 
 </body>
 
 <script>
-    var test = [];
     var total = 0;
+    let cartItems = 0;
+
     document.querySelectorAll('[name="add"]').forEach(addButton => {
         addButton.addEventListener('click', () => {
+            var menuId = event.srcElement.id;
             var buttonID = event.srcElement.parentNode.firstElementChild;
             var image = buttonID.src;
-            test.push(image);
             var nameElement = buttonID.nextElementSibling.nextElementSibling;
             var name = nameElement.innerText;
-            test.push(name);
-            var price = nameElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText;
-            test.push(price);
+            var price = nameElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText;
             total += parseFloat(price);
             let div = document.createElement('div');
             div.innerHTML = `
                 <div class ="cart-container">
-                        <image class="cart-photo" src="`+ image + `" width="50" height="50"></image>
-                        <h6>` + name + `</h6>
-                        <h6>Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5"></h6>
-                        <h6 class="itemPrice">$` + price +`</h6>
+                        <image class="cart-photo" name="cart[${cartItems}][image]" src="`+ image + `" width="50" height="50"></image>
+                        <h6 name="cart[${cartItems}][menuName]">` + name + `</h6>
+                        <h6>Qtn:<input type="number" id="quantity" name="cart[${cartItems}][quantity]" value="1" min = "1" max="5"></h6>
+                        <h6 class="itemPrice" name="cart[${cartItems}][price]">$` + price +`</h6>
+                        <input type="hidden" name="cart[${cartItems}][menuid]" value="${menuId}"/>
                 </div>
                 <br>
             `;
             document.getElementById('cart-scroll').appendChild(div);
             document.getElementById('totalPrice').innerText = formatter.format(total);
+            cartItems++;
         });
     });
 

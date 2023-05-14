@@ -31,10 +31,9 @@ to see all items in their cart before ordering --}}
         <br>
         <div id="order">
             <div class="scrollbar-wrapper">
-                {{> sfsuuserticket}}
-                {{> sfsuuserticket}}
-                {{> sfsuuserticket}}
-                {{> sfsuuserticket}}
+                {{#each usersCart}}
+                    {{> sfsuuserticket this}}
+                {{/each}}
             </div>
 
             <hr style="width:80%;">

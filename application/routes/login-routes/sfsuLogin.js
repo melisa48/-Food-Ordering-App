@@ -29,6 +29,9 @@ router.post('/sfsulogin',(req, res, next) => {
         req.session.firstName = firstname;
         req.session.lastName = lastname;
         res.locals.logged = true;
+        req.session.driver = false;
+        req.session.restaurantOwner = false;
+
         // console.log("fn: %s",  req.session.firstName);
         res.render('index', {email : req.session.email});
       }else{

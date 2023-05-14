@@ -30,6 +30,8 @@ router.post('/driverlogin',(req, res, next) => {
         req.session.lastName = lastname;
         res.locals.logged = true;
         res.locals.driver = true;
+        res.locals.restaurantOwner = false;
+
         req.session.driver = "driver logged in";
         // console.log("fn: %s",  req.session.firstName);
         res.render('index', {email : req.session.email});
