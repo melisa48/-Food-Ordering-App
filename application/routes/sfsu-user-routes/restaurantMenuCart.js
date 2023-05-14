@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   // console.log("Restaurant name: %s", restaurantName);
   var sql = "SELECT * FROM restaurant WHERE restaurant_id = ?;";
   db.query(sql, [restaurantIdentifier], function(err, result, fields){
-    let restaurantName = result[0].restaurant_name;
+    let restaurantName = result.restaurant_name;
     var menuQuery = "SELECT * FROM menu WHERE restaurant = ?";
     db.query(menuQuery, [restaurantIdentifier], function(err, result, fields){
       let menuResults = result;
