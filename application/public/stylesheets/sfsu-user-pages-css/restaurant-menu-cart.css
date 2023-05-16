@@ -67,14 +67,14 @@ H3 {
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	/* position:fixed; */
 	left: 60%;
-	max-height: 45%;
+	max-height: 500px;
 	background-color: white;
 	
 }
-.cart-scroll{
-	max-height: 60%;
-	overflow-y: auto;
-}
+.cart-scroll {
+	max-height: 300px; /* set the maximum height of the cart */
+	overflow-y: auto; /* add a vertical scrollbar when the cart exceeds its maximum height */
+  }
 .cart-container {
 	display: flex;
 	align-items: center;
@@ -102,6 +102,9 @@ H3 {
 	}
   }
 
-#quantity{
-	width:100px;
-}
+  #quantity {
+	width: 40px; /* set the width of the input element */
+	height: 20px; /* set the height of the input element */
+	font-size: 12px; /* set the font size of the input element */
+	text-align: center; /* center the text inside the input element */
+  }
