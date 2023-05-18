@@ -33,7 +33,7 @@ to see all items in their cart before ordering --}}
         <div id="order">
             <div class="scrollbar-wrapper">
                 {{#each usersCart}}
-                    {{> sfsuuserticket this}}
+                    {{> sfsuuserticket this id='{{@index}}'}}
                 {{/each}}
             </div>
 
