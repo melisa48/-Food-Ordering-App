@@ -17,7 +17,7 @@ hbs.registerHelper('categoryFunction', function(category, setCategory) {
 
 hbs.registerHelper('sumTotal', function(list){
   return list.reduce(
-    (newSum, a) => Math.round(newSum * 100)/100 + a.cartItemTotal, 0
+    (newSum, a) => Math.round((newSum + a.cartItemTotal) * 100)/100, 0
   )
 })
 

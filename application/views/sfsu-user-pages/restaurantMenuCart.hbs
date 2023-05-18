@@ -28,7 +28,7 @@
                     {{/each}}
                 </div>
                 <form action="restaurantMenuCart/addToCart" method="POST">
-
+                    <input type="hidden" id="showRestaurantID" name="restaurantid" value={{restaurantID}} />
                     <div class="cart"> 
                         <h3>Cart</h3>
                         <hr>
@@ -89,7 +89,6 @@
                         <h6 class="itemPrice">$` + price +`</h6>
                         <input type="hidden" name="cart[${cartItems}][price]" value="${price}"/>
                         <input type="hidden" name="cart[${cartItems}][menuid]" value="${menuId}"/>
-                        <input type="hidden" name="cart[${cartItems}][restaurant]" value="${restaurantID}" />
                 </div>
                 <br>
             `;
@@ -104,4 +103,5 @@
         style: 'currency',
         currency: 'USD',
     });
+    
 </script>

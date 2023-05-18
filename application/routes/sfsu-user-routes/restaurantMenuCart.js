@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
       let menuResults = result;
 
       let usersCart;
-      console.log(menuResults);
+      // console.log(menuResults);
       //getting the user's cart from this restaurant if they're logged in
       if(res.locals.logged){
         let currentUser = res.locals.userId;
@@ -27,13 +27,13 @@ router.get('/', function(req, res, next) {
         db.query(cartItems, [currentUser, restaurantIdentifier], function(err, result){
           if(err) throw err; 
           usersCart = result;
-          console.log(usersCart);
-          res.render('sfsu-user-pages/restaurantMenuCart', {title: restaurantName, menu: menuResults, userCart: usersCart});
+          // console.log(usersCart);
+          res.render('sfsu-user-pages/restaurantMenuCart', {title: restaurantName, menu: menuResults, userCart: usersCart, restaurantID : restaurantIdentifier});
 
         })
       }else{
         usersCart = "";
-        res.render('sfsu-user-pages/restaurantMenuCart', {title: restaurantName, menu: menuResults, userCart: usersCart});
+        res.render('sfsu-user-pages/restaurantMenuCart', {title: restaurantName, menu: menuResults, userCart: usersCart, restaurantID : restaurantIdentifier});
       }
     })
   });
@@ -59,9 +59,7 @@ router.post('/addToCart', function(req, res, next){
       var cartItems = [];
       let currentOwner = res.locals.userId;    
       var newItems = 0;  
-      console.log(req.body.cart);
-
-
+      // console.log(req.body.cart);
 
       for(var i = 0; i < numCartItems; i++){
         if(!req.body.cart[i].cartID){
@@ -71,8 +69,10 @@ router.post('/addToCart', function(req, res, next){
           itemInformation.push(parseInt(req.body.cart[i].quantity));
           itemTotalPrice = parseFloat(req.body.cart[i].quantity) * req.body.cart[i].price;
           itemInformation.push(itemTotalPrice);
-          itemInformation.push(parseInt(req.body.cart[i].restaurant));
-          console.log(req.body.cart[i].restaurant);
+          // itemInformation.push(parseInt(req.body.cart[i].restaurant));
+          console.log(req.body.restaurantid);
+          itemInformation.push(req.body.restaurantid);
+          // console.log(req.body.cart[i].restaurant);
           cartItems.push(itemInformation);
           newItems++;
         }else{
@@ -95,9 +95,21 @@ router.post('/addToCart', function(req, res, next){
         })
       }
 
+      //Displaying in the checkout only items from that restaurant
+      var display_cart_from_restaurant = req.body.restaurantid;
+      console.log("restaurant");
+      console.log(display_cart_from_restaurant);
+      var displayCart = "SELECT menu.name, menu.images, menu.price, cart.quantity, cart.cartItemTotal FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE cart.userCart = ? AND menu.restaurant = ?";
+      db.query(displayCart, [currentOwner, display_cart_from_restaurant], function(err, result, fields){
+        if(err) throw err;
+        cartResults = result;
+        console.log(cartResults);
+        res.render('sfsu-user-pages/checkOut', {usersCart : cartResults});
+      });
 
     } 
-    res.redirect('/checkOut');
+    // console.log(req.query.restaurant);
+    // res.redirect('/checkOut');
     
   }
 })
