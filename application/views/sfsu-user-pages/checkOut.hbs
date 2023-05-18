@@ -58,7 +58,7 @@ to see all items in their cart before ordering --}}
 
     function load_data(query = '')
     {
-        fetch('checkOut/getBuildings?search_query='+query+'').then(function(response){
+        fetch('../checkOut/getBuildings?search_query='+query+'').then(function(response){
             return response.json();
         }).then(function(responseData){
             var html = '<ul class="list-group">';
