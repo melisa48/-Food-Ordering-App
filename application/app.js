@@ -15,6 +15,11 @@ hbs.registerHelper('categoryFunction', function(category, setCategory) {
   return category == setCategory;
 });
 
+hbs.registerHelper('sumTotal', function(list){
+  return list.reduce(
+    (newSum, a) => Math.round(newSum * 100)/100 + a.cartItemTotal, 0
+  )
+})
 
 // home
 var indexRouter = require('./routes/index');

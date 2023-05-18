@@ -39,7 +39,9 @@ to see all items in their cart before ordering --}}
 
             <hr style="width:80%;">
             <h3 id="totalPrice">Total: $
-                
+                {{#sumTotal usersCart}}
+                    {{output}}
+                {{/sumTotal}}
             </h3>
         </div>
         <br>

@@ -17,7 +17,24 @@ router.get('/', function(req, res, next) {
     var menuQuery = "SELECT * FROM menu WHERE restaurant = ?";
     db.query(menuQuery, [restaurantIdentifier], function(err, result, fields){
       let menuResults = result;
-      res.render('sfsu-user-pages/restaurantMenuCart', {title: restaurantName, menu: menuResults});
+
+      let usersCart;
+      console.log(menuResults);
+      //getting the user's cart from this restaurant if they're logged in
+      if(res.locals.logged){
+        let currentUser = res.locals.userId;
+        var cartItems = "SELECT cartID, menu.menuID, menu.name, menu.images, menu.price, menu.restaurant, quantity, cartItemTotal FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE userCart = ? AND menu.restaurant = ?;";
+        db.query(cartItems, [currentUser, restaurantIdentifier], function(err, result){
+          if(err) throw err; 
+          usersCart = result;
+          console.log(usersCart);
+          res.render('sfsu-user-pages/restaurantMenuCart', {title: restaurantName, menu: menuResults, userCart: usersCart});
+
+        })
+      }else{
+        usersCart = "";
+        res.render('sfsu-user-pages/restaurantMenuCart', {title: restaurantName, menu: menuResults, userCart: usersCart});
+      }
     })
   });
 });
@@ -36,25 +53,49 @@ router.post('/addToCart', function(req, res, next){
     }
   }
   let numCartItems = Object.keys(req.body.cart).length;
+  // console.log(numCartItems);
   if(validLogin){
     if(numCartItems >= 1){
       var cartItems = [];
-      let currentOwner = res.locals.userId;      
-      
+      let currentOwner = res.locals.userId;    
+      var newItems = 0;  
+      console.log(req.body.cart);
+
+
+
       for(var i = 0; i < numCartItems; i++){
-        var itemInformation = [];
-        itemInformation.push(currentOwner);
-        itemInformation.push(parseInt(req.body.cart[i].menuid));
-        itemInformation.push(parseInt(req.body.cart[i].quantity));
-        itemTotalPrice = parseFloat(req.body.cart[i].quantity) * req.body.cart[i].price;
-        itemInformation.push(itemTotalPrice);
-        cartItems.push(itemInformation);
+        if(!req.body.cart[i].cartID){
+          var itemInformation = [];
+          itemInformation.push(currentOwner);
+          itemInformation.push(parseInt(req.body.cart[i].menuid));
+          itemInformation.push(parseInt(req.body.cart[i].quantity));
+          itemTotalPrice = parseFloat(req.body.cart[i].quantity) * req.body.cart[i].price;
+          itemInformation.push(itemTotalPrice);
+          itemInformation.push(parseInt(req.body.cart[i].restaurant));
+          console.log(req.body.cart[i].restaurant);
+          cartItems.push(itemInformation);
+          newItems++;
+        }else{
+          var updateCartItem = "UPDATE cart SET quantity = ?, cartItemTotal = ? WHERE cartID = ?;";
+          var newQuantity = req.body.cart[i].quantity;
+          var newPrice = newQuantity * req.body.cart[i].price;
+          var updateCardID = req.body.cart[i].cartID;
+          db.query(updateCartItem, [newQuantity, newPrice, updateCardID], function(err, result,fields){
+            if(err) throw err;
+          })
+        }
+        
+
       }
-      //Inserting into the cart table
-      var sql = "INSERT INTO cart(userCart, cartItem, quantity, cartItemTotal) VALUES ?";
-      db.query(sql, [cartItems], function(err, result, fields){
-        if(err) throw err;
-      })
+      if(newItems >= 1){
+        //Inserting into the cart table
+        var sql = "INSERT INTO cart(userCart, cartItem, quantity, cartItemTotal, restaurantIDMenu) VALUES ?";
+        db.query(sql, [cartItems], function(err, result, fields){
+          if(err) throw err;
+        })
+      }
+
+
     } 
     res.redirect('/checkOut');
     

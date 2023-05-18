@@ -23,6 +23,7 @@
                         <h5 style="display:inline">$</h5><h5 style="display:inline">{{price}}</h5>
                         <br>
                         <button class="button" name="add" id={{menuID}}>add to cart</button>
+                        <p class="class" style="display:none" id="restaurant-id">{{restaurant}}</p>
                     </div>
                     {{/each}}
                 </div>
@@ -32,10 +33,31 @@
                         <h3>Cart</h3>
                         <hr>
                         <div class = "cart-scroll" id = "cart-scroll">
-                            
+                            {{#if logged}}
+                                {{#each userCart}}
+                                    <div class ="cart-container">
+                                        <image class="cart-photo" name="cart[${cartItems}][image]" src="/images/uploads/{{images}}" width="50" height="50"></image>
+                                        <h6 name="menuName">{{name}}</h6>
+                                        <h6>Qtn:<input type="number" id="quantity" name="cart[{{@index}}][quantity]" value={{quantity}} min = "1" max="5"></h6>
+                                        <h6 class="itemPrice">${{price}}</h6>
+                                        <input type="hidden" name="cart[{{@index}}][price]" value="{{price}}"/>
+                                        <input type="hidden" name="cart[{{@index}}][cartID]" value={{cartID}} />
+                                    </div>
+                                    <br >
+                                {{/each}}
+                            {{/if}}
                         </div>
                         <hr>
-                        <h4 style="display:inline">Total: </h4><h4 style="display:inline" id="totalPrice">0.00</h4>
+                        <h4 style="display:inline">Total: </h4><h4 style="display:inline" id="totalPrice">
+                            {{#if logged}}
+                                {{#sumTotal userCart}}
+                                    {{output}}
+                                {{/sumTotal}}
+                            {{else}}
+                            0.00
+                            {{/if}}
+                          
+                        </h4>
                         <br>
                         <button type="submit" name="checkout" class="checkOut-button">Check Out</button>
                     </div>
@@ -46,9 +68,8 @@
 </body>
 
 <script>
-    var total = 0;
-    let cartItems = 0;
-
+    var total = parseFloat(document.getElementById("totalPrice").innerText);
+    let cartItems = document.getElementsByClassName("cart-container").length;
     document.querySelectorAll('[name="add"]').forEach(addButton => {
         addButton.addEventListener('click', () => {
             var menuId = event.srcElement.id;
@@ -58,6 +79,7 @@
             var name = nameElement.innerText;
             var price = nameElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText;
             total += parseFloat(price);
+            var restaurantID = parseInt(document.getElementById("restaurant-id").innerText);
             let div = document.createElement('div');
             div.innerHTML = `
                 <div class ="cart-container">
@@ -67,6 +89,7 @@
                         <h6 class="itemPrice">$` + price +`</h6>
                         <input type="hidden" name="cart[${cartItems}][price]" value="${price}"/>
                         <input type="hidden" name="cart[${cartItems}][menuid]" value="${menuId}"/>
+                        <input type="hidden" name="cart[${cartItems}][restaurant]" value="${restaurantID}" />
                 </div>
                 <br>
             `;
