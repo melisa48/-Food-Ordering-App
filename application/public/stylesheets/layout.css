@@ -43,6 +43,8 @@ a{
   color:white;
   background-color: black;
   border: none;
+  text-align: center;
+  padding: 2px;
 }
 
 .navbar-links:hover{

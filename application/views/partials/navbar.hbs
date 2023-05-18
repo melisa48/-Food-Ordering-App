@@ -81,8 +81,18 @@
   </div>
   {{else}}
     <div class="navbar-right">
-      <a class="nav-link navbar-links" href="/sfsuRegistration">Register</a>
-      <a class="nav-link navbar-links" href="/sfsuLogin">Login</a>
+      {{!-- <a class="nav-link navbar-links" href="/sfsuLogin">SFSU Login/Register</a>
+      <a class="nav-link navbar-links" href="/sfsuRegistration">SFSU <br>Register</a> --}}
+      <div class="dropdown navbar-dropdown">
+        <a class="nav-link navbar-links" style="width: 200px;" href="#" role="button" aria-expanded="false">
+        SFSU Login/Register
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+          <li><a class="dropdown-item" href="/sfsuLogin">SFSU Login</a></li>
+          <li><a class="dropdown-item" href="/sfsuRegistration">SFSU Registration</a></li>
+        </ul>
+      </div>
+      
     </div>
 
   {{/if}}

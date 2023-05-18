@@ -16,6 +16,7 @@ searchModule.executeSearch = function(req, res, next){
     var category = req.query.category;
 
     let query = "SELECT * FROM team7.restaurant WHERE approved = (1)";
+    let categoryQuery = "SELECT * FROM team7.restaurant WHERE approved = (1)"
 
     // show all restaurants
     if(category =='all' && searchTerm ==''){
@@ -32,12 +33,26 @@ searchModule.executeSearch = function(req, res, next){
         query = "SELECT * FROM team7.restaurant WHERE category ='"+  category+"' AND (restaurant_name LIKE '%" + searchTerm + "%'\
         OR description LIKE'%" + searchTerm + "%') AND approved = (1);";
         console.log("situation 2");
+        categoryQuery = "SELECT * FROM team7.restaurant WHERE category = '"+ category+"' AND approved = (1);";
     }
     // returns all restaurants in the chosen category
     else if(category != '' && searchTerm == '' ){
         query = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = (1);";
+        categoryQuery = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = (1);";
         console.log("situation 3");
     }
+
+    //queries db for results matching category; for x out x
+    db.query(categoryQuery, (err, results)=>{
+        if(err){
+
+        }
+        req.categoryResults = 0;
+        console.log("Test------");
+        console.log(results.length);
+        req.categoryResults = results;
+
+    })
 
 
     // queries db for results matching user searchTerm
@@ -48,9 +63,9 @@ searchModule.executeSearch = function(req, res, next){
             req.category = "";
             next();
         }
-        console.log(searchTerm);
-        console.log(category);
-        console.log(results);
+        // console.log(searchTerm);
+        // console.log(category);
+        // console.log(results);
         req.searchResult = results;
         req.searchTerm = searchTerm;
         req.category = category;
@@ -67,8 +82,8 @@ searchModule.executeSearch = function(req, res, next){
             req.restaurant_name.push(results[x].restaurant_name);
         }
 
-        console.log(req.latitude);
-        console.log(req.longitude);
+        // console.log(req.latitude);
+        // console.log(req.longitude);
         // console.log(req.name)
         // console.log(results[0].latitude);
         next();

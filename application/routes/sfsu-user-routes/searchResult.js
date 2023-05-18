@@ -13,7 +13,8 @@ router.get('/', executeSearch, function(req, res, next) {
         images: req.images,
         latitude: req.latitude,
         longitude: req.longitude,
-        restaurant_name: req.restaurant_name
+        restaurant_name: req.restaurant_name,
+        categoryResultsLength: req.categoryResults.length
     });
     // console.log(name);
 
