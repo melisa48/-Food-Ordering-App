@@ -1,4 +1,7 @@
+//code to query the database for restaurants based on user input
+//Author(s): Emily and Eunice
 var db = require("../../conf/database");
+const { search } = require("../../routes/sfsu-user-routes/searchResult");
 // const { search } = require("../../routes/searchResult");
 const searchModule = {};
 
@@ -15,44 +18,35 @@ searchModule.executeSearch = function(req, res, next){
     var searchTerm = req.query.search;
     var category = req.query.category;
 
-    let query = "SELECT * FROM team7.restaurant WHERE approved = (1)";
-    let categoryQuery = "SELECT * FROM team7.restaurant WHERE approved = (1)"
+    let query = "SELECT * FROM team7.restaurant WHERE approved = 1;";
+
 
     // show all restaurants
     if(category =='all' && searchTerm ==''){
         console.log('situation 0');
+        categoryQuery = "SELECT * FROM team7.restaurant WHERE approved = 1;";
     }
     // returns all restaurants that have the searchTerm either category/name/description
     else if(category == 'all' && searchTerm !=""){
         console.log("1");
-        query = "SELECT * FROM team7.restaurant WHERE approved = (1) AND restaurant_name LIKE '%" + searchTerm + "%'\
+        query = "SELECT * FROM team7.restaurant WHERE approved = 1 AND restaurant_name LIKE '%" + searchTerm + "%'\
         OR  category ='"+  category+"' OR description LIKE'%" + searchTerm + "%' OR category = '" + searchTerm +"';";
+        categoryQuery = "SELECT * FROM team7.restaurant WHERE approved = 1;";
     }
     //returns restaurants in the chosen category and have the searchTerm in either name/description
     else if(category != '' && searchTerm !=''){
         query = "SELECT * FROM team7.restaurant WHERE category ='"+  category+"' AND (restaurant_name LIKE '%" + searchTerm + "%'\
-        OR description LIKE'%" + searchTerm + "%') AND approved = (1);";
+        OR description LIKE'%" + searchTerm + "%') AND approved = 1;";
         console.log("situation 2");
-        categoryQuery = "SELECT * FROM team7.restaurant WHERE category = '"+ category+"' AND approved = (1);";
+        categoryQuery = "SELECT * FROM team7.restaurant WHERE category = '"+ category+"' AND approved = 1;";
     }
     // returns all restaurants in the chosen category
     else if(category != '' && searchTerm == '' ){
-        query = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = (1);";
-        categoryQuery = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = (1);";
+        query = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = 1;";
+        categoryQuery = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = 1;";
         console.log("situation 3");
     }
 
-    //queries db for results matching category; for x out x
-    db.query(categoryQuery, (err, results)=>{
-        if(err){
-
-        }
-        req.categoryResults = 0;
-        console.log("Test------");
-        console.log(results.length);
-        req.categoryResults = results;
-
-    })
 
 
     // queries db for results matching user searchTerm
@@ -81,6 +75,7 @@ searchModule.executeSearch = function(req, res, next){
             // names.push('"'+results[x].restaurant_name+'"');
             req.restaurant_name.push(results[x].restaurant_name);
         }
+        
 
         // console.log(req.latitude);
         // console.log(req.longitude);
@@ -89,6 +84,43 @@ searchModule.executeSearch = function(req, res, next){
         next();
     })
 
+}
+
+searchModule.categoryLength = function(req, res, next){
+    var category = req.query.category;
+    var searchTerm = req.query.search;
+    let categoryQuery = "SELECT * FROM team7.restaurant WHERE approved = 1;";
+
+        // show all restaurants
+        if(category =='all' && searchTerm ==''){
+            console.log('cat 0');
+        }
+        // returns all restaurants that have the searchTerm either category/name/description
+        else if(category == 'all' && searchTerm !=""){
+            console.log("cat 1");
+        }
+        //returns restaurants in the chosen category and have the searchTerm in either name/description
+        else if(category != '' && searchTerm !=''){
+            console.log("cat 2");
+            categoryQuery = "SELECT * FROM team7.restaurant WHERE category = '"+ category+"' AND approved = 1;";
+        }
+        // returns all restaurants in the chosen category
+        else if(category != '' && searchTerm == '' ){
+            categoryQuery = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = 1;";
+            console.log("cat 3");
+        }
+
+           // queries db for results matching user searchTerm
+    db.query(categoryQuery, (err, cResults)=>{
+        if(err){
+            req.categoryResults = cResults;
+            next();
+        }
+        console.log(cResults);
+        req.categoryResults = cResults;
+
+        next();
+    })
 }
 
 
