@@ -17,6 +17,7 @@ to see all items in their cart before ordering --}}
         <div class = "build-info">
             <input type="text" id="Building" name="Building" placeholder="Building">
             <input type="text" id="Room" name="Room" placeholder="Room">
+            <span id="building-result"></span>
         </div>
         <br>
         <form class="options">
@@ -45,3 +46,51 @@ to see all items in their cart before ordering --}}
     <br>
     
 </body>
+
+<script>
+
+    function load_data(query = '')
+    {
+        fetch('checkOut/getBuildings?search_query='+query+'').then(function(response){
+            return response.json();
+        }).then(function(responseData){
+            var html = '<ul class="list-group">';
+            if(responseData.length > 0)
+            {
+                for(var count = 0; count < responseData.length; count++)
+                {
+                   var regular_expression = new RegExp('('+query+')', 'gi');
+                   html += '<a href="#" class="list-group-item list-group-item-action" onclick="get_text(this)">'+responseData[count].name.replace(regular_expression, '<span class="text-primary fw-bold">$1</span>')+'</a>';
+                }
+            }
+            else
+            {
+                html += '<a href="#" class="list-group-item list-group-item-action disabled">No Data Found</a>';
+            }
+            html += '</ul>';
+            document.getElementById('building-result').innerHTML = html;
+        });
+    }
+
+    var search_element = document.getElementById("Building");
+
+    search_element.onkeyup = function(){
+        var query = search_element.value;
+        load_data(query);
+
+    };
+
+    search_element.onfocus = function(){
+        var query = search_element.value;
+        load_data(query);
+    };
+
+
+    function get_text(event)
+    {
+        var building_name = event.textContent;
+        document.getElementById('Building').value = building_name;
+        document.getElementById('building-result').innerHTML = '';
+    }
+
+</script>

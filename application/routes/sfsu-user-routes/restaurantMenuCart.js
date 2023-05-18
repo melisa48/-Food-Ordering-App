@@ -35,34 +35,28 @@ router.post('/addToCart', function(req, res, next){
       res.render('login/sfsuLogin', { message: "Please login as a SFSU user first. ", error: true});
     }
   }
+  let numCartItems = Object.keys(req.body.cart).length;
   if(validLogin){
-    var cartItems = [];
-    let numCartItems = Object.keys(req.body.cart).length;
-    let currentOwner = res.locals.userId;
-
-    for(var i = 0; i < numCartItems; i++){
-      var itemInformation = [];
-      itemInformation.push(currentOwner);
-      itemInformation.push(parseInt(req.body.cart[i].menuid));
-      itemInformation.push(parseInt(req.body.cart[i].quantity));
-      cartItems.push(itemInformation);
-    }
-    // console.log(cartItems);
-    //Inserting into the cart table
-    var sql = "INSERT INTO cart(userCart, cartItem, quantity) VALUES ?";
-    db.query(sql, [cartItems], function(err, result, fields){
-      if(err) throw err;
-    })
-
-    //Rendering the cart in the orders page
-    var displayCart = "SELECT menu.name, menu.images, menu.price FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE cart.userCart = ?";
-    db.query(displayCart, [currentOwner], function(err, result, fields){
-      if(err) throw err;
-      cartResults = result;
-      console.log(cartResults);
-      res.render('sfsu-user-pages/checkOut', {usersCart : cartResults});
-    });
-   
+    if(numCartItems >= 1){
+      
+      var cartItems = [];
+      let currentOwner = res.locals.userId;
+      
+      for(var i = 0; i < numCartItems; i++){
+        var itemInformation = [];
+        itemInformation.push(currentOwner);
+        itemInformation.push(parseInt(req.body.cart[i].menuid));
+        itemInformation.push(parseInt(req.body.cart[i].quantity));
+        cartItems.push(itemInformation);
+      }
+      //Inserting into the cart table
+      var sql = "INSERT INTO cart(userCart, cartItem, quantity) VALUES ?";
+      db.query(sql, [cartItems], function(err, result, fields){
+        if(err) throw err;
+      })
+    } 
+    res.redirect('/checkOut');
+    
   }
 })
 
