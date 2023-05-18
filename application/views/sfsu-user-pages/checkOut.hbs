@@ -38,7 +38,9 @@ to see all items in their cart before ordering --}}
             </div>
 
             <hr style="width:80%;">
-            <h3>Total: $$$</h3>
+            <h3 id="totalPrice">Total: $
+                
+            </h3>
         </div>
         <br>
         <button class="order-button">Order</button>
@@ -47,6 +49,9 @@ to see all items in their cart before ordering --}}
     
 </body>
 
+
+{{!-- Tutorial used: https://www.webslesson.info/2022/07/nodejs-autocomplete-search-with-mysql-database.html  --}}
+{{!-- This part is used to show the result of a database query to allow users to serach for a building --}}
 <script>
 
     function load_data(query = '')
@@ -92,5 +97,7 @@ to see all items in their cart before ordering --}}
         document.getElementById('Building').value = building_name;
         document.getElementById('building-result').innerHTML = '';
     }
+
+   
 
 </script>

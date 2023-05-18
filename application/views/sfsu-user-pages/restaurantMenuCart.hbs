@@ -14,7 +14,7 @@
                 <div class = "wrapper2">
                     {{#each menu}}
                     <div class = "menu-box">
-                        <image src={{images}} width="300" height="300"></image>
+                        <image src="/images/uploads/{{images}}" width="300" height="300"></image>
                         <hr>
                         <h3>{{name}}</h3>
                         <hr>
@@ -64,7 +64,8 @@
                         <image class="cart-photo" name="cart[${cartItems}][image]" src="`+ image + `" width="50" height="50"></image>
                         <h6 name="cart[${cartItems}][menuName]">` + name + `</h6>
                         <h6>Qtn:<input type="number" id="quantity" name="cart[${cartItems}][quantity]" value="1" min = "1" max="5"></h6>
-                        <h6 class="itemPrice" name="cart[${cartItems}][price]">$` + price +`</h6>
+                        <h6 class="itemPrice">$` + price +`</h6>
+                        <input type="hidden" name="cart[${cartItems}][price]" value="${price}"/>
                         <input type="hidden" name="cart[${cartItems}][menuid]" value="${menuId}"/>
                 </div>
                 <br>
@@ -76,7 +77,7 @@
     });
 
     //Source used: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
-   const formatter = new Intl.NumberFormat('en-US', {
+    const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
     });

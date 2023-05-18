@@ -1,4 +1,8 @@
-// restaurantApplication.js
+/*
+  Author: Eunice
+  This file is used to handle restaurant applications and storing the proper items
+  into the proper tables in the database
+*/
 var express = require('express');
 var router = express.Router();
 var db = require("../../conf/database");
@@ -73,13 +77,13 @@ router.post('/application', uploader.any(),function(req, res, next) {
     var imageName = "menu["+i+"][image]";
     for(var j = 0; j < uploadedImages; j++){
       if(req.files[j].fieldname == imageName){
-        menuImages.push("/images/uploads/"+req.files[j].filename);
+        menuImages.push(req.files[j].filename);
         menuImageExist = true;
         break;
       }
     }
     if(menuImageExist == false){
-      menuImages.push("/images/dinner.png");
+      menuImages.push("dinner.png");
     }
     menuImageExist = false;
   }
@@ -132,8 +136,6 @@ router.post('/application', uploader.any(),function(req, res, next) {
       });
     });
   });
-  //Temp
-  // res.redirect('/');
 });
 
 //From: https://stackoverflow.com/questions/49634012/return-result-of-https-get-in-js 

@@ -38,19 +38,20 @@ router.post('/addToCart', function(req, res, next){
   let numCartItems = Object.keys(req.body.cart).length;
   if(validLogin){
     if(numCartItems >= 1){
-      
       var cartItems = [];
-      let currentOwner = res.locals.userId;
+      let currentOwner = res.locals.userId;      
       
       for(var i = 0; i < numCartItems; i++){
         var itemInformation = [];
         itemInformation.push(currentOwner);
         itemInformation.push(parseInt(req.body.cart[i].menuid));
         itemInformation.push(parseInt(req.body.cart[i].quantity));
+        itemTotalPrice = parseFloat(req.body.cart[i].quantity) * req.body.cart[i].price;
+        itemInformation.push(itemTotalPrice);
         cartItems.push(itemInformation);
       }
       //Inserting into the cart table
-      var sql = "INSERT INTO cart(userCart, cartItem, quantity) VALUES ?";
+      var sql = "INSERT INTO cart(userCart, cartItem, quantity, cartItemTotal) VALUES ?";
       db.query(sql, [cartItems], function(err, result, fields){
         if(err) throw err;
       })
