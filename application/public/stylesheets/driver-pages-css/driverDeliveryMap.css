@@ -40,8 +40,83 @@ body{
     /* margin-right: 50px; */
 }
 
+#order-items-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+    border-radius: 15px;
+    width: 600px;
+    height: 400px;
+    padding: 20px 0 20px 0;
+    /* overflow-y: hidden; */
+}
+
+#scrollbar-wrapper{
+    width: calc(100% - 20px);
+    overflow-y: auto;
+}
+
+.ticket{
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 20px);
+    margin: 5px;
+    background-color: white;
+}
+
+.ticket-image{
+    width: 100px;
+    height: 100px;
+}
+
+.ticket-details{
+    padding: 5px;
+}
+
+#wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* 
+#delivery-location-orders-wrapper{
+    display: flex;
+    flex-direction: row;
+} */
+
+#delivery-location{
+    width: 550px;
+    text-align: center;
+    font-size: 25px;
+}
+
 @media(max-width:530px){
     .delivery-button{
         margin: 0;
     }
+
+    #order-restaurant-details{
+        width: 80%;
+        text-align: left;
+        font-size: 20px;
+    }
+
+    #order-items-list{
+
+        width: 80%;
+        height: 400px;
+
+    }
+
+    #delivery-location{
+        width: 550px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+
+
+    
+
 }

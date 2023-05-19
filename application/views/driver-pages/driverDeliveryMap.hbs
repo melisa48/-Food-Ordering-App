@@ -2,31 +2,61 @@
 {{!-- Author(s): Emily and Eunice --}}
 <head>
     <link rel="stylesheet" href="/stylesheets/driver-pages-css/driverDeliveryMap.css">
-</head>
-{{!-- SFSU MAP --}}
-<div id="map"></div>
-{{!-- Initializing the map to be centered at SFSU --}}
-<script>
-    function initMap() {
-            //coordinates for SFSU
-            myLatLng = { lat: 37.7241, lng: -122.4799 };
-            map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 13,
-                center: myLatLng,
-            });
-                       
-            
-            
-        }
-</script>
-{{!-- API Key needed to show the map --}}
-<script 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
-    defer
-    ></script>
+    {{!-- <link rel="stylesheet" href="/stylesheets/driver-pages-css/driverOrderDetails.css"> --}}
 
-    {{!-- cancel or completed delivery buttons --}}
-<div id="delivery-buttons-wrapper">
-    <a id="cancel-delivery-button" class="delivery-button" href="/driverOrderList">Cancel Delivery</a>
-    <a id="completed-delivery-button" class="delivery-button">Delivery Complete</a>
+</head>
+<div id="wrapper">
+    {{!-- SFSU MAP --}}
+    <div id="map"></div>
+    {{!-- Initializing the map to be centered at SFSU --}}
+    <script>
+        function initMap() {
+                //coordinates for SFSU
+                myLatLng = { lat: 37.7241, lng: -122.4799 };
+                map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 17,
+                    center: myLatLng,
+                });
+                        
+                
+                
+            }
+    </script>
+    {{!-- API Key needed to show the map --}}
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
+        defer
+        ></script>
+
+        
+
+        <br>
+        <div id="delivery-location">
+            <b><i class="bi bi-geo-alt-fill"></i></b>Delivery Location: [Building], [Room]
+        </div>
+    
+        <hr style="width: 70%;">
+        
+        <div id="order-items-list">
+            <h3>Order Items</h3>
+            <hr style="width: 70%;">
+            <div id="scrollbar-wrapper">
+                {{!-- partials for each ticket in the order --}}
+                {{> driverorderticket}}
+                {{> driverorderticket}}
+                {{> driverorderticket}}
+                {{> driverorderticket}}
+                {{> driverorderticket}}
+            </div>
+            
+        </div>
+       
+        
+
+        {{!-- cancel or completed delivery buttons --}}
+    <div id="delivery-buttons-wrapper">
+        <a id="cancel-delivery-button" class="delivery-button" href="/driverOrderList">Cancel Delivery</a>
+        <a id="completed-delivery-button" class="delivery-button">Delivery Complete</a>
+    </div>
+
 </div>
