@@ -18,6 +18,7 @@ body{
     display: flex;
     justify-content: space-between;
     margin: 30px 0 30px 0;   
+    border:none;
 }
 
 
@@ -29,6 +30,7 @@ body{
     text-align: center;
     font-size: 20px;
     margin: 0 50px 0 50px;
+    border:none;
 }
 
 #cancel-delivery-button{

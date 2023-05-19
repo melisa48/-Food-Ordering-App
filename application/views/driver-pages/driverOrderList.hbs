@@ -10,10 +10,9 @@
     <div id="driver-order-wrapper">
         <div id="scrollbar-wrapper">
             {{!-- Partial cards holding an individual order a driver can choose from --}}
-            {{> driverordercard}}
-            {{> driverordercard}}
-            {{> driverordercard}}
-            {{> driverordercard}}
+            {{#each orderList}}
+                {{> driverordercard this id='{{@index}}'}}
+            {{/each}}
         </div>
       
         

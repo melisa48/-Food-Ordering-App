@@ -1,21 +1,25 @@
 {{!-- Partial that holds the order a driver can choose to take --}}
 {{!-- Author(s): Emily --}}
 <div class="order">
-    <h3>Order # </h3>
+    <h3>Order #{{orderID}}</h3>
     <hr>
     <div class="order-details">
-        <image class="driver-order-image" src="/images/uploads/dominos.jpg"></image>
+        <image class="driver-order-image" src="/images/uploads/{{images}}"></image>
         <div>
+            Reustaurant: {{restaurant_name}} <br>
             Delivery Time: <br>
             Delivery Type: <br>
-            Delivery Location:<br>
+            Delivery Location: {{name}} Room# {{roomNumber}}<br>
             {{!-- Total Money Earned: <br> --}}
         </div>
         
     </div>
     <div class="price-take-wrapper">
-        <label class="price-label"> Total: $$$</label>
-        <a class="take-order-button" href="/driverOrderDetails">Take</a>
+        <label class="price-label"> Total: ${{total}}</label>
+        {{!-- <a class="take-order-button" href="/driverOrderDetails">Take</a> --}}
+        <form action="/driverOrderDetails" class="take-order-button">
+            <button name="order" value="{{orderID}}" class="order-button">Take</button>
+        </form>
         {{!-- <button class="take-order-button" onclick="/about">Take</button> --}}
     </div>
             

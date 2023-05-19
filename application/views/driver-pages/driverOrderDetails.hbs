@@ -37,11 +37,13 @@
     <hr style="width: 800px;">
     {{!-- restaurant details  --}}
     <div id="order-restaurant-details">
-        <b><i class="bi bi-houses"> </i>Restaurant: </b>[Insert Retaurant Name Here]<br>
-        <b><i class="bi bi-geo-alt-fill"> </i>Restaurant Location: </b>[Insert Retaurant Location Here]<br>
-        <b><i class="bi bi-geo-alt"> </i>Delivery Location: </b>[Insert Building], [Insert Room]<br>
-        <b><i class="bi bi-alarm"> </i>Delivery Time: </b>[Insert Delivery Time Here]<br>
-        <b><i class="bi bi-piggy-bank"> </i>Total Earned:</b>[Insert Total Money Earned Here]<br>
+        {{#each orders}}
+            <b><i class="bi bi-houses"> </i>Restaurant: </b>{{restaurant_name}}<br>
+            <b><i class="bi bi-geo-alt-fill"> </i>Restaurant Location: </b>{{address}}<br>
+            <b><i class="bi bi-geo-alt"> </i>Delivery Location: </b>{{building}}, Room Number#{{roomNumber}}<br>
+            <b><i class="bi bi-alarm"> </i>Delivery Time: </b>[Insert Delivery Time Here]<br>
+            <b><i class="bi bi-piggy-bank"> </i>Total Earned:</b>[Insert Total Money Earned Here]<br>
+        {{/each}}
         <br>
     </div>
 
@@ -51,15 +53,19 @@
         <hr style="width: 70%">
         <div id="scrollbar-wrapper">
             {{!-- partials for each ticket in the order --}}
-            {{> driverorderticket}}
-            {{> driverorderticket}}
-            {{> driverorderticket}}
-            {{> driverorderticket}}
-            {{> driverorderticket}}
+            {{#each tickets}}
+                {{> driverorderticket this id='{{@index}}'}}
+            {{/each}}
         </div>
         
     </div>
-    <a id="take-order-button" href="/driverDeliveryMap">Take Order</a>
+    <form action="driverOrderDetails/deliveryMap" method="POST" id="take-order-button">
+        {{#each orders}}
+            <input type="hidden" name="orderID" value={{orderID}}>
+        {{/each}}
+        <button type="submit" id="take-order">Take Order</button>
+    </form>
+    {{!-- <a id="take-order-button" href="/driverDeliveryMap">Take Order</a> --}}
 
 
 </div>

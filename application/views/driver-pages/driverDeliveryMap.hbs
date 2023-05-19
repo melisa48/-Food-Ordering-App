@@ -16,7 +16,10 @@
     
     <div id="delivery-order-wrapper">
         <div id="delivery-location">
-            <b><i class="bi bi-geo-alt-fill"></i></b>Delivery Location: [Building], [Room]
+            {{message}}
+            {{#each orders}}
+                <b><i class="bi bi-geo-alt-fill"></i></b>Delivery Location: {{building}}, Room #{{roomNumber}}
+            {{/each}}
         </div>
     
         <hr style="width: 70%;">
@@ -26,11 +29,10 @@
             <hr style="width: 70%;">
             <div id="scrollbar-wrapper">
                 {{!-- partials for each ticket in the order --}}
-                {{> driverorderticket}}
-                {{> driverorderticket}}
-                {{> driverorderticket}}
-                {{> driverorderticket}}
-                {{> driverorderticket}}
+                {{#each tickets}}
+                    {{> driverorderticket this id='{{@index}}'}}
+                 {{/each}}
+               
             </div>
             
         </div>
@@ -43,7 +45,14 @@
 
 </div>
      {{!-- cancel or completed delivery buttons --}}
-    <div id="delivery-buttons-wrapper">
-        <a id="cancel-delivery-button" class="delivery-button" href="/driverOrderList">Cancel Delivery</a>
-        <a id="completed-delivery-button" class="delivery-button">Delivery Complete</a>
-    </div>
+    <form action="../driverDeliveryMap/deliveryStatus" method="POST">
+        <div id="delivery-buttons-wrapper">
+            {{!-- <a id="cancel-delivery-button" class="delivery-button" href="/driverOrderList">Cancel Delivery</a> --}}
+            {{!-- <a id="completed-delivery-button" class="delivery-button">Delivery Complete</a> --}}
+            {{#each orders}}
+                <input type="hidden" name="orderID" value="{{orderID}}">
+            {{/each}}
+            <button id="cancel-delivery-button" name="status" value="cancel"class="delivery-button" type="submit">Cancel Delivery</button>
+            <button id="completed-delivery-button" name="status" value="complete"class="delivery-button" type="submit">Delivery Complete</button>
+        </div>
+    </form>

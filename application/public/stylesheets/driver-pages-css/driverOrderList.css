@@ -80,6 +80,12 @@ body{
     /* box-shadow: 20px 20px 50px orange inset; */
 }
 
+.order-button{
+    width: 100%;
+    background: none;
+    color: inherit;
+    border: none;
+}
 .price-label{
     padding-left: 20px;
     line-height: 50px;

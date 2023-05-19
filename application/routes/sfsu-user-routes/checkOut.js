@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
       if(err) throw err;
       cartResults = result;
       console.log(cartResults);
-      res.render('sfsu-user-pages/checkOut', {usersCart : cartResults});
+      res.render('sfsu-user-pages/checkOut', {usersCart : cartResults, title: "Check Out"});
     });
   }else{
     res.render('login/sfsuLogin', { message: "You must be logged in to view your cart.", error: true});

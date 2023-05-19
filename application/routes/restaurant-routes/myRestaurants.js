@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
       if(err) throw err;
       restaurantResults = result;
       // console.log(result);
-      res.render('restaurant-pages/myRestaurants', {restaurantName : restaurantResults});
+      res.render('restaurant-pages/myRestaurants', {restaurantName : restaurantResults, title: "My Restaurants"});
    });
   }
 });
