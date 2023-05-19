@@ -23,14 +23,8 @@ hbs.registerHelper('sumTotal', function(list){
 
 // home
 var indexRouter = require('./routes/index');
-// about-me pages
-var andyRouter = require('./routes/about-routes/andy');
-var juandavidRouter = require('./routes/about-routes/juandavid');
-var emilyRouter = require('./routes/about-routes/emily');
-var euniceRouter = require('./routes/about-routes/eunice');
-var melisaRouter = require('./routes/about-routes/melisa');
 // about team
-var aboutRouter = require('./routes/about-routes/about');
+var aboutRouter = require('./routes/about');
 //  login routes
 var driverLoginRouter = require("./routes/login-routes/driverLogin");
 var restaurantLoginRouter = require("./routes/login-routes/restaurantLogin");
@@ -102,11 +96,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //home
 app.use('/', indexRouter);
 //about
-app.use('/andy', andyRouter);
-app.use('/juandavid', juandavidRouter);
-app.use('/emily', emilyRouter);
-app.use('/eunice', euniceRouter);
-app.use('/melisa', melisaRouter);
 app.use('/about', aboutRouter);
 // login 
 app.use('/driverLogin', driverLoginRouter);
