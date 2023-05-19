@@ -12,5 +12,7 @@
              
     </div>
     <input type="hidden" name="ticket[{{@index}}][menuID]" value={{menuID}} />
+    <input type="hidden" name="ticket[{{@index}}][restaurantID]" value={{restaurant}} />
+    <input type="hidden" name="ticket[{{@index}}][cart]" value="{{cartID}}">
     <button id="trash-ticket-{{@index}}" class="trash-ticket" name="ticket[{{@index}}][delete]" value={{menuID}} form="deleteTicket">Trash</button>
 </div>

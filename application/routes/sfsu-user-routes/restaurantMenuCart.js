@@ -63,7 +63,8 @@ router.post('/addToCart', function(req, res, next){
 
       //Used to display items in the checkout only items from that restaurant
       var display_cart_from_restaurant = req.body.restaurantid;
-      var displayCart = "SELECT menu.menuID, menu.name, menu.images, menu.price, menu.restaurant, cart.quantity, cart.cartItemTotal FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE cart.userCart = ? AND cart.restaurantIDMenu = ?";
+      var displayCart = `SELECT menu.menuID, menu.name, menu.images, menu.price, menu.restaurant, cart.cartID, cart.quantity, cart.cartItemTotal 
+      FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE cart.userCart = ? AND cart.restaurantIDMenu = ?`;
       
       for(var i = 0; i < numCartItems; i++){
         if(!req.body.cart[i].cartID){
@@ -104,6 +105,7 @@ router.post('/addToCart', function(req, res, next){
       db.query(displayCart, [currentOwner, display_cart_from_restaurant], function(err, result, fields){
         if(err) throw err;
         cartResults = result;
+        console.log(result);
         res.render('sfsu-user-pages/checkOut', {usersCart : cartResults});
       });
       

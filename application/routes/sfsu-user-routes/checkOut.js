@@ -38,9 +38,62 @@ router.get('/getBuildings', function(req, res, next){
 });
 
 router.post('/submitOrder', function(req,res,next){
+  const date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  let currentDate = `${year}-${month}-${day}`;
+  let currentOwner = res.locals.userId;    
+
+
   let ticketItems = req.body.ticket;
-  console.log(ticketItems);
-  console.log("submitted order");
+  let buildingName = req.body.building;
+  let room = req.body.room;
+  let total = parseFloat(req.body.total);
+  let restaurant = parseInt(req.body.ticket[0].restaurantID);
+  console.log(req.body);
+  console.log(restaurant);
+  let numTicketItems = Object.keys(req.body.ticket).length;
+  var newTickets = [];
+  var cartIDs = [];
+  //Getting the building id
+  var buildingID = "SELECT pointID FROM dropoffPoints WHERE name = ?;";
+  //Storing items inside of the orders table
+  var insertOrder = "INSERT INTO team7.order(customerID, total, orderDate, restaurantName, dropoff, roomNumber) VALUES (?,?,?,?,?,?);";
+  //Storing the menu items into the ticket
+  var insertTicket = "INSERT INTO ticket(orderID, menuItem, quantity) VALUES ?";
+  //Deleting items from the cart
+  var deleteCartItems = "DELETE FROM cart WHERE cartID IN (?);";
+
+  db.query(buildingID, [buildingName], (err, result)=>{
+    if(err) throw err;
+    if(result){
+      let dropoffID = result[0].pointID;
+      db.query(insertOrder, [currentOwner, total, currentDate, restaurant, dropoffID, room], (err, secondres)=>{
+        if(err) throw err;
+        let orderID = secondres.insertId;
+
+        //Storing the individual ticket items in the array and storing the cart ids
+        for(let i = 0; i < numTicketItems; i++){
+          let individualTickets = [];
+          individualTickets.push(orderID);
+          individualTickets.push(parseInt(req.body.ticket[i].menuID));
+          individualTickets.push(parseInt(req.body.ticket[i].quantity));
+          newTickets.push(individualTickets);
+          cartIDs.push(parseInt(req.body.ticket[i].cart));
+        }
+
+        db.query(insertTicket, [newTickets], (err, ticketRes)=>{
+          if(err) throw err;
+        })
+
+        //Deleting the individual items from the cart table
+        db.query(deleteCartItems, [cartIDs], (err, deleteCarts)=>{
+          if(err) throw err;
+        })
+      })
+    }
+  })
   res.redirect('/orderCompleted');
 });
 
