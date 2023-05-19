@@ -1,18 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../../conf/database");
+var db = require("../conf/database");
 var bcrypt = require('bcryptjs');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  // res.send('respond with a resource');
-  res.render('login/driverLogin', {title: 'Driver Login'});
-});
 
-router.post('/driverlogin',(req, res, next) => {
+router.post('/restaurantOwnerLogin',(req, res, next) => {
   let email = req.body.email;
   let password = req.body.password;
-  var sql = "SELECT driverID,firstname,lastname,password,email FROM driver where email = ?;";
+  var sql = "SELECT restaurantID,firstname,lastname,password,email FROM restaurantAccount where email = ?;";
   let userid;
   let firstname;
   let lastname;
@@ -20,7 +16,7 @@ router.post('/driverlogin',(req, res, next) => {
     if(err) throw err;
 
     if(result.length == 1 && bcrypt.compareSync(password, result[0].password)){
-        userid = result[0].driverID;
+        userid = result[0].restaurantID;
         firstname = result[0].firstname;
         lastname = result[0].lastname;
         //login user
@@ -29,14 +25,13 @@ router.post('/driverlogin',(req, res, next) => {
         req.session.firstName = firstname;
         req.session.lastName = lastname;
         res.locals.logged = true;
-        res.locals.driver = true;
-        res.locals.restaurantOwner = false;
-
-        req.session.driver = "driver logged in";
-        // console.log("fn: %s",  req.session.firstName);
+        res.locals.restaurantOwner = true;
+        res.locals.driver = false;
+        req.session.restaurantOwner = "restaurant Owner logged in";
+        // console.log("user id: %s",  req.session.userid);
         res.render('index', {email : req.session.email});
       }else{
-        res.render('login/driverLogin', { message: "Invalid login", error:true });
+        res.render('login/restaurantOwnerLogin', { message: "Invalid login", error:true });
       }
   });
 });

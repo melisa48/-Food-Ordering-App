@@ -25,10 +25,13 @@ hbs.registerHelper('sumTotal', function(list){
 var indexRouter = require('./routes/index');
 // about team
 var aboutRouter = require('./routes/about');
+//driver route
+var driversRouter =require('./routes/drivers');
+var restaurantsRouter = require('./routes/restaurants');
+var sfsuUserRouter = require('./routes/sfsuUser');
+
 //  login routes
-var driverLoginRouter = require("./routes/login-routes/driverLogin");
-var restaurantLoginRouter = require("./routes/login-routes/restaurantLogin");
-var sfsuLoginRouter = require("./routes/login-routes/sfsuLogin");
+
 //registration routes
 var driverRegistrationRouter = require("./routes/registration-routes/driverRegistration");
 var restaurantOwnerRegistrationRouter = require("./routes/registration-routes/restaurantOwnerRegistration");
@@ -97,10 +100,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 //about
 app.use('/about', aboutRouter);
+//drivers
+app.use('/drivers', driversRouter);
+app.use('/restaurants', restaurantsRouter);
+app.use('/sfsuUser', sfsuUserRouter);
+
 // login 
-app.use('/driverLogin', driverLoginRouter);
-app.use('/restaurantLogin', restaurantLoginRouter);
-app.use('/sfsuLogin', sfsuLoginRouter);
+
 //registration
 app.use('/driverRegistration', driverRegistrationRouter);
 app.use('/restaurantOwnerRegistration', restaurantOwnerRegistrationRouter);

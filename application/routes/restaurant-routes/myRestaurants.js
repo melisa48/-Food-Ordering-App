@@ -5,7 +5,7 @@ var restaurantResults = [];
 
 router.get('/', function(req, res, next) {
   if(!req.session.restaurantOwner){
-    res.render('login/restaurantLogin', { message: "Please log in as a restaurant owner to view your restaurants", error: true});
+    res.render('login/restaurantOwnerLogin', { message: "Please log in as a restaurant owner to view your restaurants", error: true});
   }else{
     //Getting all the restaurants from this owner
     let currentOwner = res.locals.userId;

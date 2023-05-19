@@ -35,7 +35,7 @@ router.post('/restaurantOwnerRegister',(req, res, next) => {
 
             db.query(baseSQL, [firstname, lastname, hashedpassword, email], function(err, result, fields){
               if(err) throw err;
-              res.redirect('/restaurantLogin');
+              res.redirect('/restaurantOwnerLogin');
             })
           }
           

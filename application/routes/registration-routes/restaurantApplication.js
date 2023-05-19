@@ -28,7 +28,7 @@ var uploader = multer({storage: storage});
 
 router.get('/',function(req, res, next) {
   if(!req.session.restaurantOwner){
-    res.render('login/restaurantLogin', { message: "Please log in as a restaurant owner first before registering a restaurant", error: true});
+    res.render('login/restaurantOwnerLogin', { message: "Please log in as a restaurant owner first before registering a restaurant", error: true});
   }else{
     res.render('registration/restaurantApplication', {title: 'Restaurant Application'});
   }

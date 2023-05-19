@@ -1,14 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../../conf/database");
+var db = require("../conf/database");
 var bcrypt = require('bcryptjs');
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('login/sfsuLogin', { title: 'SFSU Login'});
-});
-router.post('/sfsulogin',(req, res, next) => {
+router.post('/sfsuLogin',(req, res, next) => {
   let email = req.body.email;
   let password = req.body.password;
   var sql = "SELECT userID,firstname,lastname,verifiedEmail,password FROM registeredUsers where verifiedEmail = ?;";
