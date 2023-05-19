@@ -20,15 +20,18 @@ to see all items in their cart before ordering --}}
             <span id="building-result"></span>
         </div>
         <br>
-        <form class="options">
-            <input type="radio" value="Direct-Delivery" name="delivery">
-            <label for="Direct-Delivery" name="delivery-Option"> Direct Delivery</label><br>
-            <input type="radio" value="PickUp" name="delivery">
-            <label for="Pick Up"name="delivery-Option">Pick Up</label><br>
-        </form>
+        <form action="../checkOut/deleteItem" method="POST" id="deleteTicket"></form>
+        <form method="POST" action="../checkOut/submitOrder">
+            <div class="options">
+                <input type="radio" value="Direct-Delivery" name="delivery">
+                <label for="Direct-Delivery" name="delivery-Option"> Direct Delivery</label><br>
+                <input type="radio" value="PickUp" name="delivery">
+                <label for="Pick Up"name="delivery-Option">Pick Up</label><br>
+            </div>
+            
         <br>
-        <hr style="width: 50%;"><br>
-        <h2>2. Payment</h2>
+        <hr><br>
+        <h2 style="text-align:center">2. Payment</h2>
         <br>
         <div id="order">
             <div class="scrollbar-wrapper">
@@ -38,14 +41,21 @@ to see all items in their cart before ordering --}}
             </div>
 
             <hr style="width:80%;">
-            <h3 id="totalPrice">Total: $
+            <h3>Total: $
+                <h3 id="totalPrice">
                 {{#sumTotal usersCart}}
                     {{output}}
                 {{/sumTotal}}
+                </h3>
             </h3>
+            <input type="hidden" name="total" value="{{#sumTotal usersCart}}{{output}}{{/sumTotal}}" />
         </div>
         <br>
-        <button class="order-button">Order</button>
+        <div class="button-order-container" style="text-align:center">
+            <button class="order-button" type="submit">Order</button>
+        </div>
+        </form>
+
     </div>
     <br>
     

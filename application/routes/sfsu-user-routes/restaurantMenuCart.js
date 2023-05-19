@@ -58,9 +58,13 @@ router.post('/addToCart', function(req, res, next){
     if(numCartItems >= 1){
       var cartItems = [];
       let currentOwner = res.locals.userId;    
-      var newItems = 0;  
-      // console.log(req.body.cart);
+      var newItems = false;  
+      var finished = 0;
 
+      //Used to display items in the checkout only items from that restaurant
+      var display_cart_from_restaurant = req.body.restaurantid;
+      var displayCart = "SELECT menu.menuID, menu.name, menu.images, menu.price, menu.restaurant, cart.quantity, cart.cartItemTotal FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE cart.userCart = ? AND cart.restaurantIDMenu = ?";
+      
       for(var i = 0; i < numCartItems; i++){
         if(!req.body.cart[i].cartID){
           var itemInformation = [];
@@ -69,25 +73,24 @@ router.post('/addToCart', function(req, res, next){
           itemInformation.push(parseInt(req.body.cart[i].quantity));
           itemTotalPrice = parseFloat(req.body.cart[i].quantity) * req.body.cart[i].price;
           itemInformation.push(itemTotalPrice);
-          // itemInformation.push(parseInt(req.body.cart[i].restaurant));
-          console.log(req.body.restaurantid);
           itemInformation.push(req.body.restaurantid);
-          // console.log(req.body.cart[i].restaurant);
           cartItems.push(itemInformation);
-          newItems++;
+          newItems = true;
         }else{
           var updateCartItem = "UPDATE cart SET quantity = ?, cartItemTotal = ? WHERE cartID = ?;";
           var newQuantity = req.body.cart[i].quantity;
           var newPrice = newQuantity * req.body.cart[i].price;
           var updateCardID = req.body.cart[i].cartID;
           db.query(updateCartItem, [newQuantity, newPrice, updateCardID], function(err, result,fields){
+            console.log("updating item");
             if(err) throw err;
           })
         }
         
-
       }
-      if(newItems >= 1){
+
+      
+      if(newItems){
         //Inserting into the cart table
         var sql = "INSERT INTO cart(userCart, cartItem, quantity, cartItemTotal, restaurantIDMenu) VALUES ?";
         db.query(sql, [cartItems], function(err, result, fields){
@@ -95,22 +98,19 @@ router.post('/addToCart', function(req, res, next){
         })
       }
 
-      //Displaying in the checkout only items from that restaurant
-      var display_cart_from_restaurant = req.body.restaurantid;
-      console.log("restaurant");
-      console.log(display_cart_from_restaurant);
-      var displayCart = "SELECT menu.name, menu.images, menu.price, cart.quantity, cart.cartItemTotal FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE cart.userCart = ? AND menu.restaurant = ?";
+
+
+
       db.query(displayCart, [currentOwner, display_cart_from_restaurant], function(err, result, fields){
         if(err) throw err;
         cartResults = result;
-        console.log(cartResults);
         res.render('sfsu-user-pages/checkOut', {usersCart : cartResults});
       });
+      
+        
+      
 
     } 
-    // console.log(req.query.restaurant);
-    // res.redirect('/checkOut');
-    
   }
 })
 

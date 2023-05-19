@@ -51,7 +51,8 @@ var restaurantApplicationRouter = require('./routes/registration-routes/restaura
 //User Page Routes
 var restaurantMenuCartRouter = require('./routes/sfsu-user-routes/restaurantMenuCart');
 var checkOutRouter = require('./routes/sfsu-user-routes/checkOut');
-
+//Order Summary Routes
+var orderCompletedRouter = require('./routes/sfsu-user-routes/orderCompleted');
 
 var app = express();
 
@@ -127,6 +128,7 @@ app.use('/restaurantApplication', restaurantApplicationRouter);
 //user pages hbs
 app.use('/restaurantMenuCart' , restaurantMenuCartRouter);
 app.use('/checkOut' , checkOutRouter);
+app.use('/orderCompleted', orderCompletedRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
