@@ -50,7 +50,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer'); 
 // var sharp = require('sharp');
 var crypto = require('crypto');
-var restaurantResults = [];
+var restaurantApplicationResults = [];
 const https = require('https');
 var storage = multer.diskStorage({
   destination: function(req, file, cb){
@@ -160,9 +160,9 @@ router.post('/restaurantApplication', uploader.any(),function(req, res, next) {
         var statusSQL = "SELECT * FROM restaurant JOIN restaurantStatus ON restaurant.approved = restaurantStatus.approvedID WHERE restaurant.restaurantOwner = ?;";
         db.query(statusSQL, [currentOwner], function(err, result, fields){
           if(err) throw err;
-          restaurantResults = result;
+          restaurantApplicationResults = result;
           // console.log(result);  
-          res.render('restaurant-pages/myRestaurants', {restaurantName : restaurantResults});
+          res.render('restaurant-pages/myRestaurants', {restaurantName : restaurantApplicationResults});
         });
       });
     });
@@ -249,6 +249,8 @@ function isValid(email){
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 }
+
+
 
 
 
