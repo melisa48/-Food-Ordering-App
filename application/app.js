@@ -34,9 +34,8 @@ var sfsuUserRouter = require('./routes/sfsuUser');
 //router for page that lists searchResult after search
 
 // Driver Page Routes
-var driverOrderListRouter = require("./routes/driver-routes/driverOrderList");
-var driverOrderDetailsRouter = require("./routes/driver-routes/driverOrderDetails");
-var driverDeliveryMapRouter = require("./routes/driver-routes/driverDeliveryMap");
+
+
 // Restaurant Page Routes
 // var myRestaurantsRouter = require('./routes/restaurant-routes/myRestaurants');
 //User Page Routes
@@ -100,9 +99,7 @@ app.use('/sfsuUser', sfsuUserRouter);
 
 
 // driver page hbs
-app.use('/driverOrderList', driverOrderListRouter);
-app.use('/driverOrderDetails', driverOrderDetailsRouter);
-app.use('/driverDeliveryMap', driverDeliveryMapRouter);
+
 //resturant pages hbs
 // app.use('/myrestaurants', myRestaurantsRouter);
 //user pages hbs
