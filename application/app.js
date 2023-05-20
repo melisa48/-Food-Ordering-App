@@ -30,12 +30,7 @@ var driversRouter =require('./routes/drivers');
 var restaurantsRouter = require('./routes/restaurants');
 var sfsuUserRouter = require('./routes/sfsuUser');
 
-//  login routes
 
-//registration routes
-var driverRegistrationRouter = require("./routes/registration-routes/driverRegistration");
-var restaurantOwnerRegistrationRouter = require("./routes/registration-routes/restaurantOwnerRegistration");
-var sfsuRegistrationRouter = require("./routes/registration-routes/sfsuRegistration");
 //router for page that lists searchResult after search
 var searchResultRouter = require("./routes/sfsu-user-routes/searchResult");
 // Driver Page Routes
@@ -44,7 +39,6 @@ var driverOrderDetailsRouter = require("./routes/driver-routes/driverOrderDetail
 var driverDeliveryMapRouter = require("./routes/driver-routes/driverDeliveryMap");
 // Restaurant Page Routes
 var myRestaurantsRouter = require('./routes/restaurant-routes/myRestaurants');
-var restaurantApplicationRouter = require('./routes/registration-routes/restaurantApplication');
 //User Page Routes
 var restaurantMenuCartRouter = require('./routes/sfsu-user-routes/restaurantMenuCart');
 var checkOutRouter = require('./routes/sfsu-user-routes/checkOut');
@@ -105,12 +99,8 @@ app.use('/drivers', driversRouter);
 app.use('/restaurants', restaurantsRouter);
 app.use('/sfsuUser', sfsuUserRouter);
 
-// login 
 
-//registration
-app.use('/driverRegistration', driverRegistrationRouter);
-app.use('/restaurantOwnerRegistration', restaurantOwnerRegistrationRouter);
-app.use('/sfsuRegistration', sfsuRegistrationRouter);
+
 //list of searchResult hbs
 app.use('/searchResult', searchResultRouter);
 // driver page hbs
@@ -119,7 +109,6 @@ app.use('/driverOrderDetails', driverOrderDetailsRouter);
 app.use('/driverDeliveryMap', driverDeliveryMapRouter);
 //resturant pages hbs
 app.use('/myrestaurants', myRestaurantsRouter);
-app.use('/restaurantApplication', restaurantApplicationRouter);
 //user pages hbs
 app.use('/restaurantMenuCart' , restaurantMenuCartRouter);
 app.use('/checkOut' , checkOutRouter);

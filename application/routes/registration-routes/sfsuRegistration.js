@@ -3,11 +3,9 @@ var router = express.Router();
 var db = require("../../conf/database");
 var bcrypt = require('bcryptjs');
 
-router.get('/', function(req, res, next) {
-  res.render('registration/sfsuRegistration', {title: 'SFSU Registration'});
-});
+
 //Author: Eunice
-router.post('/sfsuRegister',(req, res, next) => {
+router.post('/sfsuRegistration',(req, res, next) => {
   // console.log('registration router reached.');
   // Getting the input values from the registration form 
   let firstname = req.body.firstname;
