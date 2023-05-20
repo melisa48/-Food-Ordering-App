@@ -32,7 +32,7 @@ var sfsuUserRouter = require('./routes/sfsuUser');
 
 
 //router for page that lists searchResult after search
-var searchResultRouter = require("./routes/sfsu-user-routes/searchResult");
+
 // Driver Page Routes
 var driverOrderListRouter = require("./routes/driver-routes/driverOrderList");
 var driverOrderDetailsRouter = require("./routes/driver-routes/driverOrderDetails");
@@ -40,10 +40,7 @@ var driverDeliveryMapRouter = require("./routes/driver-routes/driverDeliveryMap"
 // Restaurant Page Routes
 var myRestaurantsRouter = require('./routes/restaurant-routes/myRestaurants');
 //User Page Routes
-var restaurantMenuCartRouter = require('./routes/sfsu-user-routes/restaurantMenuCart');
-var checkOutRouter = require('./routes/sfsu-user-routes/checkOut');
 //Order Summary Routes
-var orderCompletedRouter = require('./routes/sfsu-user-routes/orderCompleted');
 
 var app = express();
 
@@ -101,8 +98,7 @@ app.use('/sfsuUser', sfsuUserRouter);
 
 
 
-//list of searchResult hbs
-app.use('/searchResult', searchResultRouter);
+
 // driver page hbs
 app.use('/driverOrderList', driverOrderListRouter);
 app.use('/driverOrderDetails', driverOrderDetailsRouter);
@@ -110,9 +106,7 @@ app.use('/driverDeliveryMap', driverDeliveryMapRouter);
 //resturant pages hbs
 app.use('/myrestaurants', myRestaurantsRouter);
 //user pages hbs
-app.use('/restaurantMenuCart' , restaurantMenuCartRouter);
-app.use('/checkOut' , checkOutRouter);
-app.use('/orderCompleted', orderCompletedRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
