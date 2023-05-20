@@ -93,9 +93,9 @@ router.post('/restaurantApplication', uploader.any(),function(req, res, next) {
   }
   var restaurantImagePath;
   if(restaurantImageName){
-    restaurantImagePath = "/images/uploads/" + restaurantImageName;
+    restaurantImagePath = restaurantImageName;
   }else{
-    restaurantImagePath = "/images/restaurant.png";
+    restaurantImagePath = "/restaurant.png";
   }
   // console.log("Restaurant Image: %s", restaurantImagePath);
 

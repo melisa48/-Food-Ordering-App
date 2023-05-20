@@ -27,7 +27,8 @@
                     </div>
                     {{/each}}
                 </div>
-                <form action="restaurantMenuCart/addToCart" method="POST">
+                <form action="sfsuUser/addToCart" method="POST">
+                <input type="hidden" id="showRestaurantID" name="restaurantid" value={{restaurantID}} />
                     <div class="cart"> 
                         <h3>Cart</h3>
                         <hr>
@@ -114,7 +115,8 @@
                 <image class="cart-photo" name="cart[${index}][image]" src="${item.image}" width="20" height="20"></image>
                 <h6 name="cart[${index}][menuName]">${item.name}</h6>
                 <h6>Qtn:<input type="number" id="quantity${index}" name="cart[${index}][quantity]" value="${item.quantity}" min="1" max="20"></h6>
-                <h6 class="itemPrice" name="cart[${index}][price]">$${item.price}</h6>
+                <h6 class="itemPrice">$${item.price}</h6>
+                <input type="hidden" name="cart[${index}][price]" value="${item.price}"/>
                 <input type="hidden" name="cart[${index}][menuid]" value="${item.menuId}"/>
             </div>
             <br>

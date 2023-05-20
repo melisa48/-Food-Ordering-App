@@ -61,13 +61,10 @@
   <form id="search-form" class="navbar-center" action="/searchResult">
     <select id="category-select" name="category">
       <option value="all" {{#if (categoryFunction category "all")}} selected {{/if }}>All</option>
-      <option value="italian" {{#if (categoryFunction category "italian")}} selected {{/if }}>Italian</option>
-      <option value="taiwanese" {{#if (categoryFunction category "taiwanese")}} selected {{/if }}>Taiwanese</option>
-      <option value="pizza" {{#if (categoryFunction category "pizza")}} selected {{/if }}>Pizza</option>
-      <option value="japanese" {{#if (categoryFunction category "japanese")}} selected {{/if }}>Japanese</option>
-      <option value="fast food" {{#if (categoryFunction category "fast food")}} selected {{/if }}>Fast Food</option>
+      {{#each categories}}
+        <option value="{{categoryName}}" {{#if (categoryFunction ../this.category categoryName)}} selected {{/if }}>{{categoryName}}</option>
+      {{/each}}
     </select><input id="search-bar" name="search" type="text" placeholder="Search" value="{{ searchTerm }}"><a id ='search-button'><i class="bi bi-search"></i></a>
-    
   </form>
   {{#if logged}}
   <div class="navbar-right" styles="display:flex">
