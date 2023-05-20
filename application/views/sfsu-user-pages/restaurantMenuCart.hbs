@@ -27,7 +27,6 @@
                     {{/each}}
                 </div>
                 <form action="restaurantMenuCart/addToCart" method="POST">
-
                     <div class="cart"> 
                         <h3>Cart</h3>
                         <hr>
@@ -47,7 +46,7 @@
 
 <script>
     var total = 0;
-    let cartItems = 0;
+    let cartItems = [];
 
     document.querySelectorAll('[name="add"]').forEach(addButton => {
         addButton.addEventListener('click', () => {
@@ -57,23 +56,74 @@
             var nameElement = buttonID.nextElementSibling.nextElementSibling;
             var name = nameElement.innerText;
             var price = nameElement.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText;
+            var quantity = 1; // Default quantity
+
+            // Check if item with same menuId already exists in cart
+            var existingItem = cartItems.find(item => item.menuId === menuId);
+            if (existingItem) {
+            // If item exists, update the quantity and total price
+                existingItem.quantity++;
+                existingItem.totalPrice += parseFloat(price);
+            } else {
+                // If item doesn't exist, create a new item in the cart
+                cartItems.push({
+                    menuId: menuId,
+                    image: image,
+                    name: name,
+                    price: parseFloat(price),
+                    quantity: quantity,
+                    totalPrice: parseFloat(price)
+                });
+            }
+
             total += parseFloat(price);
-            let div = document.createElement('div');
-            div.innerHTML = `
-                <div class ="cart-container">
-                        <image class="cart-photo" name="cart[${cartItems}][image]" src="`+ image + `" width="50" height="50"></image>
-                        <h6 name="cart[${cartItems}][menuName]">` + name + `</h6>
-                        <h6>Qtn:<input type="number" id="quantity" name="cart[${cartItems}][quantity]" value="1" min = "1" max="5"></h6>
-                        <h6 class="itemPrice" name="cart[${cartItems}][price]">$` + price +`</h6>
-                        <input type="hidden" name="cart[${cartItems}][menuid]" value="${menuId}"/>
-                </div>
-                <br>
-            `;
-            document.getElementById('cart-scroll').appendChild(div);
-            document.getElementById('totalPrice').innerText = formatter.format(total);
-            cartItems++;
+            updateCartDisplay();
         });
     });
+
+    function updateCartDisplay() {
+        var cartContainer = document.getElementById('cart-scroll');
+        cartContainer.innerHTML = ''; // Clear the cart container
+
+        cartItems.forEach((item, index) => {
+            let div = document.createElement('div');
+            div.innerHTML = `
+            <div class ="cart-container">
+                <image class="cart-photo" name="cart[${index}][image]" src="${item.image}" width="20" height="20"></image>
+                <h6 name="cart[${index}][menuName]">${item.name}</h6>
+                <h6>Qtn:<input type="number" id="quantity${index}" name="cart[${index}][quantity]" value="${item.quantity}" min="1" max="20"></h6>
+                <h6 class="itemPrice" name="cart[${index}][price]">$${item.price}</h6>
+                <input type="hidden" name="cart[${index}][menuid]" value="${item.menuId}"/>
+            </div>
+            <br>
+            `;
+            cartContainer.appendChild(div);
+
+            // Add event listener to quantity input field
+            var quantityInput = document.getElementById(`quantity${index}`);
+            quantityInput.addEventListener('change', (event) => {
+                var newQuantity = parseInt(event.target.value);
+                if (!isNaN(newQuantity) && newQuantity >= 1 && newQuantity <= 20) {
+                    // Update quantity and total price
+                    item.totalPrice = item.price * newQuantity;
+                    item.quantity = newQuantity;
+                    total = calculateTotalPrice();
+                    updateCartDisplay();
+                } else {
+                    // Restore previous valid quantity
+                    event.target.value = item.quantity;
+                }
+            });
+        });
+
+        document.getElementById('totalPrice').innerText = formatter.format(total);
+    }
+
+    function calculateTotalPrice() {
+        return cartItems.reduce((total, item) => total + item.totalPrice, 0);
+    }
+
+
 
     //Source used: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
    const formatter = new Intl.NumberFormat('en-US', {
