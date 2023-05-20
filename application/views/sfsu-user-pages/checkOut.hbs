@@ -13,8 +13,8 @@ to see all items in their cart before ordering --}}
         <h1>CheckOut</h1><br>
         <hr style="width: 50%;">
         <br>
-        <form action="../checkOut/deleteItem" method="POST" id="deleteTicket"></form>
-        <form method="POST" action="../checkOut/submitOrder">
+        <form action="../sfsuUser/deleteItem" method="POST" id="deleteTicket"></form>
+        <form method="POST" action="../sfsuUser/submitOrder">
 
         <h2 style="text-align:center">1. Confirmation Location</h2>
         <div class = "build-info">
@@ -69,7 +69,7 @@ to see all items in their cart before ordering --}}
 
     function load_data(query = '')
     {
-        fetch('../checkOut/getBuildings?search_query='+query+'').then(function(response){
+        fetch('../sfsuUser/getBuildings?search_query='+query+'').then(function(response){
             return response.json();
         }).then(function(responseData){
             var html = '<ul class="list-group">';

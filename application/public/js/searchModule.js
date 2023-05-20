@@ -1,8 +1,6 @@
 //code to query the database for restaurants based on user input
 //Author(s): Emily and Eunice
 var db = require("../../conf/database");
-const { search } = require("../../routes/sfsu-user-routes/searchResult");
-// const { search } = require("../../routes/searchResult");
 const searchModule = {};
 
 
