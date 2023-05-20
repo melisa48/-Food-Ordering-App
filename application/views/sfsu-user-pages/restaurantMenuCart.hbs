@@ -14,7 +14,7 @@
                 <div class = "wrapper2">
                     {{#each menu}}
                     <div class = "menu-box">
-                        <image src={{images}} width="300" height="300"></image>
+                        <image src="/images/uploads/{{images}}" width="300" height="300"></image>
                         <hr>
                         <h3>{{name}}</h3>
                         <hr>
@@ -23,6 +23,7 @@
                         <h5 style="display:inline">$</h5><h5 style="display:inline">{{price}}</h5>
                         <br>
                         <button class="button" name="add" id={{menuID}}>add to cart</button>
+                        <p class="class" style="display:none" id="restaurant-id">{{restaurant}}</p>
                     </div>
                     {{/each}}
                 </div>
@@ -31,10 +32,31 @@
                         <h3>Cart</h3>
                         <hr>
                         <div class = "cart-scroll" id = "cart-scroll">
-                            
+                            {{#if logged}}
+                                {{#each userCart}}
+                                    <div class ="cart-container">
+                                        <image class="cart-photo" name="cart[${cartItems}][image]" src="/images/uploads/{{images}}" width="50" height="50"></image>
+                                        <h6 name="menuName">{{name}}</h6>
+                                        <h6>Qtn:<input type="number" id="quantity" name="cart[{{@index}}][quantity]" value={{quantity}} min = "1" max="5"></h6>
+                                        <h6 class="itemPrice">${{price}}</h6>
+                                        <input type="hidden" name="cart[{{@index}}][price]" value="{{price}}"/>
+                                        <input type="hidden" name="cart[{{@index}}][cartID]" value={{cartID}} />
+                                    </div>
+                                    <br >
+                                {{/each}}
+                            {{/if}}
                         </div>
                         <hr>
-                        <h4 style="display:inline">Total: </h4><h4 style="display:inline" id="totalPrice">0.00</h4>
+                        <h4 style="display:inline">Total: </h4><h4 style="display:inline" id="totalPrice">
+                            {{#if logged}}
+                                {{#sumTotal userCart}}
+                                    {{output}}
+                                {{/sumTotal}}
+                            {{else}}
+                            0.00
+                            {{/if}}
+                          
+                        </h4>
                         <br>
                         <button type="submit" name="checkout" class="checkOut-button">Check Out</button>
                     </div>
@@ -126,8 +148,9 @@
 
 
     //Source used: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
-   const formatter = new Intl.NumberFormat('en-US', {
+    const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
     });
+    
 </script>

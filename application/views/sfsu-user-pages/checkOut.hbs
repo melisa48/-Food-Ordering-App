@@ -13,35 +13,104 @@ to see all items in their cart before ordering --}}
         <h1>CheckOut</h1><br>
         <hr style="width: 50%;">
         <br>
-        <h2>1. Confirmation Location</h2>
+        <form action="../sfsuUser/deleteItem" method="POST" id="deleteTicket"></form>
+        <form method="POST" action="../sfsuUser/submitOrder">
+
+        <h2 style="text-align:center">1. Confirmation Location</h2>
         <div class = "build-info">
-            <input type="text" id="Building" name="Building" placeholder="Building">
-            <input type="text" id="Room" name="Room" placeholder="Room">
+            <input type="text" id="Building" name="building" placeholder="Building" />
+            <input type="text" id="Room" name="room" placeholder="Room" />
+            <span id="building-result"></span>
         </div>
         <br>
-        <form class="options">
-            <input type="radio" value="Direct-Delivery" name="delivery">
-            <label for="Direct-Delivery" name="delivery-Option"> Direct Delivery</label><br>
-            <input type="radio" value="PickUp" name="delivery">
-            <label for="Pick Up"name="delivery-Option">Pick Up</label><br>
-        </form>
+            <div class="options">
+                <input type="radio" value="Direct-Delivery" name="delivery">
+                <label for="Direct-Delivery" name="delivery-Option"> Direct Delivery</label><br>
+                <input type="radio" value="PickUp" name="delivery">
+                <label for="Pick Up"name="delivery-Option">Pick Up</label><br>
+            </div>
+            
         <br>
-        <hr style="width: 50%;"><br>
-        <h2>2. Payment</h2>
+        <hr><br>
+        <h2 style="text-align:center">2. Payment</h2>
         <br>
         <div id="order">
             <div class="scrollbar-wrapper">
                 {{#each usersCart}}
-                    {{> sfsuuserticket this}}
+                    {{> sfsuuserticket this id='{{@index}}'}}
                 {{/each}}
             </div>
 
             <hr style="width:80%;">
-            <h3>Total: $$$</h3>
+            <h3>Total: $
+                <h3 id="totalPrice">
+                {{#sumTotal usersCart}}
+                    {{output}}
+                {{/sumTotal}}
+                </h3>
+            </h3>
+            <input type="hidden" name="total" value="{{#sumTotal usersCart}}{{output}}{{/sumTotal}}" />
         </div>
         <br>
-        <button class="order-button">Order</button>
+        <div class="button-order-container" style="text-align:center">
+            <button class="order-button" type="submit">Order</button>
+        </div>
+        </form>
+
     </div>
     <br>
     
 </body>
+
+
+{{!-- Tutorial used: https://www.webslesson.info/2022/07/nodejs-autocomplete-search-with-mysql-database.html  --}}
+{{!-- This part is used to show the result of a database query to allow users to serach for a building --}}
+<script>
+
+    function load_data(query = '')
+    {
+        fetch('../sfsuUser/getBuildings?search_query='+query+'').then(function(response){
+            return response.json();
+        }).then(function(responseData){
+            var html = '<ul class="list-group">';
+            if(responseData.length > 0)
+            {
+                for(var count = 0; count < responseData.length; count++)
+                {
+                   var regular_expression = new RegExp('('+query+')', 'gi');
+                   html += '<a href="#" class="list-group-item list-group-item-action" onclick="get_text(this)">'+responseData[count].name.replace(regular_expression, '<span class="text-primary fw-bold">$1</span>')+'</a>';
+                }
+            }
+            else
+            {
+                html += '<a href="#" class="list-group-item list-group-item-action disabled">No Data Found</a>';
+            }
+            html += '</ul>';
+            document.getElementById('building-result').innerHTML = html;
+        });
+    }
+
+    var search_element = document.getElementById("Building");
+
+    search_element.onkeyup = function(){
+        var query = search_element.value;
+        load_data(query);
+
+    };
+
+    search_element.onfocus = function(){
+        var query = search_element.value;
+        load_data(query);
+    };
+
+
+    function get_text(event)
+    {
+        var building_name = event.textContent;
+        document.getElementById('Building').value = building_name;
+        document.getElementById('building-result').innerHTML = '';
+    }
+
+   
+
+</script>

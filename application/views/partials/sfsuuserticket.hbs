@@ -1,15 +1,18 @@
 {{!-- user's ticket for each food --}}
 {{!-- Author(s): David and Emily --}}
 <div class="ticket">
-    <image class="ticket-image" src={{images}}></image>
+    <image class="ticket-image" src="/images/uploads/{{images}}"></image>
     <div class="ticket-details">
 
                 Name:  {{name}}<br>
-                Price: $ {{price}} <br> 
+                <p class="item-price">Price: $ {{price}} </p><br> 
 
              
- Qtn:<input type="number" id="quantity" name="quantity" value="1" min = "1" max="5">
-               
+    Qty:<input type="number" name="ticket[{{@index}}][quantity]" name="quantity" value={{quantity}} min = "1" max="5">
+             
     </div>
-    <button class="trash-ticket">Trash</button>
+    <input type="hidden" name="ticket[{{@index}}][menuID]" value={{menuID}} />
+    <input type="hidden" name="ticket[{{@index}}][restaurantID]" value={{restaurant}} />
+    <input type="hidden" name="ticket[{{@index}}][cart]" value="{{cartID}}">
+    <button id="trash-ticket-{{@index}}" class="trash-ticket" name="ticket[{{@index}}][delete]" value={{menuID}} form="deleteTicket">Trash</button>
 </div>

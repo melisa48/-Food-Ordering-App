@@ -8,13 +8,19 @@
   
 </head>
 <body>
+
     <div id="wrapper">
+        <div style="color: red; background-color: rgb(237, 183, 183); width: 30%; border-radius: 5px; height: 30px; line-height: 30px; text-align: center;"> 
+            All fields marked with a <b>*</b> are <b>REQUIRED</b> to be filled out
+        </div>
+        <br>
         <h1>Restaurant Application</h1>
         <br>
         <div id="restaurant-application-wrapper">
             <h2>General Restaurant Information</h2>
+            <hr>
             <div id="restaurant-information">
-                <form action="/restaurantApplication/application" method="post" enctype="multipart/form-data" id="application">
+                <form action="/restaurants/restaurantApplication" method="post" enctype="multipart/form-data" id="application">
                 <input id="restaurant-image" type="file" accept="image/*" name="restaurant-image" onchange="uploadImage(event)" />
                 <label for="restaurant-image" id="restaurant-image-alter" name="restaurant-image-alter"> Add Restaurant Image</label> <br><br>
                 <label>Restaurant Name <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
@@ -35,9 +41,12 @@
                 <input type="text" name="address"><br><br />
                 <label>Description <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
                 <textarea name="description" class="restaurant-description"></textarea><br><br />
+                
+                <h2>Enter Individual Restaurant Items</h2>
+                <hr>
                 <label>Menu <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
                 <div id="restaurant-menu">
-                    <h2>Enter Individual Restaurant Items</h2>
+                    
                     <form action="" method="post" enctype="multipart/form-data">
                     <div id="scrollbar-wrapper">
                         <div id="menu-item">

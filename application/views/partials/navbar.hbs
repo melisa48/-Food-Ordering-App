@@ -1,6 +1,16 @@
   {{!-- Partial for the navbar --}}
   {{!-- Author(s): Emily and Eunice --}}
   
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW0GBD8PY5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RW0GBD8PY5');
+</script>
+
   <nav class="navbar">
   <a id="logo" href="/"><i class="bi bi-symmetry-horizontal"></i>GATOREATS</a>
   <div class="navbar-left">
@@ -38,7 +48,7 @@
         Restaurants
         </a>
         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-          <li><a class="dropdown-item" href="/restaurantLogin">Restaurant Owner Login</a></li>
+          <li><a class="dropdown-item" href="/restaurantOwnerLogin">Restaurant Owner Login</a></li>
           <li><a class="dropdown-item" href="/restaurantOwnerRegistration">Restaurant Owner Registration</a></li>
           <li><a class="dropdown-item" href="/restaurantApplication">Restaurant Application</a></li>
         </ul>
@@ -62,7 +72,7 @@
   {{#if logged}}
   <div class="navbar-right" styles="display:flex">
       <p class="dropdown-item"style="color:White; margin: 0 10px 0 0;">Welcome: {{email}}</p>
-      <form method="post" action="/sfsuLogin/logout" id="logout-form">
+      <form method="post" action="/sfsuUser/logout" id="logout-form">
         <input type="hidden" name="extra_submit_param" value="extra_submit_value">
         <button type="submit" name="submit_param" value="submit_value" class="nav-link navbar-links" href="#" role="button" aria-expanded="false">
             Logout
@@ -71,8 +81,18 @@
   </div>
   {{else}}
     <div class="navbar-right">
-      <a class="nav-link navbar-links" href="/sfsuRegistration">Register</a>
-      <a class="nav-link navbar-links" href="/sfsuLogin">Login</a>
+      {{!-- <a class="nav-link navbar-links" href="/sfsuLogin">SFSU Login/Register</a>
+      <a class="nav-link navbar-links" href="/sfsuRegistration">SFSU <br>Register</a> --}}
+      <div class="dropdown navbar-dropdown">
+        <a class="nav-link navbar-links" style="width: 200px;" href="#" role="button" aria-expanded="false">
+        SFSU Login/Register
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+          <li><a class="dropdown-item" href="/sfsuLogin">SFSU Login</a></li>
+          <li><a class="dropdown-item" href="/sfsuRegistration">SFSU Registration</a></li>
+        </ul>
+      </div>
+      
     </div>
 
   {{/if}}
