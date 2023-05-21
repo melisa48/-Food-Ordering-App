@@ -30,6 +30,7 @@
   }
 .menu-box{
 	border: 1px solid rgba(0, 0, 0, 0.1);
+	background-color: white;
 }
 H3 { 
 	top:10px;
@@ -39,11 +40,11 @@ H3 {
 	width: 80%;
 	height: 40px;
 	border: none;
-	background:  #4b6c97;
+	background-color: orange;
 	border-radius: 20px;
 	cursor: pointer;
 	font-size: 16px;
-	color: #202020;
+	color: white;
 	position:relative;
 }
 .checkOut-button{
@@ -54,8 +55,8 @@ H3 {
 	text-align: center;
 	text-decoration: none;
 	outline: none;
-	color: #000000;
-	background-color: #4b6c97;
+	color: white;
+	background-color: orange;
 	border: none;
 	border-radius: 15px;
 }
@@ -66,13 +67,14 @@ H3 {
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	/* position:fixed; */
 	left: 60%;
-	max-height: 45%;
+	max-height: 500px;
+	background-color: white;
 	
 }
-.cart-scroll{
-	max-height: 60%;
-	overflow-y: auto;
-}
+.cart-scroll {
+	max-height: 300px; /* set the maximum height of the cart */
+	overflow-y: auto; /* add a vertical scrollbar when the cart exceeds its maximum height */
+  }
 .cart-container {
 	display: flex;
 	align-items: center;
@@ -98,4 +100,11 @@ H3 {
 	.wrapper {
 		grid-template-columns: repeat(1, 1fr);
 	}
+  }
+
+  #quantity {
+	width: 40px; /* set the width of the input element */
+	height: 20px; /* set the height of the input element */
+	font-size: 12px; /* set the font size of the input element */
+	text-align: center; /* center the text inside the input element */
   }

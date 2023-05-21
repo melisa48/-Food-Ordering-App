@@ -23,7 +23,7 @@ body{
 }
 
 #order-restaurant-details{
-    width: 500px;
+    width: 550px;
     text-align: left;
     font-size: 20px;
 }
@@ -76,6 +76,13 @@ body{
 
 #take-order-button:hover{
     background-color: rgb(33, 164, 52);
+}
+
+#take-order{
+    width: 100%;
+    background: none;
+    color: inherit;
+    border: none;
 }
 
 @media(max-width:640px){
