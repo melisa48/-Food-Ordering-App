@@ -44,10 +44,11 @@ to see all items in their cart before ordering --}}
             <hr style="width:80%;">
             <h3>Total: $
                 <h3 id="totalPrice">
-                {{#sumTotal usersCart}}
-                    {{output}}
-                {{/sumTotal}}
+                    {{#sumTotal usersCart}}
+                        {{output}}
+                    {{/sumTotal}}
                 </h3>
+
             </h3>
             <input type="hidden" name="total" value="{{#sumTotal usersCart}}{{output}}{{/sumTotal}}" />
         </div>
@@ -110,6 +111,27 @@ to see all items in their cart before ordering --}}
         document.getElementById('Building').value = building_name;
         document.getElementById('building-result').innerHTML = '';
     }
+   function updateTotalPrice() {
+        var totalPriceElement = document.getElementById('totalPrice');
+        var tickets = document.getElementsByClassName('ticket');
+        var total = 0;
+
+        for (var i = 0; i < tickets.length; i++) {
+            var ticket = tickets[i];
+            var quantityInput = ticket.querySelector('input[name^="ticket"]');
+            var priceElement = ticket.querySelector('.item-price');
+
+            var quantity = parseInt(quantityInput.value);
+            var price = parseFloat(priceElement.textContent.replace('Price: $', ''));
+
+            var ticketTotal = quantity * price;
+            total += ticketTotal;
+        }
+
+        totalPriceElement.textContent = '$' + total.toFixed(2);
+    }
+
+
 
    
 

@@ -8,7 +8,8 @@
                 <p class="item-price">Price: $ {{price}} </p><br> 
 
              
-    Qty:<input type="number" name="ticket[{{@index}}][quantity]" name="quantity" value={{quantity}} min = "1" max="5">
+   Qty: <input type="number" name="ticket[{{@index}}][quantity]" value={{quantity}} min="1" max="20" onchange="updateTotalPrice()">
+
              
     </div>
     <input type="hidden" name="ticket[{{@index}}][menuID]" value={{menuID}} />
