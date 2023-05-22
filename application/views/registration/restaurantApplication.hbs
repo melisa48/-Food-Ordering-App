@@ -8,7 +8,6 @@
   
 </head>
 <body>
-
     <div id="wrapper">
         <div style="color: red; background-color: rgb(237, 183, 183); width: 30%; border-radius: 5px; height: 30px; line-height: 30px; text-align: center;"> 
             All fields marked with a <b>*</b> are <b>REQUIRED</b> to be filled out
@@ -27,12 +26,9 @@
                 <input type="text" name="restaurantName" required><br><br />
                 <label>Food Category <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
                 <select  name="category">
-                    <option value="all" selected >All</option>
-                    <option value="Italian">Italian</option>
-                    <option value="Taiwanese">Taiwanese</option>
-                    <option value="Pizza">Pizza</option>
-                    <option value="Japanese">Japanese</option>
-                    <option value="Fast food">Fast Food</option>
+                    {{#each applicationCategories}}
+                        <option value="{{categoryName}}">{{categoryName}}</option>
+                    {{/each}}
                 </select>
                 <br><br>
                 <label>Delivery time <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
