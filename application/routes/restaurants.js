@@ -69,9 +69,17 @@ var uploader = multer({storage: storage});
 router.post('/restaurantApplication', uploader.any(),function(req, res, next) {
   let restaurantName = req.body.restaurantName;
   let foodCategory = req.body.category;
-  let deliveryTime = req.body.deliveryTime;
+  let deliveryTime = parseInt(req.body.deliveryTime) || 0;
   let description = req.body.description;
   var address = req.body.address;
+
+  //Server side input validations
+  if(!restaurantName || !address){
+    res.redirect('/restaurantApplication');
+  }
+
+
+
   console.log(address);
   var geocodeAddress = address.replace(/ |,/g, "+");
   geocodeAddress = geocodeAddress + "+US";
@@ -93,13 +101,18 @@ router.post('/restaurantApplication', uploader.any(),function(req, res, next) {
   }
   var restaurantImagePath;
   if(restaurantImageName){
-    restaurantImagePath = "/images/uploads/" + restaurantImageName;
+    restaurantImagePath = restaurantImageName;
   }else{
-    restaurantImagePath = "/images/restaurant.png";
+    restaurantImagePath = "restaurant.png";
   }
   // console.log("Restaurant Image: %s", restaurantImagePath);
 
-  var menu =  req.body.menu;
+  var menu =  req.body.menu;  
+  if(!menu[0].name){
+    res.redirect('/restaurantApplication');
+  }
+  //Server side validation for menu
+
   var menuImageExist = false;
   var menuImages = [];
   var uploadedImages = req.files.length;
@@ -126,7 +139,6 @@ router.post('/restaurantApplication', uploader.any(),function(req, res, next) {
  
   // console.log(menuArray);
 
-  // TODO: throw an error if there is duplicate name
   // Joining the tables
   var categoryIDQuery = "SELECT categories.categoryID FROM restaurant JOIN categories ON restaurant.category = categories.categoryName WHERE restaurant.category = ?;";
   //First outer query call is for getting the category id foreign key
@@ -134,11 +146,17 @@ router.post('/restaurantApplication', uploader.any(),function(req, res, next) {
     if(err) throw err;
     restaurantcategoryID = result[0].categoryID;
     //Second query call is for inserting the restaurant application into the restaurant table
-    var sql = "INSERT INTO restaurant(restaurant_name, category, description, images, latitude, longitude, categoryID, address, restaurantOwner) VALUES(?,?,?,?,?,?,?,?,?);";
+    var sql = "INSERT INTO restaurant(restaurant_name, category, description, images, latitude, longitude, categoryID, address, restaurantOwner, deliveryTime) VALUES(?,?,?,?,?,?,?,?,?,?);";
     getValueFromUrl(geocoding, (err, result)=>{
       if (err) return console.error(err);
-      
-      db.query(sql, [restaurantName, foodCategory, description,restaurantImagePath, result[0].lat, result[0].lon, restaurantcategoryID, address, currentOwner], function(err, secondresult, fields){
+      var latitude;
+      var longitude;
+      console.log(result);
+      if(result.length > 0){
+        latitude = result[0].lat;
+        longitude = result[0].lon;
+      }
+      db.query(sql, [restaurantName, foodCategory, description,restaurantImagePath, latitude, longitude, restaurantcategoryID, address, currentOwner,deliveryTime], function(err, secondresult, fields){
         if(err) throw err;
         let restaurantID = secondresult.insertId;
         for(var i = 0; i < numMenu; i++){
@@ -146,7 +164,7 @@ router.post('/restaurantApplication', uploader.any(),function(req, res, next) {
           menuItems.push(req.body.menu[i].name);
           menuItems.push(req.body.menu[i].description);
           menuItems.push(menuImages[i]);
-          menuItems.push(req.body.menu[i].price);
+          menuItems.push(parseFloat(req.body.menu[i].price) || 0);
           menuItems.push(restaurantID);
           menuArray.push(menuItems);
         }

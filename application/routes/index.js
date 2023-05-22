@@ -113,7 +113,11 @@ router.get('/restaurantApplication',function(req, res, next) {
   if(!req.session.restaurantOwner){
     res.render('login/restaurantOwnerLogin', { message: "Please log in as a restaurant owner first before registering a restaurant", error: true});
   }else{
-    res.render('registration/restaurantApplication', {title: 'Restaurant Application'});
+    var getCategories = "SELECT categoryName FROM categories;";
+    db.query(getCategories, (err, categoriesResult)=>{
+      if(err) throw err;
+      res.render('registration/restaurantApplication', {title: 'Restaurant Application', applicationCategories: categoriesResult});
+    })
   }
 });
 
@@ -138,64 +142,79 @@ router.get('/myRestaurants', function(req, res, next) {
 //driver routes ------------------------------------------------------------------------------------------------------------------------
 
 router.get('/driverOrderList', function(req, res, next) {
-  var getOrders = `SELECT orderID, total, restaurant.images, restaurant.restaurant_name, dropoffPoints.name, roomNumber FROM team7.order
-  JOIN restaurant ON restaurant.restaurant_id = order.restaurantName 
-  JOIN dropoffPoints ON dropoffPoints.pointID = order.dropoff
-  WHERE driver IS NULL;`;
-  db.query(getOrders, (err, result)=>{
-    if (err) throw err;
-    console.log(result);
-    res.render('driver-pages/driverOrderList', { title: 'Orders', orderList: result});
-  })
+  if(!req.session.driver){
+    res.render('login/driverLogin', { message: "Please log in as a driver first before viewing orders", error: true});
+  }else{
+    var getOrders = `SELECT orderID, total, restaurant.images, restaurant.restaurant_name, dropoffPoints.name, roomNumber FROM team7.order
+    JOIN restaurant ON restaurant.restaurant_id = order.restaurantName 
+    JOIN dropoffPoints ON dropoffPoints.pointID = order.dropoff
+    WHERE driver IS NULL;`;
+    db.query(getOrders, (err, result)=>{
+      if (err) throw err;
+      console.log(result);
+      res.render('driver-pages/driverOrderList', { title: 'Orders', orderList: result});
+    })
+  }
 });
 
 router.get('/driverOrderDetails', function(req, res, next) {
-  let orderIdentifier = req.query.order;
-  // console.log(orderIdentifier);
-  var getOrder = `SELECT order.orderID, restaurant.restaurant_name, restaurant.address, dropoffPoints.name AS "building", roomNumber 
-  FROM team7.order 
-  JOIN restaurant ON restaurant.restaurant_id = order.restaurantName 
-  JOIN dropoffPoints ON dropoffPoints.pointID = order.dropoff
-  WHERE order.orderID = ?;`;
-  let getTickets = `SELECT menu.name, menu.images, quantity FROM ticket 
-  JOIN menu ON menu.menuID = ticket.menuItem
-  WHERE orderID = ?;`;
-  db.query(getOrder, [orderIdentifier], (err, orderResult)=>{
-    if(err) throw err;
-    console.log(orderResult);
-    db.query(getTickets,[orderIdentifier],(err,ticketsResult)=>{
+  if(!req.session.driver){
+    res.render('login/driverLogin', { message: "Please log in as a driver first before viewing order details", error: true});
+  }else{
+    let orderIdentifier = req.query.order;
+    // console.log(orderIdentifier);
+    var getOrder = `SELECT order.orderID, restaurant.restaurant_name, restaurant.address, dropoffPoints.name AS "building", roomNumber 
+    FROM team7.order 
+    JOIN restaurant ON restaurant.restaurant_id = order.restaurantName 
+    JOIN dropoffPoints ON dropoffPoints.pointID = order.dropoff
+    WHERE order.orderID = ?;`;
+    let getTickets = `SELECT menu.name, menu.images, quantity FROM ticket 
+    JOIN menu ON menu.menuID = ticket.menuItem
+    WHERE orderID = ?;`;
+    db.query(getOrder, [orderIdentifier], (err, orderResult)=>{
       if(err) throw err;
-      console.log(ticketsResult);
-      res.render('driver-pages/driverOrderDetails', { title: 'Order Details', orders: orderResult, tickets: ticketsResult});
+      console.log(orderResult);
+      db.query(getTickets,[orderIdentifier],(err,ticketsResult)=>{
+        if(err) throw err;
+        console.log(ticketsResult);
+        res.render('driver-pages/driverOrderDetails', { title: 'Order Details', orders: orderResult, tickets: ticketsResult});
+      })
     })
-  })
+  }
+  
 });
 
 router.get('/driverDeliveryMap', function(req, res, next) {
-  let currentDriver = res.locals.userId;
 
-  var getOrder = `SELECT order.orderID, dropoffPoints.name AS "building", roomNumber 
-  FROM team7.order 
-  JOIN dropoffPoints ON dropoffPoints.pointID = order.dropoff
-  WHERE order.driver = ? AND order.progress = 1;`;
-  let getTickets = `SELECT menu.name, menu.images, quantity FROM ticket 
-  JOIN menu ON menu.menuID = ticket.menuItem
-  WHERE orderID = ?;`;
+  if(!req.session.driver){
+    res.render('login/driverLogin', { message: "Please log in as a driver first before viewing the delivery map", error: true});
+  }else{
+    let currentDriver = res.locals.userId;
 
-  db.query(getOrder, [currentDriver], (err, orderResult)=>{
-    if(err) throw err;
-    if(orderResult.length >= 1){
-      let currentOrder = orderResult[0].orderID;
-      // console.log(currentOrder);
-      db.query(getTickets, [currentOrder], (err, ticketResult)=>{
-        if(err) throw err;
-        // console.log(ticketResult);
-        res.render('driver-pages/driverDeliveryMap', { title: 'Delivery Map' , orders: orderResult, tickets: ticketResult });
-      })
-    }else{
-      res.render('driver-pages/driverDeliveryMap', { title: 'Delivery Map',  message: "No ongoing orders"});
-    }
-  })
+    var getOrder = `SELECT order.orderID, dropoffPoints.name AS "building", roomNumber 
+    FROM team7.order 
+    JOIN dropoffPoints ON dropoffPoints.pointID = order.dropoff
+    WHERE order.driver = ? AND order.progress = 1;`;
+    let getTickets = `SELECT menu.name, menu.images, quantity FROM ticket 
+    JOIN menu ON menu.menuID = ticket.menuItem
+    WHERE orderID = ?;`;
+  
+    db.query(getOrder, [currentDriver], (err, orderResult)=>{
+      if(err) throw err;
+      if(orderResult.length >= 1){
+        let currentOrder = orderResult[0].orderID;
+        // console.log(currentOrder);
+        db.query(getTickets, [currentOrder], (err, ticketResult)=>{
+          if(err) throw err;
+          // console.log(ticketResult);
+          res.render('driver-pages/driverDeliveryMap', { title: 'Delivery Map' , orders: orderResult, tickets: ticketResult });
+        })
+      }else{
+        res.render('driver-pages/driverDeliveryMap', { title: 'Delivery Map',  message: "No ongoing orders"});
+      }
+    })
+  }
+  
   
 });
 

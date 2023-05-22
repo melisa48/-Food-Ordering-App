@@ -237,8 +237,7 @@ router.post('/addToCart', function(req, res, next){
       var cartItems = [];
       let currentOwner = res.locals.userId;    
       var newItems = false;  
-      var finished = 0;
-
+      console.log(req.body.cart);
       //Used to display items in the checkout only items from that restaurant
       var display_cart_from_restaurant = req.body.restaurantid;
       var displayCart = `SELECT menu.menuID, menu.name, menu.images, menu.price, menu.restaurant, cart.cartID, cart.quantity, cart.cartItemTotal 
@@ -252,7 +251,7 @@ router.post('/addToCart', function(req, res, next){
           itemInformation.push(parseInt(req.body.cart[i].quantity));
           itemTotalPrice = parseFloat(req.body.cart[i].quantity) * req.body.cart[i].price;
           itemInformation.push(itemTotalPrice);
-          itemInformation.push(req.body.restaurantid);
+          itemInformation.push(parseInt(req.body.restaurantid));
           cartItems.push(itemInformation);
           newItems = true;
         }else{

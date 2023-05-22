@@ -58,6 +58,7 @@ or waiting for approval */
     border-bottom-right-radius: 5px;
     display: flex;
     flex-direction: column;
+    /* overflow-y: auto; */
 }
 
 .register-btn {
@@ -80,6 +81,10 @@ or waiting for approval */
     border: none;
     background-color: orange;
     color: white;
+}
+
+#description{
+    overflow-y: auto;
 }
 
 @media(max-width:730px){

@@ -7,12 +7,12 @@ var hbs = require('hbs');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var multer = require('multer');
-
+var db = require('../application/conf/database');
 const partials = path.join(__dirname, "views/partials");
 hbs.registerPartials(partials);
 
 hbs.registerHelper('categoryFunction', function(category, setCategory) {
-  return category == setCategory;
+  return category === setCategory;
 });
 
 hbs.registerHelper('sumTotal', function(list){
@@ -86,6 +86,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+let categoryArray = [];
+app.use('*',(req, res,next)=>{
+  if(categoryArray.length == 0){
+    var getCategories = "SELECT categoryName FROM categories;";
+    db.query(getCategories, (err, result)=>{
+      if(err) throw err;
+      categoryArray = result;
+      res.locals.categories = categoryArray;
+      console.log(categoryArray);
+    })
+  } 
+  res.locals.categories = categoryArray;
+  console.log(res.locals.categories);
+  next();
+})
 //home
 app.use('/', indexRouter);
 //about
