@@ -37,7 +37,7 @@
                                     <div class ="cart-container">
                                         <image class="cart-photo" name="cart[${cartItems}][image]" src="/images/uploads/{{images}}" width="50" height="50"></image>
                                         <h6 name="menuName">{{name}}</h6>
-                                        <h6>Qtn:<input type="number" id="quantity" name="cart[{{@index}}][quantity]" value={{quantity}} min = "1" max="5"></h6>
+                                        <h6>Qtn:<input type="number" id="quantity" name="cart[{{@index}}][quantity]" value={{quantity}} min = "1" max="20"></h6>
                                         <h6 class="itemPrice">${{price}}</h6>
                                         <input type="hidden" name="cart[{{@index}}][price]" value="{{price}}"/>
                                         <input type="hidden" name="cart[{{@index}}][cartID]" value={{cartID}} />
@@ -53,7 +53,6 @@
                                     {{output}}
                                 {{/sumTotal}}
                             {{else}}
-                            0.00
                             {{/if}}
                           
                         </h4>
