@@ -1,3 +1,5 @@
+//Routes for all the pages except for about team pages
+// Author(s): Eunice, Emily
 var express = require('express');
 var router = express.Router();
 const db = require('../conf/database');

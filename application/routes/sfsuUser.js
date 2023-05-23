@@ -1,10 +1,12 @@
+//Post Methods for all SFSU user related pages
+//Author(s): Eunice
 var express = require('express');
 var router = express.Router();
 var db = require("../conf/database");
 var bcrypt = require('bcryptjs');
 
 
-//SFSU LOGIN
+//SFSU LOGIN--------------------------------------------------------------------------------------
 router.post('/sfsuLogin',(req, res, next) => {
   let email = req.body.email;
   let password = req.body.password;
@@ -37,7 +39,7 @@ router.post('/sfsuLogin',(req, res, next) => {
   });
 });
 
-//SFSU USER LOGOUT
+//SFSU USER LOGOUT--------------------------------------------------------------------------
 router.post('/logout', (req,res,next)=>{
   if(req.session.email){
     console.log("Logging out: %s", req.session.email);
@@ -46,7 +48,7 @@ router.post('/logout', (req,res,next)=>{
   }
 });
 
-//SFSU USER REGISTRATION
+//SFSU USER REGISTRATION------------------------------------------------------------------
 
 
 //Author: Eunice

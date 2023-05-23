@@ -1,3 +1,5 @@
+//Post Methods for all restaurant owner and restaurant related pages
+//Author(s): Eunice
 var express = require('express');
 var router = express.Router();
 var db = require("../conf/database");
