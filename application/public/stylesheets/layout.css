@@ -117,7 +117,7 @@ input, select{
 }
 
 #banner{
-  background-color: rgb(102, 156, 198); 
+  background-color: #3498db; 
   color: rgb(255, 255, 255); 
   height: 30px; 
   width: 100%; 
@@ -194,7 +194,7 @@ li{
 }
 
 /* redesign navbar for phones and tablets*/
-@media(max-width: 1270px){
+@media(max-width: 1400px){
 
   .navbar{
     display: table;
