@@ -34,7 +34,14 @@ router.post('/sfsuLogin',(req, res, next) => {
         // console.log("fn: %s",  req.session.firstName);
         res.render('index', {email : req.session.email});
       }else{
-        res.render('login/sfsuLogin', { message: "Invalid login", error: true });
+        res.render('login/sfsuLogin', { 
+          title: 'SFSU User Login',
+          action:"/sfsuUser/sfsuLogin",
+          registrationLink: "/sfsuRegistration",
+          message: "Invalid Login",
+          error: true
+        });
+       
       }
   });
 });

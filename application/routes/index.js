@@ -13,15 +13,28 @@ router.get('/', function(req, res, next) {
 
 //login routes---------------------------------------------------------------------
 router.get('/sfsuLogin', function(req, res, next) {
-  res.render('login/sfsuLogin', { title: 'SFSU Login'});
+  res.render('login/sfsuLogin', { 
+    title: 'SFSU User Login',
+    action:"/sfsuUser/sfsuLogin",
+    registrationLink: "/sfsuRegistration"
+
+  });
 });
 
 router.get('/driverLogin', function(req, res, next) {
-  res.render('login/driverLogin', {title: 'Driver Login'});
+  res.render('login/driverLogin', {
+    title: 'Driver Login',
+    action:"/drivers/driverLogin",
+    registrationLink:"/driverRegistration"
+  });
 });
 
 router.get('/restaurantOwnerLogin', function(req, res, next) {
-  res.render('login/restaurantOwnerLogin', {title: 'Restaurant Login'});
+  res.render('login/restaurantOwnerLogin', {
+    title: 'Restaurant Login',
+    action:"/restaurants/restaurantOwnerLogin",
+    registrationLink: "/restaurantOwnerRegistration"
+  });
 });
 
 

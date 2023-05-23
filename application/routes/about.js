@@ -112,7 +112,7 @@ router.get('/juandavid', function(req, res, next) {
   res.render('about-hbs/juandavid', {
     title: 'Juan David',
     membername: "Juan David Liang",
-    memberImage: "/images/juan-photo.jpg",
+    memberImage: "/images/juandavid-photo.jpg",
     role: "Github Master",
     linkedin: "https://www.linkedin.com/in/juan-david-guan-yu-liang-liao-ab13a721a/",
     github: "https://github.com/JDLiang100",

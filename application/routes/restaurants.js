@@ -33,7 +33,14 @@ router.post('/restaurantOwnerLogin',(req, res, next) => {
         // console.log("user id: %s",  req.session.userid);
         res.render('index', {email : req.session.email});
       }else{
-        res.render('login/restaurantOwnerLogin', { message: "Invalid login", error:true });
+        res.render('login/restaurantOwnerLogin', {
+          title: 'Restaurant Login',
+          action:"/restaurants/restaurantOwnerLogin",
+          registrationLink: "/restaurantOwnerRegistration",
+          message: "Invalid Login",
+          error: true
+        });
+        
       }
   });
 });

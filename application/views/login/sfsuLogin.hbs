@@ -1,29 +1,3 @@
 {{!-- HTML for driver login page --}}
-{{!-- Author(s): David --}}
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/login.css">
-</head>
-    <div class="wrapper">
-        {{#if error}}
-            <div class="error-message">
-                <h5 class="message">
-                    {{message}}
-                </h5>
-            </div>
-        {{/if}}
-        <form class="form-signin" method="POST" action="/sfsuUser/sfsuLogin"
-        enctype="application/x-www-form-urlencoded">
-            <h2 class="form-title">SFSU User Login</h2>
-            <h6>Email</h3>
-            <input type="text" class="form-control" name="email"  required="" autofocus="" />
-            <h6>Password</h3>
-            <input type="password" class="form-control" name="password" required=""/>      
-
-            <button class="submit-button" type="submit">Submit</button>   
-        </form>
-        <a href ="/sfsuRegistration" class="relocation-link">Dont have an account? Register here &rarr;</a>
-    </div>
-    
+{{!-- Author(s): David and Emily--}}
+{{> logintemplate}}
