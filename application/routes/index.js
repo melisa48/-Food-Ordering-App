@@ -1,3 +1,5 @@
+//Routes for all the pages except for about team pages
+// Author(s): Eunice, Emily
 var express = require('express');
 var router = express.Router();
 const db = require('../conf/database');
@@ -11,29 +13,56 @@ router.get('/', function(req, res, next) {
 
 //login routes---------------------------------------------------------------------
 router.get('/sfsuLogin', function(req, res, next) {
-  res.render('login/sfsuLogin', { title: 'SFSU Login'});
+  res.render('login/sfsuLogin', { 
+    title: 'SFSU User Login',
+    action:"/sfsuUser/sfsuLogin",
+    registrationLink: "/sfsuRegistration"
+
+  });
 });
 
 router.get('/driverLogin', function(req, res, next) {
-  res.render('login/driverLogin', {title: 'Driver Login'});
+  res.render('login/driverLogin', {
+    title: 'Driver Login',
+    action:"/drivers/driverLogin",
+    registrationLink:"/driverRegistration"
+  });
 });
 
 router.get('/restaurantOwnerLogin', function(req, res, next) {
-  res.render('login/restaurantOwnerLogin', {title: 'Restaurant Login'});
+  res.render('login/restaurantOwnerLogin', {
+    title: 'Restaurant Login',
+    action:"/restaurants/restaurantOwnerLogin",
+    registrationLink: "/restaurantOwnerRegistration"
+  });
 });
 
 
 //registration routes--------------------------------------------------------------------
 router.get('/sfsuRegistration', function(req, res, next) {
-  res.render('registration/sfsuRegistration', {title: 'SFSU Registration'});
+  res.render('registration/sfsuRegistration', {
+    title: 'SFSU User Registration',
+    sfsuUser: true,
+    action: "/sfsuUser/sfsuRegistration",
+    loginLink: "/SFSULogin"
+  });
 });
 
 router.get('/driverRegistration', function(req, res, next) {
-  res.render('registration/driverRegistration', {title: 'Driver Registration'});
+  res.render('registration/driverRegistration', {
+    title: 'Driver Registration',
+    driver: true,
+    action: "/drivers/driverRegistration",
+    loginLink:"/driverLogin"
+  });
 });
 
 router.get('/restaurantOwnerRegistration', function(req, res, next) {
-  res.render('registration/restaurantOwnerRegistration', {title: 'Restaurant Registration'});
+  res.render('registration/restaurantOwnerRegistration', {
+    title: 'Restaurant Registration',
+    action: "/restaurants/restaurantOwnerRegistration",
+    loginLink:"/restaurantOwnerLogin"
+  });
 });
 
 //sfsu user pages---------------------------------------------------------------------------------------------------------
@@ -111,7 +140,13 @@ router.get('/orderCompleted', function(req, res, next) {
 //restaurant pages -------------------------------------------------------------------------------------------------
 router.get('/restaurantApplication',function(req, res, next) {
   if(!req.session.restaurantOwner){
-    res.render('login/restaurantOwnerLogin', { message: "Please log in as a restaurant owner first before registering a restaurant", error: true});
+    res.render('login/restaurantOwnerLogin', {
+      title: 'Restaurant Login',
+      action:"/restaurants/restaurantOwnerLogin",
+      registrationLink: "/restaurantOwnerRegistration",
+      message: "Please log in as a restaurant owner first before registering a restaurant", 
+      error: true
+    });
   }else{
     var getCategories = "SELECT categoryName FROM categories;";
     db.query(getCategories, (err, categoriesResult)=>{
@@ -125,7 +160,13 @@ var restaurantResults = [];
 
 router.get('/myRestaurants', function(req, res, next) {
   if(!req.session.restaurantOwner){
-    res.render('login/restaurantOwnerLogin', { message: "Please log in as a restaurant owner to view your restaurants", error: true});
+    res.render('login/restaurantOwnerLogin', {
+      title: 'Restaurant Login',
+      action:"/restaurants/restaurantOwnerLogin",
+      registrationLink: "/restaurantOwnerRegistration",
+      message: "Please log in as a restaurant owner to view your restaurants", 
+      error: true
+    });
   }else{
     //Getting all the restaurants from this owner
     let currentOwner = res.locals.userId;
@@ -143,7 +184,13 @@ router.get('/myRestaurants', function(req, res, next) {
 
 router.get('/driverOrderList', function(req, res, next) {
   if(!req.session.driver){
-    res.render('login/driverLogin', { message: "Please log in as a driver first before viewing orders", error: true});
+    res.render('login/driverLogin', {
+      title: 'Driver Login',
+      action:"/drivers/driverLogin",
+      registrationLink:"/driverRegistration",
+      message: "Please log in as a driver first before viewing orders", 
+      error: true
+    });
   }else{
     var getOrders = `SELECT orderID, total, restaurant.images, restaurant.restaurant_name, dropoffPoints.name, roomNumber FROM team7.order
     JOIN restaurant ON restaurant.restaurant_id = order.restaurantName 
@@ -159,7 +206,13 @@ router.get('/driverOrderList', function(req, res, next) {
 
 router.get('/driverOrderDetails', function(req, res, next) {
   if(!req.session.driver){
-    res.render('login/driverLogin', { message: "Please log in as a driver first before viewing order details", error: true});
+    res.render('login/driverLogin', {
+      title: 'Driver Login',
+      action:"/drivers/driverLogin",
+      registrationLink:"/driverRegistration",
+      message: "Please log in as a driver first before viewing order details", 
+      error: true
+    });
   }else{
     let orderIdentifier = req.query.order;
     // console.log(orderIdentifier);
@@ -187,7 +240,14 @@ router.get('/driverOrderDetails', function(req, res, next) {
 router.get('/driverDeliveryMap', function(req, res, next) {
 
   if(!req.session.driver){
-    res.render('login/driverLogin', { message: "Please log in as a driver first before viewing the delivery map", error: true});
+    res.render('login/driverLogin', {
+      title: 'Driver Login',
+      action:"/drivers/driverLogin",
+      registrationLink:"/driverRegistration",
+      message: "Please log in as a driver first before viewing the delivery map", 
+      error: true
+    });
+
   }else{
     let currentDriver = res.locals.userId;
 

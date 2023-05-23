@@ -1,9 +1,22 @@
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/sfsu-user-pages-css/orderCompleted.css">
+
 </head>
-<body>
+
+    <div id="wrapper">
+        <h1>Order Completed!</h1>
+        <image id="party-popper-image" src="/images/party-popper.png"></image>
+        <h3>Thank you for ordering with us today!</h3>
+        <button id="view-more-food">Click Here to View More Food</button>
+    </div>
+
+    <script>
+        var searchForm = document.getElementById("search-form");
+        var viewMoreFood = document.getElementById("view-more-food");
+
+        viewMoreFood.addEventListener("click", function(e){
+            e.preventDefault();
+            searchForm.submit();
+        });
+    </script>
     
-    Order completed
-</body>

@@ -1,3 +1,5 @@
+//Post Methods for all driver related pages
+//Author(s): Eunice
 var express = require('express');
 var router = express.Router();
 var db = require("../conf/database");
@@ -32,7 +34,14 @@ router.post('/driverLogin',(req, res, next) => {
         // console.log("fn: %s",  req.session.firstName);
         res.render('index', {email : req.session.email});
       }else{
-        res.render('login/driverLogin', { message: "Invalid login", error:true });
+        res.render('login/driverLogin', {
+          title: 'Driver Login',
+          action:"/drivers/driverLogin",
+          registrationLink:"/driverRegistration",
+          message: "Invalid Login",
+          error: true
+        });
+        
       }
   });
 });
@@ -76,12 +85,27 @@ router.post('/driverRegistration',(req, res, next) => {
       })
     }else{
       console.log("Not a valid email address.\n");
-      res.render('registration/driverRegistration',  { message: "Not a valid email address", error: true});
+      res.render('registration/driverRegistration', {
+        title: 'Driver Registration',
+        driver: true,
+        action: "/drivers/driverRegistration",
+        loginLink:"/driverLogin",
+        message: "Not a valid email address", 
+        error: true
+      });
+      
     }
     
   }else{
     console.log("Passwords do not match\n");
-    res.render('registration/driverRegistration', { message: "Passwords does not match", error: true});
+    res.render('registration/driverRegistration', {
+      title: 'Driver Registration',
+      driver: true,
+      action: "/drivers/driverRegistration",
+      loginLink:"/driverLogin",
+      message: "Passwords does not match", 
+      error: true
+    });
   }
 
 });

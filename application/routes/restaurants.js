@@ -1,3 +1,5 @@
+//Post Methods for all restaurant owner and restaurant related pages
+//Author(s): Eunice
 var express = require('express');
 var router = express.Router();
 var db = require("../conf/database");
@@ -31,7 +33,14 @@ router.post('/restaurantOwnerLogin',(req, res, next) => {
         // console.log("user id: %s",  req.session.userid);
         res.render('index', {email : req.session.email});
       }else{
-        res.render('login/restaurantOwnerLogin', { message: "Invalid login", error:true });
+        res.render('login/restaurantOwnerLogin', {
+          title: 'Restaurant Login',
+          action:"/restaurants/restaurantOwnerLogin",
+          registrationLink: "/restaurantOwnerRegistration",
+          message: "Invalid Login",
+          error: true
+        });
+        
       }
   });
 });
@@ -247,12 +256,26 @@ router.post('/restaurantOwnerRegistration',(req, res, next) => {
       })
     }else{
       console.log("Not a valid email address.\n");
-      res.render('registration/restaurantOwnerRegistration',  { message: "Not a valid email address", error: true});
+      res.render('registration/restaurantOwnerRegistration', {
+        title: 'Restaurant Registration',
+        action: "/restaurants/restaurantOwnerRegistration",
+        loginLink:"/restaurantOwnerLogin",
+        message: "Not a valid email address", 
+        error: true
+      });
+
     }
     
   }else{
     console.log("Passwords do not match\n");
-    res.render('registration/restaurantOwnerRegistration', { message: "Passwords does not match", error: true});
+    res.render('registration/restaurantOwnerRegistration', {
+      title: 'Restaurant Registration',
+      action: "/restaurants/restaurantOwnerRegistration",
+      loginLink:"/restaurantOwnerLogin",
+      message: "Passwords does not match", 
+      error: true
+    });
+
   }
 
 });

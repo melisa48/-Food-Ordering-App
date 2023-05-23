@@ -116,6 +116,14 @@ input, select{
   
 }
 
+#banner{
+  background-color: rgb(102, 156, 198); 
+  color: rgb(255, 255, 255); 
+  height: 30px; 
+  width: 100%; 
+  line-height: 30px; 
+  text-align: center;
+}
 
 
 
@@ -226,5 +234,15 @@ li{
     height: 30px;
     width: 30px;
     display: inline-block;
+  }
+
+  #banner{
+    background-color: rgb(102, 156, 198); 
+    color: rgb(255, 255, 255); 
+    height: 30px; 
+    width: 100%; 
+    line-height: 30px; 
+    text-align: center;
+    font-size: 10px;
   }
 }

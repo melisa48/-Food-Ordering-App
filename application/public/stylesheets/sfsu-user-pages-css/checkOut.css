@@ -64,7 +64,7 @@ Author(s): David and Emily*/
 }
 
 .ticket-image{
-	width: 150px;
+	min-width: 150px;
 	height: 100%;
 }
 
@@ -84,9 +84,15 @@ Author(s): David and Emily*/
 	width:60px;
 }
 
+.item-price{
+	margin-bottom: 0;
+}
+
+
+
 @media(max-width: 730px){
 	#order{
-		width: 90%;;
+		width: 95%;
 	}
 
 	.build-info{
@@ -95,6 +101,25 @@ Author(s): David and Emily*/
 		display: grid;
 		grid-template-columns: 60% 40%;
 		gap: 10px;
+	}
+
+	.ticket-image{
+		min-width: auto;
+		height: 100%;
+	}
+	.item-quantity{
+		width: 70px;
+		margin-top: 0;
+	}
+
+	.ticket-details{
+		width: 200px;
+		padding: 15px;
+	}
+
+	.ticket-details{
+		width: 100%;
+		padding: 5px;
 	}
 }
 

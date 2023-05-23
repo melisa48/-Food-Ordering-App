@@ -1,0 +1,10 @@
+{{!-- about card partial for teammember cards in the about team page --}}
+{{!-- Author(s): Emily --}}
+<div class="about-div-item" id="{{id}}-div">
+    <image class = about-photos id='{{id}}-photo' src = '/images/{{id}}-photo.jpg'></image>
+    <div class="about-description">
+    <header class = member-name id = '{{id}}-name'>{{membername}}</header>
+    <p class = about-paragraph id = '{{id}}-about'> {{roleDetails}}</p>
+    <a href = '/about/{{id}}'>Read More <i class="bi bi-caret-right-fill"></i></a>
+    </div>
+</div>

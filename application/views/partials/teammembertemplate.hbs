@@ -1,0 +1,53 @@
+{{!-- Template for about pages for each team member
+Author(s): Emily
+ --}}
+
+<head>
+  <title>{{title}}</title>
+  <link rel='stylesheet' href='/stylesheets/about-me.css' />
+</head>
+
+<h3></h3>
+    
+    <div class="wrapper">
+      <div class="side-bar">
+        <image class="about-photo" src={{memberImage}}></image>
+        <h4>{{membername}}</h4>
+        <p>
+          {{role}}
+          <hr>
+          Undergraduate Computer Science Student at San Francisco State University
+        </p>
+        
+        <p id="side-links">
+          <i class="bi bi-geo-alt"></i> San Francisco, CA <br>
+          <a href={{linkedin}}><i class="bi bi-linkedin"></i> Linked In</a><br>
+          <a  href={{github}}><i class="bi bi-github"></i> Github</a>
+        </p>
+        
+      </div>
+
+      <div class="main-content">
+        <h3>About me</h3>
+        <hr>
+        <p>{{aboutMeContent}}
+        </p>
+
+        <h3>Experience</h3>
+        <hr>
+        <p>{{experience}}
+        </p>
+
+        <h3>Contact Me</h3>
+        <hr>
+
+        <div id="contact-me">
+          <a href={{linkedin}}><i class="bi bi-linkedin"></i></a>&emsp;
+          <a href={{email1}}><i class="bi bi-envelope-at"></i></i></a>&emsp;
+          <a href={{email2}}><i class="bi bi-envelope-at-fill"></i></a>
+        </div>
+        
+   
+      </div>
+
+    </div>
