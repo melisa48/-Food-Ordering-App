@@ -25,6 +25,10 @@
     height: 300px;
 }
 
+.restaurant-button{
+    width: 100%;
+}
+
 .view-restaurant-link{
     margin-bottom: 15px;
     color:white;
@@ -32,6 +36,11 @@
 
 .restaurant-details{
     margin: 15px;
+}
+
+.restaurant-description{
+    height: 150px;
+    overflow-y: auto;
 }
 
 .markerPosition {

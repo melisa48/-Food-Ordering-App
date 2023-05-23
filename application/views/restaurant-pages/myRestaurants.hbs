@@ -8,23 +8,22 @@
     <link rel="stylesheet" href="/stylesheets/restaurant-pages-css/myRestaurants.css">
     <title>My Restaurants</title>
 </head>
-<body>
-    <div class="container">
-        <h1>My Restaurants</h1>
-        <br>
-        <p class="message">Your restaurant will be registered within 24 hours of applying.</p>
-        <div id="restaurant-container">
-            {{!-- partial that will display the restaurant an registered restaurant user has applied for --}}
-            {{!-- {{> restaurantcard}} --}}
-            {{#each restaurantName}}
-                {{> restaurantcard this}}
-            {{/each}}
-            
-        </div>
-        <button class="register-btn" onclick="location.href='/restaurantApplication'">Register Another Restaurant</button> 
 
+<div class="container">
+    <h1>My Restaurants</h1>
+    <br>
+    <p class="message">Your restaurant will be registered within 24 hours of applying.</p>
+    <div id="restaurant-container">
+        {{!-- partial that will display the restaurant an registered restaurant user has applied for --}}
+        {{!-- {{> restaurantcard}} --}}
+        {{#each restaurantName}}
+            {{> restaurantcard this}}
+        {{/each}}
+        
     </div>
-</body>
+    <button class="register-btn" onclick="location.href='/restaurantApplication'">Register Another Restaurant</button> 
+
+</div>
+
             
         
-</html>

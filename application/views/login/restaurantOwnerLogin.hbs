@@ -7,25 +7,25 @@
     <link rel="stylesheet" href="/stylesheets/login.css">
    
 </head>
-<body>
-     <div class="wrapper">
-        {{#if error}}
-            <div class="error-message">
-                <h5 class="message">
-                    {{message}}
-                </h5>
-            </div>
-        {{/if}}
+
     <div class="wrapper">
-        <form class="form-signin"  method="POST" action="/restaurants/restaurantOwnerLogin"
-        enctype="application/x-www-form-urlencoded">
-            <h2 class="form-title">Restaurant Owner Login</h2>
-            <h6>Email</h3>
-            <input type="text" class="form-control" name="email"  required="" autofocus="" />
-            <h6>Password</h3>
-            <input type="password" class="form-control" name="password" required=""/>      
-            <button class="submit-button" type="submit">Submit</button>   
-        </form>
-        <a href ="/restaurantOwnerRegistration" class="relocation-link">Dont have an accout? Register here &rarr;</a>
-    </div>
-</body>
+    {{#if error}}
+        <div class="error-message">
+            <h5 class="message">
+                {{message}}
+            </h5>
+        </div>
+    {{/if}}
+<div class="wrapper">
+    <form class="form-signin"  method="POST" action="/restaurants/restaurantOwnerLogin"
+    enctype="application/x-www-form-urlencoded">
+        <h2 class="form-title">Restaurant Owner Login</h2>
+        <h6>Email</h3>
+        <input type="text" class="form-control" name="email"  required="" autofocus="" />
+        <h6>Password</h3>
+        <input type="password" class="form-control" name="password" required=""/>      
+        <button class="submit-button" type="submit">Submit</button>   
+    </form>
+    <a href ="/restaurantOwnerRegistration" class="relocation-link">Dont have an accout? Register here &rarr;</a>
+</div>
+

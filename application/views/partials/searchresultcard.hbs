@@ -4,16 +4,16 @@
 <form action="/restaurantMenuCart" target="_blank" id="restaurant-card">
     {{!-- <image style="height: 200px; width: 200px" src="/images/uploads/olivegarden.jpg"></image> --}}
     {{!-- <input type="submit" name="{{id}}"> --}}
-    <button name="restaurant" value="{{restaurant_id}}">
+    <button class="restaurant-button" name="restaurant" value="{{restaurant_id}}">
 
     <image class="restaurant-image" src="/images/uploads/{{images}}"></image>
     <br>
-    <h4>{{restaurant_name}}</h4>
+    <h4 style="margin-top: 15px;">{{restaurant_name}}</h4>
     <h5>{{category}}</h5>
-    <hr style="width: 90%;">
+    <hr style="width: 100%;">
     <div class="restaurant-details">
         <h6>Delivery Time: {{deliveryTime}}</h6>
-        <h6>Description: {{description}}</h6>
+        <h6 class="restaurant-description">Description: {{description}}</h6>
     </div>
     </button>
 </form>

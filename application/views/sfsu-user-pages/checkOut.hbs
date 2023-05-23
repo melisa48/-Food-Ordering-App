@@ -7,61 +7,61 @@ to see all items in their cart before ordering --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/sfsu-user-pages-css/checkOut.css">
 </head>
-<body>
-    <div class="center">
-        <br>
-        <h1>CheckOut</h1><br>
-        <hr style="width: 50%;">
-        <br>
-        <form action="../sfsuUser/deleteItem" method="POST" id="deleteTicket"></form>
-        <form method="POST" action="../sfsuUser/submitOrder">
 
-        <h2 style="text-align:center">1. Confirmation Location</h2>
-        <div class = "build-info">
-            <input type="text" id="Building" name="building" placeholder="Building" />
-            <input type="text" id="Room" name="room" placeholder="Room" />
-            <span id="building-result"></span>
-        </div>
-        <br>
-            <div class="options">
-                <input type="radio" value="Direct-Delivery" name="delivery">
-                <label for="Direct-Delivery" name="delivery-Option"> Direct Delivery</label><br>
-                <input type="radio" value="PickUp" name="delivery">
-                <label for="Pick Up"name="delivery-Option">Pick Up</label><br>
-            </div>
-            
-        <br>
-        <hr><br>
-        <h2 style="text-align:center">2. Payment</h2>
-        <br>
-        <div id="order">
-            <div class="scrollbar-wrapper">
-                {{#each usersCart}}
-                    {{> sfsuuserticket this id='{{@index}}'}}
-                {{/each}}
-            </div>
+<div class="center">
+    <br>
+    <h1>CheckOut</h1><br>
+    <hr style="width: 50%;">
+    <br>
+    <form action="../sfsuUser/deleteItem" method="POST" id="deleteTicket"></form>
+    <form method="POST" action="../sfsuUser/submitOrder">
 
-            <hr style="width:80%;">
-            <h3>Total: $
-                <h3 id="totalPrice">
-                    {{#sumTotal usersCart}}
-                        {{output}}
-                    {{/sumTotal}}
-                </h3>
-
-            </h3>
-            <input type="hidden" name="total" value="{{#sumTotal usersCart}}{{output}}{{/sumTotal}}" />
-        </div>
-        <br>
-        <div class="button-order-container" style="text-align:center">
-            <button class="order-button" type="submit">Order</button>
-        </div>
-        </form>
-
+    <h2 style="text-align:center">1. Confirmation Location</h2>
+    <div class = "build-info">
+        <input type="text" id="Building" name="building" placeholder="Building" />
+        <input type="text" id="Room" name="room" placeholder="Room" />
+        <span id="building-result"></span>
     </div>
     <br>
-    
-</body>
+        <div class="options">
+            <input type="radio" value="Direct-Delivery" name="delivery">
+            <label for="Direct-Delivery" name="delivery-Option"> Direct Delivery</label><br>
+            <input type="radio" value="PickUp" name="delivery">
+            <label for="Pick Up"name="delivery-Option">Pick Up</label><br>
+        </div>
+        
+    <br>
+    <hr><br>
+    <h2 style="text-align:center">2. Payment</h2>
+    <br>
+    <div id="order">
+        <div class="scrollbar-wrapper">
+            {{#each usersCart}}
+                {{> sfsuuserticket this id='{{@index}}'}}
+            {{/each}}
+        </div>
+
+        <hr style="width:80%;">
+        <h3>Total: $
+            <div id="totalPrice" style="display:inline;">
+                {{#sumTotal usersCart}}
+                    {{output}}
+                {{/sumTotal}}
+            </div>
+
+        </h3>
+        <input type="hidden" name="total" value="{{#sumTotal usersCart}}{{output}}{{/sumTotal}}" />
+    </div>
+    <br>
+    <div class="button-order-container" style="text-align:center">
+        <button class="order-button" type="submit">Order</button>
+    </div>
+    </form>
+
+</div>
+<br>
+
+
 
 
 {{!-- Tutorial used: https://www.webslesson.info/2022/07/nodejs-autocomplete-search-with-mysql-database.html  --}}

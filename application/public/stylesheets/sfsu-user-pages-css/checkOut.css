@@ -64,7 +64,7 @@ Author(s): David and Emily*/
 }
 
 .ticket-image{
-	width: 150px;
+	min-width: 150px;
 	height: 100%;
 }
 

@@ -6,54 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/registration.css">
 </head>
-<body>
 
-    <div class="wrapper">
-        {{#if error}}
-            <div class="error-message">
-                <h5 class="message">
-                    {{message}}
-                </h5>
-            </div>
-        {{/if}}
-        
-        <div style="color: red; background-color: rgb(237, 183, 183); width: 30%; border-radius: 5px; height: 30px; line-height: 30px; text-align: center;"> 
-                All fields marked with a <b>*</b> are <b>REQUIRED</b> to be filled out
+
+<div class="wrapper">
+    {{#if error}}
+        <div class="error-message">
+            <h5 class="message">
+                {{message}}
+            </h5>
         </div>
-        <br>
-
-        <form class="form-register" method="POST" action="/sfsuUser/sfsuRegistration"
-        enctype="application/x-www-form-urlencoded">
-            <h2 class="form-title">SFSU User Registration</h2>
-            <br>
-            <h6>First Name <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
-            <input type="text" class="form-control" name="firstname"  required="" autofocus="" />
-            <h6>Last Name <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
-            <input type="text" class="form-control" name="lastname"  required="" autofocus="" />
-            <h6>Email <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
-            <input type="text" class="form-control" name="email"  required="" autofocus="" />
-            <h6>Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
-            <input type="password" class="form-control" name="password" required=""/>      
-            <h6>Confirm Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
-            <input type="password" class="form-control" name="confirmpassword" required=""/> 
-
-
-            
-            <label  style="display: flex; align-items: center;">
-                <input type="checkbox" name="terms-checkbox" required=""/>
-                &ensp;Pay with Gatorcard
-            </label><br>
-            
-            <label  style="display: flex; align-items: center;">
-                <input type="checkbox" name="terms-checkbox" required=""/>
-                &ensp;By checking this you agree to the Terms and Conditions
-                {{!-- &ensp;By checking this you agree to the&nbsp;<a href="1232arandomlink.com">Terms and Conditions</a> --}}
-            </label><br>
-
-            <button class="submit-button" type="submit">Submit</button>   
-        </form>
-        <a href ="/SFSULogin" class="relocation-link">Have an account? Log in here &rarr;</a>
+    {{/if}}
+    
+    <div style="color: red; background-color: rgb(237, 183, 183); width: 30%; border-radius: 5px; height: 30px; line-height: 30px; text-align: center;"> 
+            All fields marked with a <b>*</b> are <b>REQUIRED</b> to be filled out
     </div>
+    <br>
 
-</body>
+    <form class="form-register" method="POST" action="/sfsuUser/sfsuRegistration"
+    enctype="application/x-www-form-urlencoded">
+        <h2 class="form-title">SFSU User Registration</h2>
+        <br>
+        <h6>First Name <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
+        <input type="text" class="form-control" name="firstname"  required="" autofocus="" />
+        <h6>Last Name <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
+        <input type="text" class="form-control" name="lastname"  required="" autofocus="" />
+        <h6>Email <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
+        <input type="text" class="form-control" name="email"  required="" autofocus="" />
+        <h6>Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
+        <input type="password" class="form-control" name="password" required=""/>      
+        <h6>Confirm Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
+        <input type="password" class="form-control" name="confirmpassword" required=""/> 
+
+
+        
+        <label  style="display: flex; align-items: center;">
+            <input type="checkbox" name="terms-checkbox" required=""/>
+            &ensp;Pay with Gatorcard
+        </label><br>
+        
+        <label  style="display: flex; align-items: center;">
+            <input type="checkbox" name="terms-checkbox" required=""/>
+            &ensp;By checking this you agree to the Terms and Conditions
+            {{!-- &ensp;By checking this you agree to the&nbsp;<a href="1232arandomlink.com">Terms and Conditions</a> --}}
+        </label><br>
+
+        <button class="submit-button" type="submit">Submit</button>   
+    </form>
+    <a href ="/SFSULogin" class="relocation-link">Have an account? Log in here &rarr;</a>
+</div>
+
+
 
