@@ -14,24 +14,25 @@ to see all items in their cart before ordering --}}
     <hr style="width: 50%;">
     <br>
     <form action="../sfsuUser/deleteItem" method="POST" id="deleteTicket"></form>
-    <form method="POST" action="../sfsuUser/submitOrder">
+    <form method="POST" action="../sfsuUser/submitOrder" style="display: flex; flex-direction: column; align-items: center;width: 100%;">
 
     <h2 style="text-align:center">1. Confirmation Location</h2>
     <div class = "build-info">
-        <input type="text" id="Building" name="building" placeholder="Building" />
+        <input type="text" id="Building" name="building" placeholder="Building" required>
         <input type="text" id="Room" name="room" placeholder="Room" />
         <span id="building-result"></span>
     </div>
     <br>
         <div class="options">
-            <input type="radio" value="Direct-Delivery" name="delivery">
+            <input type="radio" value="Direct-Delivery" name="delivery" required>
             <label for="Direct-Delivery" name="delivery-Option"> Direct Delivery</label><br>
             <input type="radio" value="PickUp" name="delivery">
             <label for="Pick Up"name="delivery-Option">Pick Up</label><br>
         </div>
         
     <br>
-    <hr><br>
+    <hr style="width: 80%;">
+    <br>
     <h2 style="text-align:center">2. Payment</h2>
     <br>
     <div id="order">

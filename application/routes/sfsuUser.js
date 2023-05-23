@@ -95,12 +95,26 @@ router.post('/sfsuRegistration',(req, res, next) => {
       })
     }else{
       // console.log("Not a valid email address.\n");
-      res.render('registration/sfsuRegistration', { message: "Not a valid email address", error: true});
+      res.render('registration/sfsuRegistration', {
+        title: 'SFSU User Registration',
+        sfsuUser: true,
+        action: "/sfsuUser/sfsuRegistration",
+        loginLink: "/SFSULogin",
+        message: "Not a valid email address", 
+        error: true
+      });
     }
     
   }else{
     console.log("Passwords do not match\n");
-    res.render('registration/sfsuRegistration', { message: "Passwords does not match", error: true});
+    res.render('registration/sfsuRegistration', {
+      title: 'SFSU User Registration',
+      sfsuUser: true,
+      action: "/sfsuUser/sfsuRegistration",
+      loginLink: "/SFSULogin",
+      message: "Passwords does not match", 
+      error: true
+    });
   }
 
 });
@@ -232,11 +246,25 @@ router.post('/addToCart', function(req, res, next){
   var validLogin = true;
   if(!req.session.email){
     validLogin = false;
-    res.render('login/sfsuLogin', { message: "Please login as a SFSU user first.", error: true});
+    res.render('login/sfsuLogin', { 
+      title: 'SFSU User Login',
+      action:"/sfsuUser/sfsuLogin",
+      registrationLink: "/sfsuRegistration",
+      message: "Please login as a SFSU user first.",
+      error: true
+  
+    });
   }else{
     if(req.session.driver || req.session.restaurantOwner){
       validLogin = false;
-      res.render('login/sfsuLogin', { message: "Please login as a SFSU user first. ", error: true});
+      res.render('login/sfsuLogin', { 
+        title: 'SFSU User Login',
+        action:"/sfsuUser/sfsuLogin",
+        registrationLink: "/sfsuRegistration",
+        message: "Please login as a SFSU user first.",
+        error: true
+    
+      });
     }
   }
   let numCartItems = Object.keys(req.body.cart).length;

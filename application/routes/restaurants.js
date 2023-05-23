@@ -256,12 +256,26 @@ router.post('/restaurantOwnerRegistration',(req, res, next) => {
       })
     }else{
       console.log("Not a valid email address.\n");
-      res.render('registration/restaurantOwnerRegistration',  { message: "Not a valid email address", error: true});
+      res.render('registration/restaurantOwnerRegistration', {
+        title: 'Restaurant Registration',
+        action: "/restaurants/restaurantOwnerRegistration",
+        loginLink:"/restaurantOwnerLogin",
+        message: "Not a valid email address", 
+        error: true
+      });
+
     }
     
   }else{
     console.log("Passwords do not match\n");
-    res.render('registration/restaurantOwnerRegistration', { message: "Passwords does not match", error: true});
+    res.render('registration/restaurantOwnerRegistration', {
+      title: 'Restaurant Registration',
+      action: "/restaurants/restaurantOwnerRegistration",
+      loginLink:"/restaurantOwnerLogin",
+      message: "Passwords does not match", 
+      error: true
+    });
+
   }
 
 });

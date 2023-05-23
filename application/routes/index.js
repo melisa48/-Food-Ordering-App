@@ -40,15 +40,29 @@ router.get('/restaurantOwnerLogin', function(req, res, next) {
 
 //registration routes--------------------------------------------------------------------
 router.get('/sfsuRegistration', function(req, res, next) {
-  res.render('registration/sfsuRegistration', {title: 'SFSU Registration'});
+  res.render('registration/sfsuRegistration', {
+    title: 'SFSU User Registration',
+    sfsuUser: true,
+    action: "/sfsuUser/sfsuRegistration",
+    loginLink: "/SFSULogin"
+  });
 });
 
 router.get('/driverRegistration', function(req, res, next) {
-  res.render('registration/driverRegistration', {title: 'Driver Registration'});
+  res.render('registration/driverRegistration', {
+    title: 'Driver Registration',
+    driver: true,
+    action: "/drivers/driverRegistration",
+    loginLink:"/driverLogin"
+  });
 });
 
 router.get('/restaurantOwnerRegistration', function(req, res, next) {
-  res.render('registration/restaurantOwnerRegistration', {title: 'Restaurant Registration'});
+  res.render('registration/restaurantOwnerRegistration', {
+    title: 'Restaurant Registration',
+    action: "/restaurants/restaurantOwnerRegistration",
+    loginLink:"/restaurantOwnerLogin"
+  });
 });
 
 //sfsu user pages---------------------------------------------------------------------------------------------------------
