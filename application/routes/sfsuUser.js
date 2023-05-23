@@ -157,6 +157,8 @@ router.post('/submitOrder', function(req,res,next){
   let room = req.body.room;
   let total = parseFloat(req.body.total);
   let restaurant = parseInt(req.body.ticket[0].restaurantID);
+  let buildID = 11;
+  let dropoffID;
   console.log(req.body);
   console.log(restaurant);
   let numTicketItems = Object.keys(req.body.ticket).length;
@@ -173,8 +175,12 @@ router.post('/submitOrder', function(req,res,next){
 
   db.query(buildingID, [buildingName], (err, result)=>{
     if(err) throw err;
+    
     if(result){
-      let dropoffID = result[0].pointID;
+      dropoffID = buildID;
+      if(result.length > 0){
+        dropoffID = result[0].pointID;
+      }
       db.query(insertOrder, [currentOwner, total, currentDate, restaurant, dropoffID, room], (err, secondres)=>{
         if(err) throw err;
         let orderID = secondres.insertId;
