@@ -26,9 +26,9 @@
 }
 
 .submit-button {
-	background: #f6f6f6;
-	color: #000000;
-	border: 1px solid #000000;
+	background: orange;
+	color: white;
+	border: 1px solid orange;
 	border-radius: 20px / 20px ;
     margin-left: 125px;
     height: 30px;
@@ -55,6 +55,17 @@
 	/* transform: translate(5px, -10px); */
 }
 
+#star-requirement{
+	color: red; 
+	background-color: #f0c7c7; 
+	width: 30%; 
+	border-radius: 5px; 
+	height: 30px; 
+	line-height: 30px; 
+	text-align: center;
+	margin-bottom: 5px;
+}
+
 @media(max-width: 940px){
 	.form-register{
 		max-width: 90%;
@@ -62,6 +73,18 @@
 
 	.relocation-link{
 		transform: translate(35%,0);
+	}
+
+	#star-requirement{
+		color: red; 
+		background-color: #f0c7c7; 
+		width: 80%; 
+		border-radius: 5px; 
+		height: 30px; 
+		line-height: 30px; 
+		text-align: center;
+		font-size: 14px;
+		margin-bottom: 5px;
 	}
 }
 

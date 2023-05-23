@@ -15,7 +15,7 @@
         </div>
     {{/if}}
     
-    <div style="color: red; background-color: rgb(237, 183, 183); width: 30%; border-radius: 5px; height: 30px; line-height: 30px; text-align: center;"> 
+    <div id="star-requirement"> 
             All fields marked with a <b>*</b> are <b>REQUIRED</b> to be filled out
     </div>
     <br>
@@ -24,15 +24,19 @@
     enctype="application/x-www-form-urlencoded">
         <h2 class="form-title">{{title}}</h2>
         <br>
-        <h6>First Name <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
+        <h6>First Name <label class="required-asterisk">*</label></h3>
         <input type="text" class="form-control" name="firstname"  required="" autofocus="" />
-        <h6>Last Name <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
+        <h6>Last Name <label class="required-asterisk">*</label></h3>
         <input type="text" class="form-control" name="lastname"  required="" autofocus="" />
-        <h6>Email <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
+        <h6>Email <label class="required-asterisk">*</label>
+        {{#if sfsuUser}}
+        <label style="font-size: 12px; color: red;">Must be an mail.sfsu.edu or sfsu.edu email</label>
+        {{/if}}
+        </h6>
         <input type="text" class="form-control" name="email"  required="" autofocus="" />
-        <h6>Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
+        <h6>Password <label class="required-asterisk">*</label><label style="font-size: 12px; color: red;">Must be 8 characters, at least 1 uppercase and 1 special character.</label></h6>
         <input type="password" class="form-control" name="password" required=""/>      
-        <h6>Confirm Password <label class="required-asterisk">*</label><label class="required-message">required</label></h3>
+        <h6>Confirm Password <label class="required-asterisk">*</label></h6>
         <input type="password" class="form-control" name="confirmpassword" required=""/> 
 
 

@@ -140,7 +140,13 @@ router.get('/orderCompleted', function(req, res, next) {
 //restaurant pages -------------------------------------------------------------------------------------------------
 router.get('/restaurantApplication',function(req, res, next) {
   if(!req.session.restaurantOwner){
-    res.render('login/restaurantOwnerLogin', { message: "Please log in as a restaurant owner first before registering a restaurant", error: true});
+    res.render('login/restaurantOwnerLogin', {
+      title: 'Restaurant Login',
+      action:"/restaurants/restaurantOwnerLogin",
+      registrationLink: "/restaurantOwnerRegistration",
+      message: "Please log in as a restaurant owner first before registering a restaurant", 
+      error: true
+    });
   }else{
     var getCategories = "SELECT categoryName FROM categories;";
     db.query(getCategories, (err, categoriesResult)=>{
@@ -154,7 +160,13 @@ var restaurantResults = [];
 
 router.get('/myRestaurants', function(req, res, next) {
   if(!req.session.restaurantOwner){
-    res.render('login/restaurantOwnerLogin', { message: "Please log in as a restaurant owner to view your restaurants", error: true});
+    res.render('login/restaurantOwnerLogin', {
+      title: 'Restaurant Login',
+      action:"/restaurants/restaurantOwnerLogin",
+      registrationLink: "/restaurantOwnerRegistration",
+      message: "Please log in as a restaurant owner to view your restaurants", 
+      error: true
+    });
   }else{
     //Getting all the restaurants from this owner
     let currentOwner = res.locals.userId;
@@ -172,7 +184,13 @@ router.get('/myRestaurants', function(req, res, next) {
 
 router.get('/driverOrderList', function(req, res, next) {
   if(!req.session.driver){
-    res.render('login/driverLogin', { message: "Please log in as a driver first before viewing orders", error: true});
+    res.render('login/driverLogin', {
+      title: 'Driver Login',
+      action:"/drivers/driverLogin",
+      registrationLink:"/driverRegistration",
+      message: "Please log in as a driver first before viewing orders", 
+      error: true
+    });
   }else{
     var getOrders = `SELECT orderID, total, restaurant.images, restaurant.restaurant_name, dropoffPoints.name, roomNumber FROM team7.order
     JOIN restaurant ON restaurant.restaurant_id = order.restaurantName 
@@ -188,7 +206,13 @@ router.get('/driverOrderList', function(req, res, next) {
 
 router.get('/driverOrderDetails', function(req, res, next) {
   if(!req.session.driver){
-    res.render('login/driverLogin', { message: "Please log in as a driver first before viewing order details", error: true});
+    res.render('login/driverLogin', {
+      title: 'Driver Login',
+      action:"/drivers/driverLogin",
+      registrationLink:"/driverRegistration",
+      message: "Please log in as a driver first before viewing order details", 
+      error: true
+    });
   }else{
     let orderIdentifier = req.query.order;
     // console.log(orderIdentifier);
@@ -216,7 +240,14 @@ router.get('/driverOrderDetails', function(req, res, next) {
 router.get('/driverDeliveryMap', function(req, res, next) {
 
   if(!req.session.driver){
-    res.render('login/driverLogin', { message: "Please log in as a driver first before viewing the delivery map", error: true});
+    res.render('login/driverLogin', {
+      title: 'Driver Login',
+      action:"/drivers/driverLogin",
+      registrationLink:"/driverRegistration",
+      message: "Please log in as a driver first before viewing the delivery map", 
+      error: true
+    });
+
   }else{
     let currentDriver = res.locals.userId;
 

@@ -26,9 +26,9 @@
 }
 
 .submit-button {
-	background: #f6f6f6;
-	color: #000000;
-	border: 1px solid #000000;
+	background: orange;
+	color: white;
+	border: 1px solid orange;
 	border-radius: 20px / 20px ;
     margin-left: 125px;
     height: 30px;
