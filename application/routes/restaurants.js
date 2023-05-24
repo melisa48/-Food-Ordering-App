@@ -149,10 +149,12 @@ router.post('/restaurantApplication', uploader.any(),function(req, res, next) {
   // console.log(menuArray);
 
   // Joining the tables
-  var categoryIDQuery = "SELECT categories.categoryID FROM restaurant JOIN categories ON restaurant.category = categories.categoryName WHERE restaurant.category = ?;";
+  var categoryIDQuery = "SELECT categories.categoryID FROM categories WHERE categories.categoryName = ?;";
   //First outer query call is for getting the category id foreign key
   db.query(categoryIDQuery,[foodCategory], function(err, result, fields){
     if(err) throw err;
+    console.log(foodCategory);
+    console.log(result);
     restaurantcategoryID = result[0].categoryID;
     //Second query call is for inserting the restaurant application into the restaurant table
     var sql = "INSERT INTO restaurant(restaurant_name, category, description, images, latitude, longitude, categoryID, address, restaurantOwner, deliveryTime) VALUES(?,?,?,?,?,?,?,?,?,?);";

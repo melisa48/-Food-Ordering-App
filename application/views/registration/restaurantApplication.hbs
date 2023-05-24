@@ -22,25 +22,25 @@
                 <form action="/restaurants/restaurantApplication" method="post" enctype="multipart/form-data" id="application">
                 <input id="restaurant-image" type="file" accept="image/*" name="restaurant-image" onchange="uploadImage(event)">
                 <label for="restaurant-image" id="restaurant-image-alter" name="restaurant-image-alter"> Add Restaurant Image</label> <br><br>
-                <label>Restaurant Name <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
+                <label>Restaurant Name <label class="required-asterisk">*</label></label><br>
                 <input type="text" name="restaurantName" required><br><br />
-                <label>Food Category <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
+                <label>Food Category <label class="required-asterisk">*</label></label><br>
                 <select  name="category">
                     {{#each applicationCategories}}
                         <option value="{{categoryName}}">{{categoryName}}</option>
                     {{/each}}
                 </select>
                 <br><br>
-                <label>Delivery time <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
+                <label>Delivery time <label class="required-asterisk">*</label><label class="requirement-details">Enter time in minutes.</label></label><br>
                 <input type="text" name="deliveryTime" required><br><br />
-                <label>Address <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
-                <input type="text" name="address" required><br><br />
-                <label>Description <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
+                <label>Address <label class="required-asterisk">*</label><label class="requirement-details">Enter address in this format: 4920 3rd St, San Francisco, CA 94124</label></label><br>
+                <input type="text" name="address" style="width:300px;" required><br><br />
+                <label>Description <label class="required-asterisk">*</label></label><br />
                 <textarea name="description" class="restaurant-description" required></textarea><br><br />
                 
                 <h2>Enter Individual Restaurant Items</h2>
                 <hr>
-                <label>Menu <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
+                <label>Menu <label class="required-asterisk">*</label></label><br />
                 <div id="restaurant-menu">
                     
                     <form action="" method="post" enctype="multipart/form-data">
@@ -49,11 +49,11 @@
                             <input id="menu-item-image[0]" class="menu-item-images" accept="image/*" type="file" name="menu[0][image]" onchange="uploadImage(event)">
                             <label for="menu-item-image[0]" id="menu-item-image-alter" class="menu-item-alter-images" name="menu[0][image-alter]">Add Image</label>
                             <div id="menu-item-details">
-                                <label>Food name <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
+                                <label>Food name <label class="required-asterisk">*</label></label><br>
                                 <input type="text" name="menu[0][name]" required><br />
-                                <label>Price <label class="required-asterisk">*</label><label class="required-message">required</label></label><br>
+                                <label>Price <label class="required-asterisk">*</label></label><br>
                                 <input type="text" name="menu[0][price]" required><br />
-                                <label>Description <label class="required-asterisk">*</label><label class="required-message">required</label></label><br />
+                                <label>Description <label class="required-asterisk">*</label></label><br />
                                 <textarea name="menu[0][description]" class="menu-item-description" required></textarea>
                             </div>
                             <button id="delete-menu-item" type="button" name="delete">Delete</button>
@@ -84,11 +84,11 @@
                 <input id="menu-item-image[${menuItems}]" class="menu-item-images" accept="image/*" type="file" name="menu[${menuItems}][image]" onchange="uploadImage(event)">
                 <label for="menu-item-image[${menuItems}]" id="menu-item-image-alter" class="menu-item-alter-images" name="menu[${menuItems}][image-alter]">Add Image</label>
                 <div id="menu-item-details">
-                    <label>Food name <label class="required-asterisk">*</label><label class="required-message">required</label></label></label><br>
+                    <label>Food name <label class="required-asterisk">*</label></label></label><br>
                     <input type="text" name="menu[${menuItems}][name]" required><br />
-                    <label>Price <label class="required-asterisk">*</label><label class="required-message">required</label></label></label><br>
+                    <label>Price <label class="required-asterisk">*</label></label></label><br>
                     <input type="text" name="menu[${menuItems}][price]"><br />
-                    <label>Description <label class="required-asterisk">*</label><label class="required-message">required</label></label></label><br />
+                    <label>Description <label class="required-asterisk">*</label></label></label><br />
                     <textarea name="menu[${menuItems}][description]" class="menu-item-description" required></textarea>
                 </div>
                 <button id="delete-menu-item" type="button" name="delete">Delete</button>
