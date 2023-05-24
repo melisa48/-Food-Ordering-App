@@ -27,28 +27,29 @@ searchModule.executeSearch = function(req, res, next){
     // returns all restaurants that have the searchTerm either category/name/description
     else if(category == 'all' && searchTerm !=""){
         console.log("1");
-        query = "SELECT * FROM team7.restaurant WHERE approved = 1 AND restaurant_name LIKE '%" + searchTerm + "%'\
-        OR  category ='"+  category+"' OR description LIKE'%" + searchTerm + "%' OR category = '" + searchTerm +"';";
+        query = "SELECT * FROM team7.restaurant WHERE approved = 1 AND category = ? OR restaurant_name LIKE ?\
+        OR description LIKE ? OR category = ?;";
         categoryQuery = "SELECT * FROM team7.restaurant WHERE approved = 1;";
     }
     //returns restaurants in the chosen category and have the searchTerm in either name/description
     else if(category != '' && searchTerm !=''){
-        query = "SELECT * FROM team7.restaurant WHERE category ='"+  category+"' AND (restaurant_name LIKE '%" + searchTerm + "%'\
-        OR description LIKE'%" + searchTerm + "%') AND approved = 1;";
+        query = "SELECT * FROM team7.restaurant WHERE category = ? AND (restaurant_name LIKE ?\
+        OR description LIKE ?) AND approved = 1;";
         console.log("situation 2");
-        categoryQuery = "SELECT * FROM team7.restaurant WHERE category = '"+ category+"' AND approved = 1;";
+
+        categoryQuery = "SELECT * FROM team7.restaurant WHERE category = ? AND approved = 1;";
     }
     // returns all restaurants in the chosen category
     else if(category != '' && searchTerm == '' ){
-        query = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = 1;";
-        categoryQuery = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = 1;";
+        query = "SELECT * FROM team7.restaurant WHERE category = ? AND approved = 1;";
+        categoryQuery = "SELECT * FROM team7.restaurant WHERE category = ? AND approved = 1;";
         console.log("situation 3");
     }
 
 
 
     // queries db for results matching user searchTerm
-    db.query(query, (err, results)=>{
+    db.query(query,[category, searchTerm, searchTerm, searchTerm],(err, results)=>{
         if(err){
             req.searchResult = results;
             req.searchTerm = searchTerm;
@@ -81,7 +82,6 @@ searchModule.executeSearch = function(req, res, next){
         // console.log(results[0].latitude);
         next();
     })
-
 }
 
 searchModule.categoryLength = function(req, res, next){
@@ -118,7 +118,7 @@ searchModule.categoryLength = function(req, res, next){
             req.categoryResults = cResults;
             next();
         }
-        console.log(cResults);
+        // console.log(cResults);
         req.categoryResults = cResults;
 
         next();
