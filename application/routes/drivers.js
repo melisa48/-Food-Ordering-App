@@ -53,11 +53,11 @@ router.post('/driverLogin',(req, res, next) => {
 router.post('/driverRegistration',(req, res, next) => {
   // console.log('registration router reached.');
   // Getting the input values from the registration form 
-  let firstname = req.body.firstname;
-  let lastname = req.body.lastname;
-  let email = req.body.email;
-  let password = req.body.password;
-  let confirmpassword = req.body.confirmpassword;
+  let firstname = req.body.firstname.substring(0,40);
+  let lastname = req.body.lastname.substring(0,40);
+  let email = req.body.email.substring(0,40);
+  let password = req.body.password.substring(0,90);
+  let confirmpassword = req.body.confirmpassword.substring(0,90);
   //Tutorial Used: https://www.youtube.com/watch?v=auEkP8ZKWOE 
   //Checking to make sure that the confirm password and password is the same
   if(confirmpassword == password){

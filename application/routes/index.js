@@ -31,7 +31,7 @@ router.get('/driverLogin', function(req, res, next) {
 
 router.get('/restaurantOwnerLogin', function(req, res, next) {
   res.render('login/restaurantOwnerLogin', {
-    title: 'Restaurant Login',
+    title: 'Restaurant Owner Login',
     action:"/restaurants/restaurantOwnerLogin",
     registrationLink: "/restaurantOwnerRegistration"
   });
@@ -59,7 +59,7 @@ router.get('/driverRegistration', function(req, res, next) {
 
 router.get('/restaurantOwnerRegistration', function(req, res, next) {
   res.render('registration/restaurantOwnerRegistration', {
-    title: 'Restaurant Registration',
+    title: 'Restaurant Owner Registration',
     action: "/restaurants/restaurantOwnerRegistration",
     loginLink:"/restaurantOwnerLogin"
   });
