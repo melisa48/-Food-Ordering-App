@@ -9,28 +9,48 @@
     <h2>Welcome {{email}},</h2>
     <h1>Order Delivery Details</h1>
     <br>
+
     <div id="map">
         Map to Restaurant
        
     </div>
+    
+    {{#each orders}}
+        <div id="lat" hidden="hidden">{{latitude}}</div>
+        <div id="long" hidden="hidden">{{longitude}}</div>
+    {{/each}}
     {{!-- Initializing the map to be centered at SFSU --}}
     <script>
+        var coordinates = [];
+        coordinates.push()
+        var latitude = document.getElementById("lat").innerText;
+        latitude = parseFloat(latitude);
+        var longitude = document.getElementById("long").innerText;
+        longitude = parseFloat(longitude);
+        console.log(latitude);
+        console.log(longitude);
         function initMap() {
-                //coordinates for SFSU
-                myLatLng = { lat: 37.7241, lng: -122.4799 };
-                map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 13,
-                    center: myLatLng,
-                });
-                        
-                
-                
-            }
+            //coordinates for SFSU
+            myLatLng = { lat: 37.7241, lng: -122.4799 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 13,
+                center: myLatLng,
+            });
+
+                 
+            new google.maps.Marker({
+                position: { lat: latitude, lng: longitude },
+                map,
+                title: "Hello World!",
+            });
+
+            
+            window.initMap = initMap;
+        }
     </script>
     {{!-- API Key needed to show the map --}}
-    <script 
+    <script defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt5bTrIJpTWq8gJi2_ry7Fkl5YV00RpMU&callback=initMap&v=weekly"
-        defer
         ></script>
 
     <br>
@@ -41,8 +61,8 @@
             <b><i class="bi bi-houses"> </i>Restaurant: </b>{{restaurant_name}}<br>
             <b><i class="bi bi-geo-alt-fill"> </i>Restaurant Location: </b>{{address}}<br>
             <b><i class="bi bi-geo-alt"> </i>Delivery Location: </b>{{building}}, Room Number#{{roomNumber}}<br>
-            <b><i class="bi bi-alarm"> </i>Delivery Time: </b>[Insert Delivery Time Here]<br>
-            <b><i class="bi bi-piggy-bank"> </i>Total Earned:</b>[Insert Total Money Earned Here]<br>
+            <b><i class="bi bi-alarm"> </i>Delivery Time: </b>{{deliveryTime}} minutes<br>
+            <b><i class="bi bi-piggy-bank"> </i>Total Earned:$</b>{{total}}<br>
         {{/each}}
         <br>
     </div>

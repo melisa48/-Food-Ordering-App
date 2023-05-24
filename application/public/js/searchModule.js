@@ -100,16 +100,20 @@ searchModule.categoryLength = function(req, res, next){
         //returns restaurants in the chosen category and have the searchTerm in either name/description
         else if(category != '' && searchTerm !=''){
             console.log("cat 2");
-            categoryQuery = "SELECT * FROM team7.restaurant WHERE category = '"+ category+"' AND approved = 1;";
+            // categoryQuery = "SELECT * FROM team7.restaurant WHERE category = '"+ category+"' AND approved = 1;";
+            categoryQuery = "SELECT * FROM team7.restaurant WHERE category = ? AND approved = 1;";
+
         }
         // returns all restaurants in the chosen category
         else if(category != '' && searchTerm == '' ){
-            categoryQuery = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = 1;";
+            // categoryQuery = "SELECT * FROM team7.restaurant WHERE category ='" + category + "' AND approved = 1;";
+            categoryQuery = "SELECT * FROM team7.restaurant WHERE category =  ? AND approved = 1;";
+
             console.log("cat 3");
         }
 
            // queries db for results matching user searchTerm
-    db.query(categoryQuery, (err, cResults)=>{
+    db.query(categoryQuery, [category],(err, cResults)=>{
         if(err){
             req.categoryResults = cResults;
             next();
