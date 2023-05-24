@@ -237,27 +237,38 @@ router.post('/restaurantOwnerRegistration',(req, res, next) => {
   //Checking to make sure that the confirm password and password is the same
   if(confirmpassword == password){
     if(isValid(email)){
-      //Querying the database to check if the email already exists
-      db.query("SELECT * FROM restaurantAccount WHERE email = ?",[email],function(err,result,fields){
+      if(isValidPassword(password)){
 
-        if(err) throw err;
-  
-          if(result.length > 0 ){
-            console.log("Email is already registered.");
-          }else{
-            //Hashing the password before storing into the database
-            var hashedpassword = bcrypt.hashSync(password, 8);
+          //Querying the database to check if the email already exists
+          db.query("SELECT * FROM restaurantAccount WHERE email = ?",[email],function(err,result,fields){
 
-            //Inserting the values from the form into the database
-            let baseSQL = "INSERT INTO restaurantAccount(firstname,lastname, password, email) VALUES (?,?,?,?)";
+            if(err) throw err;
+      
+              if(result.length > 0 ){
+                console.log("Email is already registered.");
+              }else{
+                //Hashing the password before storing into the database
+                var hashedpassword = bcrypt.hashSync(password, 8);
 
-            db.query(baseSQL, [firstname, lastname, hashedpassword, email], function(err, result, fields){
-              if(err) throw err;
-              res.redirect('/restaurantOwnerLogin');
-            })
-          }
+                //Inserting the values from the form into the database
+                let baseSQL = "INSERT INTO restaurantAccount(firstname,lastname, password, email) VALUES (?,?,?,?)";
+
+                db.query(baseSQL, [firstname, lastname, hashedpassword, email], function(err, result, fields){
+                  if(err) throw err;
+                  res.redirect('/restaurantOwnerLogin');
+                })
+              }
           
-      })
+          })
+      }else{
+        res.render('registration/restaurantOwnerRegistration', {
+          title: 'Restaurant Registration',
+          action: "/restaurants/restaurantOwnerRegistration",
+          loginLink:"/restaurantOwnerLogin",
+          message: "Password must have a minimum of 8 characters, at least one upper case, one number, and one special character", 
+          error: true
+        });
+      }
     }else{
       console.log("Not a valid email address.\n");
       res.render('registration/restaurantOwnerRegistration', {
@@ -295,7 +306,14 @@ function isValid(email){
     );
 }
 
-
+//Function used for password verification
+//From: https://stackoverflow.com/questions/5142103/regex-to-validate-password-strength 
+function isValidPassword(password){
+  return String(password)
+  .match(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+  );
+}
 
 
 

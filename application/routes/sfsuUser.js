@@ -71,28 +71,40 @@ router.post('/sfsuRegistration',(req, res, next) => {
   //Checking to make sure that the confirm password and password is the same
   if(confirmpassword == password){
     if(isValid(email)){
-      //Querying the database to check if the email already exists
-      db.query("SELECT * FROM registeredUsers WHERE verifiedEmail = ?",[email],function(err,result,fields){
+      if(isValidPassword(password)){
+        //Querying the database to check if the email already exists
+        db.query("SELECT * FROM registeredUsers WHERE verifiedEmail = ?",[email],function(err,result,fields){
 
-        if(err) throw err;
-  
-          if(result.length > 0 ){
-            console.log("Email is already registered.");
-          }else{
-            //Hashing the password before storing into the database
-            // const hashedpassword = encryption.encryptData(password);
-            var hashedpassword = bcrypt.hashSync(password, 8);
+          if(err) throw err;
 
-            //Inserting the values from the form into the database
-            let baseSQL = "INSERT INTO registeredUsers(firstname, lastname, password, verifiedEmail) VALUES (?,?,?,?)";
-            db.query(baseSQL, [firstname, lastname, hashedpassword, email], function(err, result, fields){
-              if(err) throw err;
-              // console.log("Supposed to be redirecting to login\n");
-              res.redirect('/sfsuLogin');
-            })
-          }
-          
-      })
+            if(result.length > 0 ){
+              console.log("Email is already registered.");
+            }else{
+              //Hashing the password before storing into the database
+              // const hashedpassword = encryption.encryptData(password);
+              var hashedpassword = bcrypt.hashSync(password, 8);
+
+              //Inserting the values from the form into the database
+              let baseSQL = "INSERT INTO registeredUsers(firstname, lastname, password, verifiedEmail) VALUES (?,?,?,?)";
+              db.query(baseSQL, [firstname, lastname, hashedpassword, email], function(err, result, fields){
+                if(err) throw err;
+                // console.log("Supposed to be redirecting to login\n");
+                res.redirect('/sfsuLogin');
+              })
+            }
+            
+        })
+      }else{
+        res.render('registration/sfsuRegistration', {
+          title: 'SFSU User Registration',
+          sfsuUser: true,
+          action: "/sfsuUser/sfsuRegistration",
+          loginLink: "/SFSULogin",
+          message: "Password must have a minimum of 8 characters, at least one upper case, one number, and one special character", 
+          error: true
+        });
+      }
+      
     }else{
       // console.log("Not a valid email address.\n");
       res.render('registration/sfsuRegistration', {
@@ -127,6 +139,15 @@ function isValid(email){
     return true;
   }
   return false;
+}
+
+//Function used for password verification
+//From: https://stackoverflow.com/questions/5142103/regex-to-validate-password-strength 
+function isValidPassword(password){
+  return String(password)
+  .match(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+  );
 }
 
 //CHECKOUT----------------------------------------------------------------------------------------
