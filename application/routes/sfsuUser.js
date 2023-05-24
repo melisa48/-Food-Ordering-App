@@ -296,6 +296,7 @@ router.post('/addToCart', function(req, res, next){
     }
   }
   let numCartItems = Object.keys(req.body.cart).length;
+  console.log(req.body);
   // console.log(numCartItems);
   if(validLogin){
     if(numCartItems >= 1){
@@ -309,12 +310,12 @@ router.post('/addToCart', function(req, res, next){
       FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE cart.userCart = ? AND cart.restaurantIDMenu = ?`;
       
       for(var i = 0; i < numCartItems; i++){
-        if(!req.body.cart[i].cartID){
+        if(parseInt(req.body.cart[i].cartID) == -1){
           var itemInformation = [];
           itemInformation.push(currentOwner);
           itemInformation.push(parseInt(req.body.cart[i].menuid));
           itemInformation.push(parseInt(req.body.cart[i].quantity));
-          itemTotalPrice = parseFloat(req.body.cart[i].quantity) * req.body.cart[i].price;
+          itemTotalPrice = req.body.cart[i].quantity * req.body.cart[i].price;
           itemInformation.push(itemTotalPrice);
           itemInformation.push(parseInt(req.body.restaurantid));
           cartItems.push(itemInformation);
@@ -322,7 +323,13 @@ router.post('/addToCart', function(req, res, next){
         }else{
           var updateCartItem = "UPDATE cart SET quantity = ?, cartItemTotal = ? WHERE cartID = ?;";
           var newQuantity = req.body.cart[i].quantity;
+          console.log("New quantity:");
+          console.log(newQuantity);
+          console.log("Price:");
+          console.log(req.body.cart[i].price);
           var newPrice = newQuantity * req.body.cart[i].price;
+          console.log("New price");
+          console.log(newPrice);
           var updateCardID = req.body.cart[i].cartID;
           db.query(updateCartItem, [newQuantity, newPrice, updateCardID], function(err, result,fields){
             console.log("updating item");

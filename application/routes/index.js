@@ -98,7 +98,7 @@ router.get('/restaurantMenuCart', function(req, res, next) {
       //getting the user's cart from this restaurant if they're logged in
       if(res.locals.logged){
         let currentUser = res.locals.userId;
-        var cartItems = "SELECT cartID, menu.menuID, menu.name, menu.images, menu.price, menu.restaurant, quantity, cartItemTotal FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE userCart = ? AND menu.restaurant = ?;";
+        var cartItems = "SELECT cartID, menu.menuID, menu.name, menu.images, menu.price, menu.restaurant, cartItem, quantity, cartItemTotal FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE userCart = ? AND menu.restaurant = ?;";
         db.query(cartItems, [currentUser, restaurantIdentifier], function(err, result){
           if(err) throw err; 
           usersCart = result;
