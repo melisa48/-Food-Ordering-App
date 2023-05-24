@@ -86,7 +86,7 @@ app.use('*',(req, res,next)=>{
       if(err) throw err;
       categoryArray = result;
       res.locals.categories = categoryArray;
-      console.log(categoryArray);
+      // console.log(categoryArray);
     })
   } 
   res.locals.categories = categoryArray;

@@ -180,6 +180,7 @@ router.post('/submitOrder', function(req,res,next){
   let restaurant = parseInt(req.body.ticket[0].restaurantID);
   let buildID = 11;
   let dropoffID;
+  let delivery = req.body.deliveryOption;
   console.log(req.body);
   console.log(restaurant);
   let numTicketItems = Object.keys(req.body.ticket).length;
@@ -188,12 +189,12 @@ router.post('/submitOrder', function(req,res,next){
   //Getting the building id
   var buildingID = "SELECT pointID FROM dropoffPoints WHERE name = ?;";
   //Storing items inside of the orders table
-  var insertOrder = "INSERT INTO team7.order(customerID, total, orderDate, restaurantName, dropoff, roomNumber) VALUES (?,?,?,?,?,?);";
+  var insertOrder = "INSERT INTO team7.order(customerID, total, orderDate, restaurantName, dropoff, roomNumber, deliveryType) VALUES (?,?,?,?,?,?,?);";
   //Storing the menu items into the ticket
   var insertTicket = "INSERT INTO ticket(orderID, menuItem, quantity) VALUES ?";
   //Deleting items from the cart
   var deleteCartItems = "DELETE FROM cart WHERE cartID IN (?);";
-
+  
   db.query(buildingID, [buildingName], (err, result)=>{
     if(err) throw err;
     
@@ -202,7 +203,7 @@ router.post('/submitOrder', function(req,res,next){
       if(result.length > 0){
         dropoffID = result[0].pointID;
       }
-      db.query(insertOrder, [currentOwner, total, currentDate, restaurant, dropoffID, room], (err, secondres)=>{
+      db.query(insertOrder, [currentOwner, total, currentDate, restaurant, dropoffID, room, delivery], (err, secondres)=>{
         if(err) throw err;
         let orderID = secondres.insertId;
 
