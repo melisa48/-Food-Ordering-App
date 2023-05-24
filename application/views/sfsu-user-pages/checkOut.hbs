@@ -68,7 +68,7 @@ to see all items in their cart before ordering --}}
 {{!-- Tutorial used: https://www.webslesson.info/2022/07/nodejs-autocomplete-search-with-mysql-database.html  --}}
 {{!-- This part is used to show the result of a database query to allow users to serach for a building --}}
 <script>
-
+    var no_buildings = false;
     function load_data(query = '')
     {
         fetch('../sfsuUser/getBuildings?search_query='+query+'').then(function(response){
@@ -81,11 +81,13 @@ to see all items in their cart before ordering --}}
                 {
                    var regular_expression = new RegExp('('+query+')', 'gi');
                    html += '<a href="#" class="list-group-item list-group-item-action" onclick="get_text(this)">'+responseData[count].name.replace(regular_expression, '<span class="text-primary fw-bold">$1</span>')+'</a>';
+                    no_buildings = false;
                 }
             }
             else
             {
-                html += '<a href="#" class="list-group-item list-group-item-action disabled">No Data Found</a>';
+                html += '<a href="#" class="list-group-item list-group-item-action disabled">No Data Found.</a>';
+                no_buildings = true;
             }
             html += '</ul>';
             document.getElementById('building-result').innerHTML = html;
@@ -105,7 +107,11 @@ to see all items in their cart before ordering --}}
         load_data(query);
     };
 
-
+    search_element.onblur = function(){
+        if(no_buildings == true){
+            document.getElementById('Building').value = "Library";
+        }
+    }
     function get_text(event)
     {
         var building_name = event.textContent;
@@ -132,7 +138,11 @@ to see all items in their cart before ordering --}}
         totalPriceElement.textContent = '$' + total.toFixed(2);
     }
 
-
+    function check_building(){
+        if(no_buildings == false){
+            document.getElementById("Building").innerText = "Library";
+        }
+    }
 
    
 

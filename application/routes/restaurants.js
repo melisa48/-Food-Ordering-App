@@ -77,9 +77,11 @@ var uploader = multer({storage: storage});
 
 router.post('/restaurantApplication', uploader.any(),function(req, res, next) {
   let restaurantName = req.body.restaurantName;
+  restaurantName = restaurantName.substring(0,40);
   let foodCategory = req.body.category;
   let deliveryTime = parseInt(req.body.deliveryTime) || 0;
   let description = req.body.description;
+  description = description.substring(0,300);
   var address = req.body.address;
 
   //Server side input validations

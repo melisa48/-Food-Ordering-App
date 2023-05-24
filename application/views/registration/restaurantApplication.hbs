@@ -23,7 +23,7 @@
                 <input id="restaurant-image" type="file" accept="image/*" name="restaurant-image" onchange="uploadImage(event)">
                 <label for="restaurant-image" id="restaurant-image-alter" name="restaurant-image-alter"> Add Restaurant Image</label> <br><br>
                 <label>Restaurant Name <label class="required-asterisk">*</label></label><br>
-                <input type="text" name="restaurantName" required><br><br />
+                <input type="text" name="restaurantName" maxlength="40"required><br><br />
                 <label>Food Category <label class="required-asterisk">*</label></label><br>
                 <select  name="category">
                     {{#each applicationCategories}}
@@ -36,7 +36,7 @@
                 <label>Address <label class="required-asterisk">*</label><label class="requirement-details">Enter address in this format: 4920 3rd St, San Francisco, CA 94124</label></label><br>
                 <input type="text" name="address" style="width:300px;" required><br><br />
                 <label>Description <label class="required-asterisk">*</label></label><br />
-                <textarea name="description" class="restaurant-description" required></textarea><br><br />
+                <textarea name="description" class="restaurant-description" maxlength="300" required></textarea><br><br />
                 
                 <h2>Enter Individual Restaurant Items</h2>
                 <hr>
