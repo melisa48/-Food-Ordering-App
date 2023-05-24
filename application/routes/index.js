@@ -192,7 +192,7 @@ router.get('/driverOrderList', function(req, res, next) {
       error: true
     });
   }else{
-    var getOrders = `SELECT orderID, total, restaurant.images, restaurant.restaurant_name, dropoffPoints.name, roomNumber, deliveryType FROM team7.order
+    var getOrders = `SELECT orderID, total, restaurant.images, restaurant.restaurant_name, restaurant.deliveryTime, dropoffPoints.name, roomNumber, deliveryType FROM team7.order
     JOIN restaurant ON restaurant.restaurant_id = order.restaurantName 
     JOIN dropoffPoints ON dropoffPoints.pointID = order.dropoff
     WHERE driver IS NULL;`;
