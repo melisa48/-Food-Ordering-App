@@ -98,7 +98,7 @@ router.get('/restaurantMenuCart', function(req, res, next) {
       //getting the user's cart from this restaurant if they're logged in
       if(res.locals.logged){
         let currentUser = res.locals.userId;
-        var cartItems = "SELECT cartID, menu.menuID, menu.name, menu.images, menu.price, menu.restaurant, quantity, cartItemTotal FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE userCart = ? AND menu.restaurant = ?;";
+        var cartItems = "SELECT cartID, menu.menuID, menu.name, menu.images, menu.price, menu.restaurant, cartItem, quantity, cartItemTotal FROM cart JOIN menu ON cart.cartItem = menu.menuID WHERE userCart = ? AND menu.restaurant = ?;";
         db.query(cartItems, [currentUser, restaurantIdentifier], function(err, result){
           if(err) throw err; 
           usersCart = result;
@@ -192,7 +192,7 @@ router.get('/driverOrderList', function(req, res, next) {
       error: true
     });
   }else{
-    var getOrders = `SELECT orderID, total, restaurant.images, restaurant.restaurant_name, dropoffPoints.name, roomNumber, deliveryType FROM team7.order
+    var getOrders = `SELECT orderID, total, restaurant.images, restaurant.restaurant_name, restaurant.deliveryTime, dropoffPoints.name, roomNumber, deliveryType FROM team7.order
     JOIN restaurant ON restaurant.restaurant_id = order.restaurantName 
     JOIN dropoffPoints ON dropoffPoints.pointID = order.dropoff
     WHERE driver IS NULL;`;

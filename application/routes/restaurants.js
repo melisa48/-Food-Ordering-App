@@ -174,8 +174,8 @@ router.post('/restaurantApplication', uploader.any(),function(req, res, next) {
         let restaurantID = secondresult.insertId;
         for(var i = 0; i < numMenu; i++){
           var menuItems = [];
-          menuItems.push(req.body.menu[i].name);
-          menuItems.push(req.body.menu[i].description);
+          menuItems.push(req.body.menu[i].name.substring(0,40));
+          menuItems.push(req.body.menu[i].description.substring(0,200));
           menuItems.push(menuImages[i]);
           menuItems.push(parseFloat(req.body.menu[i].price) || 0);
           menuItems.push(restaurantID);
@@ -311,7 +311,7 @@ function isValid(email){
 function isValidPassword(password){
   return String(password)
   .match(
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
   );
 }
 
