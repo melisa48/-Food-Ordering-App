@@ -27,7 +27,7 @@ c. cd application <br>
 d. run the server: <br>
 npm start <br>
 
-You can then go to the webpage using: 52.33.83.41:3000
+You can then go to the webpage using: 34.219.117.242:3000/
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
