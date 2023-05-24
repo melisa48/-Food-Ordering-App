@@ -64,7 +64,7 @@
       {{#each categories}}
         <option value="{{categoryName}}" {{#if (categoryFunction ../this.category categoryName)}} selected {{/if }}>{{categoryName}}</option>
       {{/each}}
-    </select><input id="search-bar" name="search" type="text" placeholder="Search" value="{{ searchTerm }}"><a id ='search-button'><i class="bi bi-search"></i></a>
+    </select><input id="search-bar" name="search" type="text" placeholder="Search" value="{{ searchTerm }}" maxlength="40"><a id ='search-button'><i class="bi bi-search"></i></a>
   </form>
   {{#if logged}}
   <div class="navbar-right" styles="display:flex">
