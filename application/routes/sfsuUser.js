@@ -71,28 +71,40 @@ router.post('/sfsuRegistration',(req, res, next) => {
   //Checking to make sure that the confirm password and password is the same
   if(confirmpassword == password){
     if(isValid(email)){
-      //Querying the database to check if the email already exists
-      db.query("SELECT * FROM registeredUsers WHERE verifiedEmail = ?",[email],function(err,result,fields){
+      if(isValidPassword(password)){
+        //Querying the database to check if the email already exists
+        db.query("SELECT * FROM registeredUsers WHERE verifiedEmail = ?",[email],function(err,result,fields){
 
-        if(err) throw err;
-  
-          if(result.length > 0 ){
-            console.log("Email is already registered.");
-          }else{
-            //Hashing the password before storing into the database
-            // const hashedpassword = encryption.encryptData(password);
-            var hashedpassword = bcrypt.hashSync(password, 8);
+          if(err) throw err;
 
-            //Inserting the values from the form into the database
-            let baseSQL = "INSERT INTO registeredUsers(firstname, lastname, password, verifiedEmail) VALUES (?,?,?,?)";
-            db.query(baseSQL, [firstname, lastname, hashedpassword, email], function(err, result, fields){
-              if(err) throw err;
-              // console.log("Supposed to be redirecting to login\n");
-              res.redirect('/sfsuLogin');
-            })
-          }
-          
-      })
+            if(result.length > 0 ){
+              console.log("Email is already registered.");
+            }else{
+              //Hashing the password before storing into the database
+              // const hashedpassword = encryption.encryptData(password);
+              var hashedpassword = bcrypt.hashSync(password, 8);
+
+              //Inserting the values from the form into the database
+              let baseSQL = "INSERT INTO registeredUsers(firstname, lastname, password, verifiedEmail) VALUES (?,?,?,?)";
+              db.query(baseSQL, [firstname, lastname, hashedpassword, email], function(err, result, fields){
+                if(err) throw err;
+                // console.log("Supposed to be redirecting to login\n");
+                res.redirect('/sfsuLogin');
+              })
+            }
+            
+        })
+      }else{
+        res.render('registration/sfsuRegistration', {
+          title: 'SFSU User Registration',
+          sfsuUser: true,
+          action: "/sfsuUser/sfsuRegistration",
+          loginLink: "/SFSULogin",
+          message: "Password must have a minimum of 8 characters, at least one upper case, one number, and one special character", 
+          error: true
+        });
+      }
+      
     }else{
       // console.log("Not a valid email address.\n");
       res.render('registration/sfsuRegistration', {
@@ -129,6 +141,15 @@ function isValid(email){
   return false;
 }
 
+//Function used for password verification
+//From: https://stackoverflow.com/questions/5142103/regex-to-validate-password-strength 
+function isValidPassword(password){
+  return String(password)
+  .match(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+  );
+}
+
 //CHECKOUT----------------------------------------------------------------------------------------
 var checkoutCartResults = [];
 
@@ -157,6 +178,9 @@ router.post('/submitOrder', function(req,res,next){
   let room = req.body.room;
   let total = parseFloat(req.body.total);
   let restaurant = parseInt(req.body.ticket[0].restaurantID);
+  let buildID = 11;
+  let dropoffID;
+  let delivery = req.body.deliveryOption;
   console.log(req.body);
   console.log(restaurant);
   let numTicketItems = Object.keys(req.body.ticket).length;
@@ -165,17 +189,21 @@ router.post('/submitOrder', function(req,res,next){
   //Getting the building id
   var buildingID = "SELECT pointID FROM dropoffPoints WHERE name = ?;";
   //Storing items inside of the orders table
-  var insertOrder = "INSERT INTO team7.order(customerID, total, orderDate, restaurantName, dropoff, roomNumber) VALUES (?,?,?,?,?,?);";
+  var insertOrder = "INSERT INTO team7.order(customerID, total, orderDate, restaurantName, dropoff, roomNumber, deliveryType) VALUES (?,?,?,?,?,?,?);";
   //Storing the menu items into the ticket
   var insertTicket = "INSERT INTO ticket(orderID, menuItem, quantity) VALUES ?";
   //Deleting items from the cart
   var deleteCartItems = "DELETE FROM cart WHERE cartID IN (?);";
-
+  
   db.query(buildingID, [buildingName], (err, result)=>{
     if(err) throw err;
+    
     if(result){
-      let dropoffID = result[0].pointID;
-      db.query(insertOrder, [currentOwner, total, currentDate, restaurant, dropoffID, room], (err, secondres)=>{
+      dropoffID = buildID;
+      if(result.length > 0){
+        dropoffID = result[0].pointID;
+      }
+      db.query(insertOrder, [currentOwner, total, currentDate, restaurant, dropoffID, room, delivery], (err, secondres)=>{
         if(err) throw err;
         let orderID = secondres.insertId;
 

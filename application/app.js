@@ -25,21 +25,12 @@ hbs.registerHelper('sumTotal', function(list){
 var indexRouter = require('./routes/index');
 // about team
 var aboutRouter = require('./routes/about');
-//driver route
+
 var driversRouter =require('./routes/drivers');
 var restaurantsRouter = require('./routes/restaurants');
 var sfsuUserRouter = require('./routes/sfsuUser');
 
 
-//router for page that lists searchResult after search
-
-// Driver Page Routes
-
-
-// Restaurant Page Routes
-// var myRestaurantsRouter = require('./routes/restaurant-routes/myRestaurants');
-//User Page Routes
-//Order Summary Routes
 
 var app = express();
 
@@ -95,18 +86,24 @@ app.use('*',(req, res,next)=>{
       if(err) throw err;
       categoryArray = result;
       res.locals.categories = categoryArray;
-      console.log(categoryArray);
+      // console.log(categoryArray);
     })
   } 
   res.locals.categories = categoryArray;
   console.log(res.locals.categories);
   next();
 })
+
+// var query = "SELECT categoryID FROM categories";
+// db.query(query, (err, results)=>{
+//   console.log(results);
+// })
+
 //home
 app.use('/', indexRouter);
 //about
 app.use('/about', aboutRouter);
-//drivers
+
 app.use('/drivers', driversRouter);
 app.use('/restaurants', restaurantsRouter);
 app.use('/sfsuUser', sfsuUserRouter);
@@ -114,11 +111,6 @@ app.use('/sfsuUser', sfsuUserRouter);
 
 
 
-// driver page hbs
-
-//resturant pages hbs
-// app.use('/myrestaurants', myRestaurantsRouter);
-//user pages hbs
 
 
 // catch 404 and forward to error handler

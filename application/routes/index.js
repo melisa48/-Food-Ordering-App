@@ -192,7 +192,7 @@ router.get('/driverOrderList', function(req, res, next) {
       error: true
     });
   }else{
-    var getOrders = `SELECT orderID, total, restaurant.images, restaurant.restaurant_name, dropoffPoints.name, roomNumber FROM team7.order
+    var getOrders = `SELECT orderID, total, restaurant.images, restaurant.restaurant_name, dropoffPoints.name, roomNumber, deliveryType FROM team7.order
     JOIN restaurant ON restaurant.restaurant_id = order.restaurantName 
     JOIN dropoffPoints ON dropoffPoints.pointID = order.dropoff
     WHERE driver IS NULL;`;
@@ -216,7 +216,8 @@ router.get('/driverOrderDetails', function(req, res, next) {
   }else{
     let orderIdentifier = req.query.order;
     // console.log(orderIdentifier);
-    var getOrder = `SELECT order.orderID, restaurant.restaurant_name, restaurant.address, dropoffPoints.name AS "building", roomNumber 
+    var getOrder = `SELECT order.orderID, total, restaurant.restaurant_name, restaurant.address, dropoffPoints.name AS "building", roomNumber, restaurant.deliveryTime,
+    restaurant.latitude, restaurant.longitude
     FROM team7.order 
     JOIN restaurant ON restaurant.restaurant_id = order.restaurantName 
     JOIN dropoffPoints ON dropoffPoints.pointID = order.dropoff

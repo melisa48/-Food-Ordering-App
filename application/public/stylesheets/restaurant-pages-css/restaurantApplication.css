@@ -127,6 +127,11 @@ label{
 	display:inline-block;
 }
 
+.requirement-details{
+    color: red;
+    font-size: 12px;
+}
+
 @media(max-width: 500px){
     #restaurant-application-wrapper{
         width: 90%;
