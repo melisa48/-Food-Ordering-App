@@ -25,19 +25,19 @@
         <h2 class="form-title">{{title}}</h2>
         <br>
         <h6>First Name <label class="required-asterisk">*</label></h3>
-        <input type="text" class="form-control" name="firstname"  required="" autofocus="" />
+        <input type="text" class="form-control" name="firstname"  required="" autofocus="" maxlength="40"/>
         <h6>Last Name <label class="required-asterisk">*</label></h3>
-        <input type="text" class="form-control" name="lastname"  required="" autofocus="" />
+        <input type="text" class="form-control" name="lastname"  required="" autofocus="" maxlength="40"/>
         <h6>Email <label class="required-asterisk">*</label>
         {{#if sfsuUser}}
         <label style="font-size: 12px; color: red;">Must be an mail.sfsu.edu or sfsu.edu email</label>
         {{/if}}
         </h6>
-        <input type="text" class="form-control" name="email"  required="" autofocus="" />
+        <input type="text" class="form-control" name="email"  required="" autofocus="" maxlength="40" />
         <h6>Password <label class="required-asterisk">*</label><label style="font-size: 12px; color: red;">Must be at least 8 characters, 1 uppercase, 1 number and 1 of the following special characters: @ $ ! % * # ? &.</label></h6>
-        <input type="password" class="form-control" name="password" required=""/>      
+        <input type="password" class="form-control" name="password" required="" maxlength="90"/>      
         <h6>Confirm Password <label class="required-asterisk">*</label></h6>
-        <input type="password" class="form-control" name="confirmpassword" required=""/> 
+        <input type="password" class="form-control" name="confirmpassword" required="" maxlength="90"/> 
 
 
         {{#if sfsuUser}}
