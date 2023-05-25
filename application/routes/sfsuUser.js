@@ -295,7 +295,10 @@ router.post('/addToCart', function(req, res, next){
       });
     }
   }
-  let numCartItems = Object.keys(req.body.cart).length;
+  let numCartItems = 0;
+  if(req.body.cart){
+    numCartItems = Object.keys(req.body.cart).length;
+  }
   console.log(req.body);
   // console.log(numCartItems);
   if(validLogin){
@@ -361,7 +364,9 @@ router.post('/addToCart', function(req, res, next){
         
       
 
-    } 
+    }else{
+      res.redirect('back');
+    }
   }
 })
 
